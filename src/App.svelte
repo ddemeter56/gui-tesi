@@ -6,7 +6,8 @@
 	<h1>Hello Tesi!</h1>
 	<div class="test">
 		<p>sfdfsdfdsf</p>
-		<p>deme</p>
+		<p> Szevasz alex</p>
+		<p>Szia</p>
 	</div>
 	
 </main>
