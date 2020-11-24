@@ -21,7 +21,7 @@ This Card Component is a container which resembles a playing card in size and sh
 
 | Name             | Data in event   | Description                                                                                    |
 |------------------|-----------------|------------------------------------------------------------------------------------------------|
-| click            | `Card: object`  | Fired when clicked on the card component, forward the `id` and the `name` of the clicked card  |
+| forward            | `Card: object`  | Fired when clicked on the card component, forward the `id` and the `name` of the clicked card  |
 
 
 **Event ideas**
@@ -30,4 +30,6 @@ This Card Component is a container which resembles a playing card in size and sh
 ### Features
 
 **Feature ideas**
+*Come back to these ideas when CSS needs to be finished*
 - On hover handling.. eg.: on hover it shows the opening time, or shows a text.
+- If it's opened make the whole card's border green , orange if closes soon , red closed
