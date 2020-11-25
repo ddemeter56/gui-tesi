@@ -1,10 +1,12 @@
 <script>
-	import Input from './Input/Input.svelte';
 	
+
 </script>
 
 <main>
 	<h1>Hello Tesi!</h1>
+
+	
 	
 </main>
 
