@@ -1,11 +1,18 @@
 <script>
-	export let name;
+	
+
 </script>
 
 <main>
 	<h1>Hello Tesi!</h1>
+
+	
 	
 </main>
+
+
+
+
 
 <style>
 	main {
