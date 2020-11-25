@@ -6,7 +6,6 @@
 		console.log(id)
 		let selectedIndex = items.findIndex(item => item.id === id);
 		items[selectedIndex].selected = false;
-		openList = false;
 		items = items
 	}
 </script>
