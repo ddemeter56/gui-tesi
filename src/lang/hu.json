@@ -1,0 +1,9 @@
+{
+  "tst": {
+    "msg": "Ez magyar szöveg."
+  },
+  "button":{
+    "ok" : "Ok",
+    "cancel" : "Mégse"
+  }
+}

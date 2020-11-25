@@ -1,0 +1,9 @@
+{
+  "tst": {
+    "msg": "This is English text."
+  },
+  "button":{
+    "ok" : "Ok",
+    "cancel" : "Cancel"
+  }
+}
