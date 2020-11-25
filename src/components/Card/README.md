@@ -33,3 +33,59 @@ This Card Component is a container which resembles a playing card in size and sh
 *Come back to these ideas when CSS needs to be finished*
 - On hover handling.. eg.: on hover it shows the opening time, or shows a text.
 - If it's opened make the whole card's border green , orange if closes soon , red closed
+
+**Examples**
+
+- Here an example how to pass the props :
+
+```jsx
+<script>
+import Card from "./components/Input/Card/Card.svelte"
+	
+
+	let rest={
+		social:[
+		{	
+			name:"instagram",
+			url:"http://www.instagram.com",
+			imgUrl:"https://image.flaticon.com/icons/png/128/174/174855.png"
+		},
+		{	
+			name:"facebook",
+			url:"http://www.facebook.com",
+			imgUrl:"https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/social-facebook-icon.png"
+		},
+		{
+			name:"website",
+			url:"http://www.google.com",
+			imgUrl:"https://icon-library.com/images/website-icon-png-transparent/website-icon-png-transparent-14.jpg"
+		}
+		
+	],
+		id:1,
+		type:'G',
+		name:'Cutler',
+		shortDesc:'Haha covid van ikszde',
+		address:"Zeg asdfafsdf",
+		phone:"+3630123456",
+		imgSrc:"https://www.cutlerzalaegerszeg.hu/index_htm_files/12785@2x.jpg"
+	}
+
+</script>
+
+<main>
+	
+
+	<Card 			
+		{...rest}
+	/>
+	
+</main>
+
+```
+
+
+
+
+
+
