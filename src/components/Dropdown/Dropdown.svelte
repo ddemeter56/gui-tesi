@@ -82,21 +82,21 @@
 
 <div class="container">
 	<div class="inputWrapper">
-	<input style="margin:0" type=text {disabled} bind:value={value} on:keydown={acceptSuggestion} />
-	<div class="inputIcon" on:click={() => {if(disabled){onInputClick = false} else {onInputClick = !onInputClick}}} >
-		{#if onInputClick}
-			<span>&#x2613;</span>
-		{:else}
-			<span>&xdtri;</span>
-		{/if}
+		<input style="margin:0" type=text {disabled} bind:value={value} on:keydown={acceptSuggestion} />
+		<div class="inputIcon" on:click={() => {if(disabled){onInputClick = false} else {onInputClick = !onInputClick}}} >
+			{#if onInputClick}
+				<span>&#x2613;</span>
+			{:else}
+				<span>&xdtri;</span>
+			{/if}
+		</div>
 	</div>
-</div>
 
-{#if onInputClick}
-	<ul class="ulFiltered" transition:fly>
-	{#each filteredList as item}
-		<li class:selected={item.selected} class="listItem"  on:click={setSelected(item.id)} transition:fly>{item.name}</li>
-	{/each}
-	</ul>
-{/if}
+	{#if onInputClick}
+		<ul class="ulFiltered" transition:fly>
+		{#each filteredList as item}
+			<li class:selected={item.selected} class="listItem"  on:click={setSelected(item.id)} transition:fly>{item.name}</li>
+		{/each}
+		</ul>
+	{/if}
 </div>
