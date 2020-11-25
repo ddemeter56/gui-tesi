@@ -1,3 +1,4 @@
+
 <script>
 	import { fly, fade } from 'svelte/transition';
 	export let items;
@@ -33,11 +34,11 @@
 	}
 	
 	$: value, filteredList = filterInList(value)
+	$: filteredList = items;
 </script>
 <style>
 	.container{
 		width:215px;
-		height:115px;
 		padding-bottom:5px;
 	}
 	.selected{
@@ -57,8 +58,9 @@
 		cursor:pointer;
 	}
 	.ulFiltered{
+		position:fixed;
+		width:215px;
 		margin:0;
-		height:130px;
 		padding:0;
 		overflow:auto;
 		background-color:darkgrey;
@@ -82,21 +84,21 @@
 
 <div class="container">
 	<div class="inputWrapper">
-		<input style="margin:0" type=text {disabled} bind:value={value} on:keydown={acceptSuggestion} />
-		<div class="inputIcon" on:click={() => {if(disabled){onInputClick = false} else {onInputClick = !onInputClick}}} >
-			{#if onInputClick}
-				<span>&#x2613;</span>
-			{:else}
-				<span>&xdtri;</span>
-			{/if}
-		</div>
+	<input style="margin:0" type=text {disabled} bind:value={value} on:keydown={acceptSuggestion} />
+	<div class="inputIcon" on:click={() => {if(disabled){onInputClick = false} else {onInputClick = !onInputClick}}} >
+		{#if onInputClick}
+			<span>&#x2613;</span>
+		{:else}
+			<span>&xdtri;</span>
+		{/if}
 	</div>
+</div>
 
-	{#if onInputClick}
-		<ul class="ulFiltered" transition:fly>
-		{#each filteredList as item}
-			<li class:selected={item.selected} class="listItem"  on:click={setSelected(item.id)} transition:fly>{item.name}</li>
-		{/each}
-		</ul>
-	{/if}
+{#if onInputClick}
+	<ul class="ulFiltered" style={filteredList.length >= 1 && filteredList.length < 10 ? "height:auto": "height:165px"} >
+	{#each filteredList as item}
+		<li class:selected={item.selected} class="listItem"  on:click={setSelected(item.id)} >{item.name}</li>
+	{/each}
+	</ul>
+{/if}
 </div>
