@@ -1,6 +1,7 @@
-# Dropdown
+# DropdownMulti
 
 Renders an <input> , a <span> and a <list>. **This DropwDown is a multiselect only!!!**
+To reach expected behavior use the data model in the example *facilities*
 
 
 **Attributes**
