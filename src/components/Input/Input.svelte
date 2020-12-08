@@ -6,7 +6,7 @@
     export let editable = true;
     export let required = false;
     export let value = null;
-    export let multiline = length >= 50;
+    export let multiline = length > 75;
     export let validator = () => true;
 
     let valid = true;

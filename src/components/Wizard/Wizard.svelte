@@ -4,7 +4,11 @@
 
 <script>
 	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
+  import { writable } from 'svelte/store';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
 	const slots = [];
 	
 	let activeIndex = 0;
@@ -14,7 +18,14 @@
 	
 	let nextButtonDisabled = false;
 	let prevButtonDisabled = true;
-	
+  
+  function wizardDone(){
+    dispatch('wizardDone', {
+
+      text:'Wizard done'
+    })
+  }
+
 	setContext(key, {
 		addSlot: slot => {
 			slots.push(slot)
@@ -67,7 +78,8 @@
 			updateActiveSlot(activeIndex)
 		}
 	}
-	
+  
+ 
 </script>
 
 
@@ -77,6 +89,6 @@
 <button on:click={stepPrevious} disabled={prevButtonDisabled}>Previous</button>
 <button on:click={stepNext} disabled={nextButtonDisabled}>Next</button>
 {#if nextButtonDisabled}
-	<button>Done</button>
+	<button on:click={wizardDone}>Done</button>
 {/if}
 
