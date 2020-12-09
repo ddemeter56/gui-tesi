@@ -3,10 +3,9 @@
 
     import GymGeneral from './GymGeneral.svelte';
 
-    let gymGeneralInfo = {
-        gymName : ''
+    let gymGeneralInfo = {        
     };
-
+    $:console.log("ez a gymfrom ",gymGeneralInfo);
 </script>
 
 <Wizard on:wizardDone={() => alert("Done clicked")}>
