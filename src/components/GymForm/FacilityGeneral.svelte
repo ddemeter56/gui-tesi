@@ -11,9 +11,7 @@
 
     let facNameOptions = facInfo[0].facilities;
     console.log(facNameOptions);
-    let selectedFacilities = [];
     $: console.log(facInfo[1].value);
-    $: console.log(selectedFacilities);
 </script>
 
 <style>
@@ -31,7 +29,7 @@
     {:else if item.inputType === 'DropDown'}
         {#if item.value === 'facilityName'}
             <Label required={item.required} label={item.name}>
-                <select multiple bind:value={selectedFacilities}>
+                <select multiple bind:value={facilityGeneralData}>
                     {#each facNameOptions as fac}
                         <option value={fac}>{fac.name}</option>
                     {/each}
@@ -42,7 +40,7 @@
 {/each}
 
 <hr/>
-{#each selectedFacilities as fac}
+{#each facilityGeneralData as fac}
     {fac.name} 
     <Label label={fac.name + 'Description'}>
         <Input type='C' length={100} bind:value={fac.desc}/>
