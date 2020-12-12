@@ -1,4 +1,4 @@
-export const gymData ={
+export const gymInfos ={
     "gymForm":[
         {   
             "value":"gymName",
@@ -119,13 +119,17 @@ export const gymData ={
             "name":"Phone",
             "type":"P"
         }
-    ],
+    ]    
+};
+
+export const facilityInfos={
     "facilityForm":[
         {
             "value":"facilityName",
             "inputType":"DropDown",
             "required":true,
-            "name":"Facility Name"
+            "name":"Facility Name",
+            "facilities":["gym","crossfit","cardio","sck my"]
         },
         {
             "value":"mainFacility",
