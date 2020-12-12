@@ -1,51 +1,51 @@
 <script>
     import Label from "../Label/Label.svelte";
     import Input from "../Input/Input.svelte";
-    import {facilityInfos} from './gymDatas.js'
+    import { facilityInfos } from "./gymDatas.js";
 
+    const facInfo = facilityInfos.facilityForm;
 
-    const facInfo=facilityInfos.facilityForm;
-    const facilityInfo=facilityInfos.facilityForm;
-    export let facilityGeneralData,mainFacility="gym";
+    const facilityInfo = facilityInfos.facilityForm;
 
-    $:console.log(facInfo[1].value)
+    export let facilityGeneralData;
 
+    let facNameOptions = facInfo[0].facilities;
+    console.log(facNameOptions);
+    let selectedFacilities = [];
+    $: console.log(facInfo[1].value);
+    $: console.log(selectedFacilities);
 </script>
 
+<style>
+</style>
+
 {#each facInfo as item}
-  {#if item.inputType==="Input"}
-    <Label required={item.required} label={item.name}>
-      <Input 
-        type={item.type}  
-        required={item.required} 
-        bind:value={facilityGeneralData[item.value]} 
-        length={item.maxLength} />
-    </Label>
-  {:else if item.inputType==="DropDown"}
-    {#if item.value==="facilityName"}
+    {#if item.inputType === 'Input'}
         <Label required={item.required} label={item.name}>
-            <select multiple bind:value={facilityGeneralData[item.value]}>
-                {#each facInfo[0].facilities as fac}
-                    <option value={fac}>
-                        {fac}
-                    </option>
-                {/each}
-            </select>
+            <Input
+                type={item.type}
+                required={item.required}
+                bind:value={facilityGeneralData[item.value]}
+                length={item.maxLength} />
         </Label>
-    {:else if item.value==="mainFacility"}
-        <Label required={item.required} label={item.name}>
-            <select bind:value={facilityGeneralData.mainFacility}>
-                <!-- Itt kéne az, hogy csaka zokat hozza elő amiket kiválaztottunk facilitiket -->
-                {#each facilityGeneralData as fac}
-                    <option value={""}>
-                        {fac.facilityName}
-                    </option>
-                {/each}
-            </select>
-        </Label>    
+    {:else if item.inputType === 'DropDown'}
+        {#if item.value === 'facilityName'}
+            <Label required={item.required} label={item.name}>
+                <select multiple bind:value={selectedFacilities}>
+                    {#each facNameOptions as fac}
+                        <option value={fac}>{fac.name}</option>
+                    {/each}
+                </select>
+            </Label>
+        {/if}
     {/if}
-    
-  {/if}
 {/each}
 
-<style></style>
+<hr/>
+{#each selectedFacilities as fac}
+    {fac.name} 
+    <Label label={fac.name + 'Description'}>
+        <Input type='C' length={100} bind:value={fac.desc}/>
+    </Label>
+    <hr/>
+{/each}

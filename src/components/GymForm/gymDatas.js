@@ -129,7 +129,7 @@ export const facilityInfos={
             "inputType":"DropDown",
             "required":true,
             "name":"Facility Name",
-            "facilities":["gym","crossfit","cardio","sck my"]
+            "facilities":[{name:"gym"},{name:"crossfit"},{name: "cardio"},{name: "sck my"}]
         },
         {
             "value":"mainFacility",

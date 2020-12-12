@@ -4,9 +4,7 @@
     import GymGeneral from './GymGeneral.svelte';
 
     let gymGeneralInfo=[];
-    let facilityGeneralInfo=[
-        
-    ];
+    let facilityGeneralInfo=[];
     let mainFacility;
     $:console.log("ez a gymfrom ",gymGeneralInfo);
     $:console.log(facilityGeneralInfo)
