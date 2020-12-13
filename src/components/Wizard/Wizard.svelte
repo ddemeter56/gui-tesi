@@ -9,6 +9,8 @@
 
   const dispatch = createEventDispatcher();
 
+	
+	export let title = 'Wizard title';
 	const slots = [];
 	
 	let activeIndex = 0;
@@ -40,6 +42,8 @@
 		
 		setActiveIndex: (i) => {
 			activeIndex = i;
+			i === 0 ? prevButtonDisabled = true : prevButtonDisabled = false;
+			i === slotLength-1 ? nextButtonDisabled = true : nextButtonDisabled = false;
 		},
 		 
 		nextButtonDisabled,
@@ -82,10 +86,12 @@
  
 </script>
 
-
-<slot>
-</slot>
-	
+<style></style>
+<h1 style='align: center'>{title}</h1>
+<div class='stepContainer'>
+	<slot>
+	</slot>
+</div>
 <button on:click={stepPrevious} disabled={prevButtonDisabled}>Previous</button>
 <button on:click={stepNext} disabled={nextButtonDisabled}>Next</button>
 {#if nextButtonDisabled}
