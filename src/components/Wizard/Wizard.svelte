@@ -15,7 +15,6 @@
 	
 	let activeIndex = 0;
 	let slotLength;
-	let slotNum;
 	let activeSlot = writable(null);
 	
 	let nextButtonDisabled = false;
@@ -23,7 +22,6 @@
   
   function wizardDone(){
     dispatch('wizardDone', {
-
       text:'Wizard done'
     })
   }
@@ -86,7 +84,9 @@
  
 </script>
 
-<style></style>
+<style>
+	
+</style>
 <h1 style='align: center'>{title}</h1>
 <div class='stepContainer'>
 	<slot>

@@ -27,7 +27,48 @@
 </script>
 	
 <style>
+
 	.stepContainer{
+		display:flex;
+		flex-direction: column;
+		justify-content: space-around;
+		padding-bottom: 5px;
+	}
+	.content{
+		flex-grow:1;
+	}
+	.titles{
+		width:95%;
+		border: 2px solid rgb(225, 226, 255);
+		background-color: rgb(214, 214, 214);
+		cursor:not-allowed;
+		padding-top:15px;
+		transition: border-left 150ms;
+	}
+	.activeStep{
+		background:rgb(226, 255, 255);
+		cursor:auto;
+		transition-timing-function: linear;
+		border-left: 13px solid rgb(145, 255, 255);
+	}
+	.done{
+		background:rgb(226, 255, 255);
+		cursor:pointer;
+	}
+	.current{
+		background:rgb(226, 255, 255);
+		cursor:pointer;
+	}
+	.description{
+		padding:15px;
+	}
+	.titleAndIcon{
+		display:flex;
+		justify-content:space-around;
+	}
+	@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .stepContainer{
 		display:flex;
 		flex-direction:row;
 		justify-content: space-around;
@@ -67,6 +108,7 @@
 		display:flex;
 		justify-content:space-around;
 	}
+}
 </style>
 
 <div class="stepContainer">
