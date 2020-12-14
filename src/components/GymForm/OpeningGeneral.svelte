@@ -7,14 +7,8 @@
     export let facilities;
       
 
-    const openingInfo=openingInfos.openingHoursForm;
-    const defaultInfo=[];
-    let buttonStatus="Yes";
-
-    //Getting the default stuff out of the js, so we could use the each iteration
-    for(let i=0;i<2;i++){
-        defaultInfo[i]=openingInfo[i];
-    }         
+    const openingInfo=openingInfos.openingHoursForm;    
+    let buttonStatus="Yes";      
 
     let isJustDefault=false;
     $:console.log("Checking fac",facilities,isJustDefault,openingInfo[0]);
