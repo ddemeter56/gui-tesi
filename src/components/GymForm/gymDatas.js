@@ -148,4 +148,123 @@ export const facilityInfos={
     ]    
 };
 
+export const openingInfos={
+    "openingHoursForm":[
+        {
+            "value":"defaultFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Default Opening Hour"
+        },
+        {
+            "value":"defaultTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Default Closing Hour"
+        },
+        {
+            "value":"mondayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Monday"
+        },
+        {
+            "value":"mondayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Monday",
+        },
+        {
+            "value":"tuesdayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Tuesday",
+        },
+        {
+            "value":"tuesdayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Tuesday",
+        },
+        {
+            "value":"wednesdayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Wednesday",
+        },
+        {
+            "value":"wednesdayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Wednesday",
+        },
+        {
+            "value":"thursdayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Thursday",
+        },
+        {
+            "value":"thursdayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Thursday",
+        },
+        {
+            "value":"fridayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Friday",
+        },
+        {
+            "value":"fridayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Friday",
+        },
+        {
+            "value":"saturdayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Saturday",
+        },
+        {
+            "value":"saturdayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Saturday",
+        },
+        {
+            "value":"sundayFrom",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Opening Hour on Sunday",
+        },
+        {
+            "value":"sundayTo",
+            "inputType":"Number",
+            "type":"N",
+            "required":true,
+            "name":"Closing Hour on Sunday",
+        },
+        
+        
+    ]    
+};
+
 

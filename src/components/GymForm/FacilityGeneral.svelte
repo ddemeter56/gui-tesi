@@ -3,15 +3,12 @@
     import Input from "../Input/Input.svelte";
     import { facilityInfos } from "./gymDatas.js";
 
-    const facInfo = facilityInfos.facilityForm;
-
-    const facilityInfo = facilityInfos.facilityForm;
+    const facInfo = facilityInfos.facilityForm;   
 
     export let facilityGeneralData;
 
-    let facNameOptions = facInfo[0].facilities;
-    console.log(facNameOptions);
-    $: console.log(facInfo[1].value);
+    let facNameOptions = facInfo[0].facilities;  
+   
 </script>
 
 <style>
