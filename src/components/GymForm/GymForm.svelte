@@ -9,7 +9,7 @@
         facilityGeneralInfo : [],
         openingHoursGeneralData:[]
     };
-    $: console.table(wholeForm);
+    $: console.table("WHOLEform:",wholeForm);
 </script>
 
 <Wizard on:wizardDone={() => alert("Done clicked")}>
@@ -20,7 +20,7 @@
         <FacilityGeneral bind:facilityGeneralData={wholeForm.facilityGeneralInfo}/>
     </Step>
     <Step title={'Facility nyitvatartások'} desc={'A kondi alap nyitvatartásának és esetleges facilityk nyitvatartásának megadása'} icon={'icon'}>       
-        <OpeningGeneral bind:openingHoursGeneralData={wholeForm.openingHoursGeneralData} facilities={wholeForm.facilityGeneralInfo}/>
+        <OpeningGeneral bind:openingHoursGeneralData={wholeForm.openingHoursGeneralData} bind:facilities={wholeForm.facilityGeneralInfo}/>
     </Step>
     <Step title={'GYM Pricing'} desc={'Árlista felvétele'} icon={'icon'}>
     </Step>

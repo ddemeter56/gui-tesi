@@ -64,6 +64,15 @@
         required={required}
         bind:value={rawValue}
         class:invalid={!valid} />
+{:else if type === 'T'}
+    <input
+        type="time"
+        min="00:00"
+        max="24:00"
+        disabled={!editable}        
+        required={required}
+        bind:value={rawValue}
+        class:invalid={!valid} />
 {:else}
     <textarea
         maxlength={length}

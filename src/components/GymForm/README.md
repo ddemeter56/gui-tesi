@@ -57,20 +57,20 @@ E.G. for the text type:
 
 | Name      | Input Type                 | Required | Default value       | Description                                                              |
 |-----------|----------------------|----------|----------------------|--------------------------------------------------------------------------|
-|  MondayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  MondayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
-|  TueasdayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  TuesdayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
-|  WednesdayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  WednesdayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
-|  ThursdayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  ThursdayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
-|  FridayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  FridayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
-|  SaturdayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  SaturdayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
-|  SundayFrom  | Number      |  **yes** |         **0**             |              Opening Hour 
-|  SundayTo  | Number      |  **yes** |         **0**             |              Closing Hour 
+|  MondayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  MondayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
+|  TueasdayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  TuesdayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
+|  WednesdayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  WednesdayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
+|  ThursdayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  ThursdayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
+|  FridayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  FridayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
+|  SaturdayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  SaturdayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
+|  SundayFrom  | Time(string)      |  **yes** |         **0**             |              Opening Hour 
+|  SundayTo  | Time(string)      |  **yes** |         **0**             |              Closing Hour 
 
 
 
