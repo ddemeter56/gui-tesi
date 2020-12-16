@@ -27,6 +27,7 @@
 
 <style>
     input {
+        width:180px;
         outline: none;
     }
     .invalid {

@@ -1,122 +1,124 @@
 export const gymInfos ={
-    "gymForm":[
+    "gym":[
         {   
-            "value":"gymName",
+            "value":"name",
             "inputType":"Input",
             "maxLength":75,
             "required":true,
-            "name":"GYM NAME",
+            "label":"Name",
             "type":"C",
             
         },
         {
-            "value":"gymCountry",
+            "value":"country",
             "inputType":"Input",
             "maxLength":75,
             "required":true,
-            "name":"Country",
+            "label":"Country",
             "type":"C"
         },
         {
-            "value":"gymPostCode",
+            "value":"postCode",
             "inputType":"Input",
             "maxLength":15,
             "required":true,
-            "name":"Postcode",
+            "label":"Postcode",
             "type":"C"
         },
         {
-            "value":"gymCity",
+            "value":"city",
             "inputType":"Input",
             "maxLength":100,
             "required":true,
-            "name":"City",
+            "label":"City",
             "type":"C"
         },
         {
-            "value":"gymStreet",
+            "value":"street",
             "inputType":"Input",
             "maxLength":75,
             "required":true,
-            "name":"Street",
+            "label":"Street",
             "type":"C"
         },
         {
-            "value":"gymStreetNumber",
+            "value":"streetNumber",
             "inputType":"Input",
             "maxLength":10,
             "required":true,
-            "name":"Street Number",
+            "label":"Street Number",
             "type":"C"
         },
         {
-            "value":"gymFloor",
+            "value":"floor",
             "inputType":"Input",
             "maxLength":10,
-            "required":true,
-            "name":"Floor",
+            "required":false,
+            "label":"Floor",
             "type":"C"
         },
         {
-            "value":"gymDesc",
+            "value":"description",
             "inputType":"Input",
             "maxLength":3500,
             "required":true,
-            "name":"Description",
+            "label":"Description",
             "type":"C"
         },
         {
-            "value":"gymShortDesc",
+            "value":"shortDescription",
             "inputType":"Input",
             "maxLength":150,
             "required":true,
-            "name":"Short Description",
+            "label":"Short Description",
             "type":"C"
         },
         {
-            "value":"gymLang",
-            "inputType":"DropDown",            
-            "required":true,
-            "name":"Language"            
-        },
-        {
-            "value":"gymFace",
+            "value":"facebookUserId",
             "inputType":"Input",
             "maxLength":75,
             "required":false,
-            "name":"Facebook",
+            "label":"Facebook",
             "type":"C"
         },
         {
-            "value":"gymInsta",
+            "value":"instagramUserId",
             "inputType":"Input",
             "maxLength":75,
             "required":false,
-            "name":"Instagram",
+            "label":"Instagram",
             "type":"C"
         },
         {
-            "value":"gymYoutube",
+            "value":"youtubeUserId",
             "inputType":"Input",
             "maxLength":75,
             "required":false,
-            "name":"Youtube",
+            "label":"Youtube",
             "type":"C"
         },
         {
-            "value":"gymWebsite",
+            "value":"twitterUserId",
             "inputType":"Input",
             "maxLength":75,
             "required":false,
-            "name":"Website",
+            "label":"Twitter",
             "type":"C"
         },
         {
-            "value":"gymPhone",
+            "value":"webPageUserId",
+            "inputType":"Input",
+            "maxLength":75,
+            "required":false,
+            "label":"Website",
+            "type":"C"
+        },
+        {
+            "value":"phoneNumber",
             "inputType":"Input",
             "maxLength":25,
             "required":true,
-            "name":"Phone",
+            "label":"Phone",
             "type":"P"
         }
     ]    
@@ -129,40 +131,47 @@ export const facilityInfos={
             "inputType":"DropDown",
             "required":true,
             "name":"Facility Name",
-            "facilities":[{name:"gym"},{name:"crossfit"},{name: "cardio"},{name: "sck my"}]
+            "facilities":[{"facility_cd":69,"facility_name":"Cardio zone","main_facility":true,"facility_category":"Cardio zone"}, 
+            {"facility_cd":70,"facility_name":"Cycling studio","main_facility":false,"facility_category":"Cardio zone"}, 
+            {"facility_cd":71,"facility_name":"Beat","main_facility":false,"facility_category":"Cardio zone"}, 
+            {"facility_cd":72,"facility_name":"Indoor running track","main_facility":false,"facility_category":"Cardio zone"}, 
+            {"facility_cd":73,"facility_name":"Gym zone","main_facility":true,"facility_category":"Gym zone"}, 
+            {"facility_cd":74,"facility_name":"Free weights area","main_facility":false,"facility_category":"Gym zone"}, 
+            {"facility_cd":75,"facility_name":"Weight lifting","main_facility":false,"facility_category":"Gym zone"}, 
+            {"facility_cd":76,"facility_name":"Strengh area","main_facility":false,"facility_category":"Gym zone"}, 
+            {"facility_cd":77,"facility_name":"Skill and Functional Zone","main_facility":true,"facility_category":"Skill and Functional Zone"}, 
+            {"facility_cd":78,"facility_name":"Functional Area","main_facility":false,"facility_category":"Skill and Functional Zone"}, 
+            {"facility_cd":79,"facility_name":"Playground","main_facility":false,"facility_category":"Skill and Functional Zone"}, 
+            {"facility_cd":80,"facility_name":"Crossfit","main_facility":false,"facility_category":"Skill and Functional Zone"}, 
+            {"facility_cd":81,"facility_name":"Group exercise room","main_facility":true,"facility_category":"Group exercise room"}, 
+            {"facility_cd":82,"facility_name":"Yoga","main_facility":false,"facility_category":"Group exercise room"}, 
+            {"facility_cd":83,"facility_name":"Dance centers","main_facility":false,"facility_category":"Group exercise room"}, 
+            {"facility_cd":84,"facility_name":"Pilates Centers","main_facility":false,"facility_category":"Group exercise room"}, 
+            {"facility_cd":85,"facility_name":"Aerobic Centers","main_facility":false,"facility_category":"Group exercise room"}, 
+            {"facility_cd":86,"facility_name":"Structured Activities","main_facility":true,"facility_category":"Structured Activities"}, 
+            {"facility_cd":87,"facility_name":"Squash","main_facility":false,"facility_category":"Structured Activities"}, 
+            {"facility_cd":88,"facility_name":"Climbing wall","main_facility":false,"facility_category":"Structured Activities"}, 
+            {"facility_cd":89,"facility_name":"Associated functions","main_facility":true,"facility_category":"Associated functions"}, 
+            {"facility_cd":90,"facility_name":"Locker Rooms","main_facility":false,"facility_category":"Associated functions"}, 
+            {"facility_cd":91,"facility_name":"Sauna","main_facility":false,"facility_category":"Associated functions"}, 
+            {"facility_cd":92,"facility_name":"Steam Room","main_facility":false,"facility_category":"Associated functions"}, 
+            {"facility_cd":93,"facility_name":"Hot tub","main_facility":false,"facility_category":"Associated functions"}, 
+            {"facility_cd":94,"facility_name":"Outdoor Activities","main_facility":true,"facility_category":"Outdoor Activities"}, 
+            {"facility_cd":95,"facility_name":"Golf","main_facility":false,"facility_category":"Outdoor Activities"}, 
+            {"facility_cd":96,"facility_name":"Outdoor running tack","main_facility":false,"facility_category":"Outdoor Activities"}, 
+            {"facility_cd":97,"facility_name":"Lounge","main_facility":false,"facility_category":"Outdoor Activities"}]
         },
-        {
-            "value":"mainFacility",
-            "inputType":"DropDown",
-            "required":true,
-            "name":"Main Facility"
-        },
-        {
-            "value":"facilityDesc",
-            "inputType":"Input",
-            "maxLength":3500,
-            "type":"C",
-            "required":false,
-            "name":"Description"
-        }
     ]    
 };
 
 export const openingInfos={
     "openingHoursForm":[
         {
-            "value":"defaultFrom",
-            "inputType":"Number",
-            "type":"T",
-            "required":true,
-            "name":"Default Opening Hour"
-        },
-        {
-            "value":"defaultTo",
-            "inputType":"Number",
-            "type":"T",
-            "required":true,
-            "name":"Default Closing Hour"
+            "value":"facilityName",
+            "inputType":"Input",
+            "type":"C",
+            "required":false,
+            "name":"Opening time for:"
         },
         {
             "value":"mondayFrom",

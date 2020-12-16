@@ -1,26 +1,29 @@
 <script>
     import { Wizard, Step } from '../Wizard/wizard.js';
-    import FacilityGeneral from './FacilityGeneral.svelte';
+    import Facilities from './Facilities.svelte';
     import GymGeneral from './GymGeneral.svelte';
-    import OpeningGeneral from './OpeningGeneral.svelte';
-    
-    let wholeForm = {
-        gymGeneralInfo : [],
-        facilityGeneralInfo : [],
-        openingHoursGeneralData:[]
+    import Opening from './Opening.svelte';
+    import { gymInfos, facilityInfos, openingInfos } from './gymDatas.js';  
+
+    console.log(gymInfos.gym);
+    let form = {
+        gym : [],
+        facilities : [],
+        gymOpening:[]
     };
-    $: console.table("WHOLEform:",wholeForm);
+    $: console.table("WHOLEform:",form)
+    $: console.log(openingInfos);
 </script>
 
 <Wizard on:wizardDone={() => alert("Done clicked")}>
     <Step title={'GYM alapadatok'} desc={'A terem alapadatait itt adjuk meg'} icon={'icon'} active>
-        <GymGeneral bind:gymGeneralData={wholeForm.gymGeneralInfo}/>
+        <GymGeneral bind:gymGeneralData={form.gym} gymGeneralCols={gymInfos.gym}/>
     </Step>
     <Step title={'GYM facilityk'} desc={'A kondihoz tartozó facilityket itt adjuk meg'} icon={'icon'}>
-        <FacilityGeneral bind:facilityGeneralData={wholeForm.facilityGeneralInfo}/>
+        <Facilities bind:facilityGeneralData={form.facilities} gymFacilityCols={facilityInfos.facilityForm}/>
     </Step>
     <Step title={'Facility nyitvatartások'} desc={'A kondi alap nyitvatartásának és esetleges facilityk nyitvatartásának megadása'} icon={'icon'}>       
-        <OpeningGeneral bind:openingHoursGeneralData={wholeForm.openingHoursGeneralData} bind:facilities={wholeForm.facilityGeneralInfo}/>
+        <Opening bind:openingGeneralData={form.gymOpening} bind:facilities={form.facilities} {openingInfos}/>
     </Step>
     <Step title={'GYM Pricing'} desc={'Árlista felvétele'} icon={'icon'}>
     </Step>

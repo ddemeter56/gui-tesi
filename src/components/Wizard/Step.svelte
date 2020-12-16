@@ -125,7 +125,7 @@
 	</div>
 	<div class="content">
 		{#if $activeSlot === slot}
-			<div transition:fly="{{ x: 1000, duration: 500 }}">
+			<div transition:fly="{{ x: 1000, duration: 500 }}" style="position:fixed; top:0;">
 				<slot>
 				</slot>
 			</div>

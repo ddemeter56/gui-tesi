@@ -9,10 +9,5 @@
 
 </script>
 
-<LanguageSelector />
-<main>
-	{$_('tst.msg')}
-</main>
-
 <GymForm />
 <NotificationDisplay/>
