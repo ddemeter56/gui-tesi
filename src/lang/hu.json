@@ -5,5 +5,11 @@
   "button":{
     "ok" : "Ok",
     "cancel" : "Mégse"
+  },
+  "navbar" : {
+    "home" : "Kezdőlap",
+    "about": "Rólunk",
+    "gymReg": "Terem regisztrálása",
+    "ptReg": "Regisztrálás edzőként"
   }
 }

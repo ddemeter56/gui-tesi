@@ -5,5 +5,11 @@
   "button":{
     "ok" : "Ok",
     "cancel" : "Cancel"
+  },
+  "navbar" : {
+    "home" : "Home",
+    "about": "About",
+    "gymReg": "Register your GYM",
+    "ptReg": "Register as Trainer"
   }
 }

@@ -1,5 +1,1 @@
-<script>
-    import GymForm from '../components/GymForm/GymForm.svelte';
-</script>
-
-<GymForm />
+<h1>Home</h1>

@@ -1,12 +1,18 @@
 import Home from './routes/Home.svelte';
-import Name from './routes/Name.svelte';
-import Wild from './routes/Wild.svelte';
+import GymForm from './components/GymForm/GymForm.svelte';
+import About from './routes/About.svelte';
+import ptForm from './routes/Name.svelte';
 import NotFound from './routes/NotFound.svelte';
+
 // Export the route definition object
 export default {
-    // Exact path
+    // Exact path - Landing page
     '/': Home,
-
+    '/About' : About,
+    '/gymRegister' : GymForm,
+    '/professionalRegister' : ptForm,
+    '*': NotFound,
+    /*
     // Using named parameters, with last being optional
     '/hello/:first/:last?': Name,
 
@@ -14,7 +20,7 @@ export default {
     // Included twice to match both `/wild` (and nothing after) and `/wild/*` (with anything after)
     '/wild': Wild,
     '/wild/*': Wild,
-
+    */
     // Catch-all, must be last
-    '*': NotFound,
+    
 }
