@@ -5,14 +5,13 @@
     import Opening from './Opening.svelte';
     import { gymInfos, facilityInfos, openingInfos } from './gymDatas.js';  
 
-    console.log(gymInfos.gym);
     let form = {
         gym : [],
         facilities : [],
         gymOpening:[{facilityName: 'Általános nyitvatartás'}]
     };
-    $: console.table("WHOLEform:",form)
-    $: console.log(openingInfos);
+    $: console.table("form has been changed:",form)
+    
 </script>
 
 <Wizard on:wizardDone={() => alert("Done clicked")}>

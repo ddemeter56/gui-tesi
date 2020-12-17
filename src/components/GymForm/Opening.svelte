@@ -1,8 +1,6 @@
 <script>
     import Label from "../Label/Label.svelte";
     import Input from "../Input/Input.svelte";
-    import Tag from "../Tag/Tag.svelte";
-import Facilities from "./Facilities.svelte";
     export let openingGeneralData;
     export let facilities;
     export let openingInfos;
@@ -10,9 +8,10 @@ import Facilities from "./Facilities.svelte";
 
     let defaultOpening;
     let defaultClosing;
+
+    let filledOpening = openingGeneralData;
  
     function deleteFacility(fac){
-        console.log(fac);
         openingGeneralData = openingGeneralData.filter(open => open.facilityName !== fac.facility_name);
     }
     function addFacility(fac){
@@ -21,13 +20,24 @@ import Facilities from "./Facilities.svelte";
             openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.facility_other }];
         }
     }
-    function fillTimes(){
 
-    }
+    function fillTimes(){
+        openingGeneralData.reduce((acc,curr) => {
+            for(let key in curr){
+                if(key.includes('To')){
+                    curr[key] = defaultClosing;
+                }
+                if(key.includes('From')){
+                    curr[key] = defaultOpening;
+                }
+            }
+            return [...acc, curr]
+        },[])
+     }
+
     function markClosed(){
 
     }
-    $: console.log(openingGeneralData);
 </script>
 
 <style>
@@ -90,7 +100,6 @@ import Facilities from "./Facilities.svelte";
 </ul>
 
 
-<button on:click={fillTimes}>Align first time for every day</button>
+<button on:click={fillTimes}>Align this for every day</button>
 <Input type={"T"} bind:value={defaultOpening}> default opening </Input>
-
 <Input type={"T"} bind:value={defaultClosing}> default closing </Input>

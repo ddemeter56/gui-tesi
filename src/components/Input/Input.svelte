@@ -22,7 +22,6 @@
     }
 
     $: validateValue(rawValue);
-    $: pattern, console.log(pattern);
 </script>
 
 <style>
