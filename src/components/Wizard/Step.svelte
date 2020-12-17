@@ -108,6 +108,11 @@
 		display:flex;
 		justify-content:space-around;
 	}
+
+	.slotStyle{
+		position:fixed; 
+		top:0;
+	}
 }
 </style>
 
@@ -125,7 +130,7 @@
 	</div>
 	<div class="content">
 		{#if $activeSlot === slot}
-			<div transition:fly="{{ x: 1000, duration: 500 }}" style="position:fixed; top:0;">
+			<div transition:fly="{{ x: 1000, duration: 500 }}" class="slotStyle">
 				<slot>
 				</slot>
 			</div>

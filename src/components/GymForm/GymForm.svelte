@@ -9,7 +9,7 @@
     let form = {
         gym : [],
         facilities : [],
-        gymOpening:[]
+        gymOpening:[{facilityName: 'Általános nyitvatartás'}]
     };
     $: console.table("WHOLEform:",form)
     $: console.log(openingInfos);
