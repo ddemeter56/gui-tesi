@@ -10,20 +10,10 @@ import Facilities from "./Facilities.svelte";
 
     let defaultOpening;
     let defaultClosing;
-
-    function deleteFromOpening(){
-        if(openingGeneralData.length > 1) {
-            openingGeneralData.splice(openingGeneralData.indexOf(openingGeneralData.length -1), 1)
-            openingGeneralData = openingGeneralData;
-        }
-        
-    }
-    function addSelectedFacilties(){
-        console.log(facilities);
-        if(facilities.length >= 1) {
-            facilities.map(fac => {openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.facility_other }]});
-        }
-            
+ 
+    function deleteFacility(fac){
+        console.log(fac);
+        openingGeneralData = openingGeneralData.filter(open => open.facilityName !== fac.facility_name);
     }
     function addFacility(fac){
         let filter = openingGeneralData.filter(open => open.facilityName === fac.facility_name || open.facilityName === fac.facility_other )
@@ -85,14 +75,6 @@ import Facilities from "./Facilities.svelte";
     </table>
 </div>
 
-<button on:click={addSelectedFacilties}>Add selected facilites</button>
-
-{#if openingGeneralData.length !== 1}
-    <button on:click={deleteFromOpening}>Delete last added</button>
-{/if}
-<hr />
-
-
 <ul>
     {#each facilities as fac}
         <li>
@@ -101,7 +83,7 @@ import Facilities from "./Facilities.svelte";
         <button on:click={addFacility(fac)}>
             Add
         </button>
-        <button>
+        <button on:click={deleteFacility(fac)}>
             Delete
         </button>
     {/each}
