@@ -4,25 +4,40 @@
     export let openingGeneralData;
     export let facilities;
     export let openingInfos;
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
+    openingGeneralData = openingGeneralData.length === 0 ? [{facilityName: 'Általános nyitvatartás',fridayFrom: "",
+                                                                fridayTo: "",
+                                                                mondayFrom: "",
+                                                                mondayTo: "",
+                                                                saturdayFrom: "",
+                                                                saturdayTo: "",
+                                                                sundayFrom: "",
+                                                                sundayTo: "",
+                                                                thursdayFrom: "",
+                                                                thursdayTo: "",
+                                                                tuesdayFrom: "",
+                                                                tuesdayTo: "",
+                                                                wednesdayFrom: "",
+                                                                wednesdayTo: '' }] : [...openingGeneralData];
+    let defaultOpening = "08:00";
+    let defaultClosing = "22:00";
 
 
-    let defaultOpening;
-    let defaultClosing;
-
-    let filledOpening = openingGeneralData;
- 
     function deleteFacility(fac){
         openingGeneralData = openingGeneralData.filter(open => open.facilityName !== fac.facility_name);
     }
     function addFacility(fac){
         let filter = openingGeneralData.filter(open => open.facilityName === fac.facility_name || open.facilityName === fac.facility_other )
         if(filter.length === 0){
-            openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.facility_other }];
+            openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.facility_other, mondayFrom: "", mondayTo: "", tuesdayFrom: "", tuesdayTo: "", wednesdayFrom:"" , wednesdayTo:"", thursdayFrom: "", thursdayTo: "", fridayFrom: "", fridayTo: "", saturdayFrom: "", saturdayTo: "", sundayFrom: "", sundayTo: ""}];
         }
     }
 
     function fillTimes(){
-        openingGeneralData.reduce((acc,curr) => {
+        openingGeneralData = openingGeneralData.reduce((acc,curr) => {
             for(let key in curr){
                 if(key.includes('To')){
                     curr[key] = defaultClosing;
@@ -33,11 +48,15 @@
             }
             return [...acc, curr]
         },[])
+        dispatch('autoFilled', {
+			autoFilled : openingGeneralData
+		});
      }
 
     function markClosed(){
 
     }
+
 </script>
 
 <style>
@@ -63,6 +82,11 @@
     .markClosed{
         cursor: pointer;
     }
+    .disabled{
+        background-color: rgb(168, 168, 168);
+        color:black;
+        cursor:not-allowed;
+    }
 </style>
 
 <div class="tableContainer">
@@ -73,7 +97,7 @@
                 {#each openingGeneralData as row}
                     <td>
                         <div class="tdInputStyle">
-                            <Input type={'C'} editable={c.value !== 'facilityName'} length={c.maxLength} bind:value={row[c.value]} />
+                            <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black; cursor:not-allowed;" : ""}" type="text" maxlength={c.maxlength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
                             {#if c.value !== 'facilityName'}
                             <span class="markClosed" on:click={markClosed}>&#10006;</span>
                             {/if}
@@ -101,5 +125,5 @@
 
 
 <button on:click={fillTimes}>Align this for every day</button>
-<Input type={"T"} bind:value={defaultOpening}> default opening </Input>
-<Input type={"T"} bind:value={defaultClosing}> default closing </Input>
+<Input type={"T"} bind:value={defaultOpening} />
+<Input type={"T"} bind:value={defaultClosing} />
