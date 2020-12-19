@@ -4,6 +4,7 @@
     export let facilities;
     export let openingInfos;
 
+    // Ebben a sorban van a galiba, hogy ott marad olyan opening is aminek nem kellene
     openingGeneralData = openingGeneralData.length === 0 ? [{facilityName: 'Általános nyitvatartás',fridayFrom: "",
                                                                 fridayTo: "",
                                                                 mondayFrom: "",
