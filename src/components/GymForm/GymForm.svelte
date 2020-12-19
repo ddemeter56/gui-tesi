@@ -6,9 +6,9 @@
     import { gymInfos, facilityInfos, openingInfos } from './gymDatas.js';  
 
     let form = {
-        gym : [],
+        gym : {},
         facilities : [],
-        gymOpening:[]
+        openings:[]
 }
     
     $: console.log(form)
@@ -37,7 +37,7 @@
         desc={'A kondi alap nyitvatartásának és esetleges facilityk nyitvatartásának megadása'}
         icon={'icon'}>
         <Opening
-            bind:openingGeneralData={form.gymOpening}
+            bind:openingGeneralData={form.openings}
             bind:facilities={form.facilities}
             {openingInfos} />
     </Step>

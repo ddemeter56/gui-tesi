@@ -1,12 +1,8 @@
 <script>
-    import Label from "../Label/Label.svelte";
     import Input from "../Input/Input.svelte";
     export let openingGeneralData;
     export let facilities;
     export let openingInfos;
-    import { createEventDispatcher } from 'svelte';
-
-    const dispatch = createEventDispatcher();
 
     openingGeneralData = openingGeneralData.length === 0 ? [{facilityName: 'Általános nyitvatartás',fridayFrom: "",
                                                                 fridayTo: "",
@@ -21,7 +17,7 @@
                                                                 tuesdayFrom: "",
                                                                 tuesdayTo: "",
                                                                 wednesdayFrom: "",
-                                                                wednesdayTo: '' }] : [...openingGeneralData];
+                                                                wednesdayTo: '' }] : ([...openingGeneralData]);
     let defaultOpening = "08:00";
     let defaultClosing = "22:00";
 
@@ -48,9 +44,6 @@
             }
             return [...acc, curr]
         },[])
-        dispatch('autoFilled', {
-			autoFilled : openingGeneralData
-		});
      }
 
     function markClosed(){
