@@ -91,7 +91,7 @@
                 {#each openingGeneralData as row}
                     <td>
                         <div class="tdInputStyle">
-                            <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black; cursor:not-allowed;" : ""}" type="text" maxlength={c.maxlength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
+                            <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black; cursor:not-allowed;" : ""}" type="text" maxLength={c.maxLength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
                             {#if c.value !== 'facilityName'}
                             <span class="markClosed" on:click={markClosed}>&#10006;</span>
                             {/if}
