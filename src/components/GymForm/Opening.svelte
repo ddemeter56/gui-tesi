@@ -27,9 +27,9 @@
         openingGeneralData = openingGeneralData.filter(open => open.facilityName !== fac.facility_name);
     }
     function addFacility(fac){
-        let filter = openingGeneralData.filter(open => open.facilityName === fac.facility_name || open.facilityName === fac.facility_other )
+        let filter = openingGeneralData.filter(open => open.facilityName === fac.facility_name || open.facilityName === fac.customName )
         if(filter.length === 0){
-            openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.facility_other, mondayFrom: "", mondayTo: "", tuesdayFrom: "", tuesdayTo: "", wednesdayFrom:"" , wednesdayTo:"", thursdayFrom: "", thursdayTo: "", fridayFrom: "", fridayTo: "", saturdayFrom: "", saturdayTo: "", sundayFrom: "", sundayTo: ""}];
+            openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.customName, mondayFrom: "", mondayTo: "", tuesdayFrom: "", tuesdayTo: "", wednesdayFrom:"" , wednesdayTo:"", thursdayFrom: "", thursdayTo: "", fridayFrom: "", fridayTo: "", saturdayFrom: "", saturdayTo: "", sundayFrom: "", sundayTo: ""}];
         }
     }
 
@@ -106,7 +106,7 @@
 <ul>
     {#each facilities as fac}
         <li>
-            {fac.facility_name || fac.facility_other}
+            {fac.facility_name || fac.customName}
         </li>
         <button on:click={addFacility(fac)}>
             Add

@@ -10,9 +10,9 @@
     let facNameOptions = gymFacilityCols[0].facilities;  
     let showFacilityOther = false;
 
-    let facility_other;
+    let customName;
     function addCustomFacility() {
-        facilityGeneralData = [...facilityGeneralData, {facility_cd : null, facility_other}]
+        facilityGeneralData = [...facilityGeneralData, {facility_cd : null, customName}]
     }
 </script>
 
@@ -34,7 +34,7 @@
 
 <hr/>
 {#each facilityGeneralData as fac}
-    <Label label={`Description for ${fac.facility_name || fac.facility_other}`}>
+    <Label label={`Description for ${fac.facility_name || fac.customName}`}>
         <Input type='C' length={100} bind:value={fac.description}/>
     </Label>
     <hr/>
@@ -44,6 +44,6 @@ After you selected your facilities you can add custom ones in case you havent fo
 <hr />
 <button on:click={() => {showFacilityOther = !showFacilityOther}}>Add more facility</button>
 {#if showFacilityOther}
-<Input type='C' length={50} bind:value={facility_other} /> 
+<Input type='C' length={50} bind:value={customName} /> 
 <button on:click={addCustomFacility}>Add new facility</button>
 {/if}

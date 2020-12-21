@@ -6,12 +6,12 @@
   export let selectedFacilities;
   export let pricingGeneralData;
 
-  const tableHeaders = ['selectedFacility','selectedCategory','ticketType','amount','currency','validForDays'];
+  const tableHeaders = ['selectedFacility','categoryType','ticketType','amount','currency','validForDays'];
   $: console.log(selectedFacilities);
 
-  let categories = [  {value : 0, label : 'Daily' },
-                      {value : 1, label : 'Monthly' },
-                      {value : 2, label : 'Occasional' } ]; 
+  let categories = [  {value : 'Daily' },
+                      {value : 'Monthly' },
+                      {value : 'Occasional' } ]; 
 
   let actPrice = {};
 
@@ -43,14 +43,14 @@ tr:nth-child(even) {
 <h1>ToDo lista szerűen új árakat hozzáadni a listához</h1>
 <Label label="Facility">
   <select bind:value={actPrice.selectedFacility}>
-    {#each selectedFacilities as { facility_name, facility_other }}
-    <option value={facility_name ? facility_name : facility_other}>{facility_name || facility_other}</option>
+    {#each selectedFacilities as { facility_name, customName }}
+    <option value={facility_name ? facility_name : customName}>{facility_name || customName}</option>
   {/each}
   </select>
 </Label>
 
 <Label label="Category">
-  <Dropdown items={categories} bind:selected={actPrice.selectedCategory} />
+  <Dropdown items={categories} bind:selected={actPrice.categoryType} />
 </Label>
 <hr />
 <Label label="Ticket type">
