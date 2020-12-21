@@ -7,7 +7,7 @@
   export let gymGeneralCols;
   
   // Langauge-t bongeszobol kene allitani?
-  gymGeneralData.langauge = 'hu-HU';
+  gymGeneralData.language = 'hu-HU';
 </script>
 
 <style>

@@ -18,7 +18,7 @@ export const gymInfos ={
             "type":"C"
         },
         {
-            "value":"postCode",
+            "value":"postcode",
             "inputType":"Input",
             "maxLength":15,
             "required":true,
@@ -42,7 +42,7 @@ export const gymInfos ={
             "type":"C"
         },
         {
-            "value":"streetNumber",
+            "value":"streetNum",
             "inputType":"Input",
             "maxLength":10,
             "required":true,
