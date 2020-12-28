@@ -1,9 +1,84 @@
 {
-  "tst": {
-    "msg": "Ez magyar szöveg."
+  "tst":{
+     "msg":"Ez magyar szöveg."
   },
   "button":{
-    "ok" : "Ok",
-    "cancel" : "Mégse"
+     "ok":"Ok",
+     "cancel":"Mégse"
+  },
+  "wizard":{
+    "nextButton": "Next",
+    "prevButton": "Previous",
+    "doneButton": "Done"
+  },
+  "gymRegister":{
+     "title":"Register your GYM",
+     "gymWizard":{
+        "gymBasic":"Basic information",
+        "gymBasicDesc":"Add your GYM basic informations in this step. Highlighted input fields must be filled",
+        "gymFacility":"Facilities",
+        "gymFacilityDesc":"Add your facilities. You can add custom facilities if they are not present in the current list. User can not search in custom added facilities for better experience of the user",
+        "gymOpening":"Opening hours",
+        "gymOpeningDesc":"Add your open hours. If a facility operates in different business hour you can add it here",
+        "gymPricing":"Pricing",
+        "gymPricingDesc":"You can add your daily, monthly or your occasional fees here. If a facility operates with different prices you can add it here"
+     },
+     "gymBasicStep":{
+        "name":"Name",
+        "country":"Country",
+        "postcode":"Postcode",
+        "city":"City",
+        "street":"Street",
+        "streetNum":"Street number",
+        "floor":"Floor",
+        "phoneNumber":"Phone number",
+        "description":"Description",
+        "shortDescription":"Short description",
+        "facebookUserId":"Facebook page link",
+        "instagramUserId":"Instagram user name",
+        "youtubeUserId":"Youtube channel link",
+        "twitterUserId":"Twitter page link",
+        "webPageUserId":"Web page link"
+     },
+     "gymFacilityStep":{
+        "facilityList":"List of predefined facilities",
+        "facilityDesc":"Add description of",
+        "customFacilityDesc":"In case you haven't found your facility in the list you can it here.",
+        "customFacilityButton":"New custom facility",
+        "addCustomFacilityButton" : "Add"
+     },
+     "gymOpeningStep":{
+        "generalOpening":"General opening",
+        "facilityName":"Open times",
+        "mondayFrom":"Monday from",
+        "mondayTo":"Monday to",
+        "tuesdayFrom":"Tuesday from",
+        "tuesdayTo":"Tuesday to",
+        "wednesdayFrom":"Wednesday from",
+        "wednesdayTo":"Wednesday to",
+        "thursdayFrom":"Thursday from",
+        "thursdayTo":"Thursday to",
+        "fridayFrom":"Friday from",
+        "fridayTo":"Friday to",
+        "saturdayFrom":"Saturday from",
+        "saturdayTo":"Saturday to",
+        "sundayFrom":"Sunday from",
+        "sundayTo":"Sunday to",
+        "alignTimes": "Align to all selected",
+        "deleteAll": "Delete all",
+        "openAddFacility": "Add",
+        "openDeleteFacility": "Delete"
+     },
+     "gymPricing":{
+      "selectedFacility":"Selected facility",
+      "categoryType":"Category type",
+      "ticketType":"Ticket type",
+      "amount":"Amount",
+      "currency":"Currency",
+      "validForDays":"Valid for days",
+      "daily":"Daily",
+      "monthly":"Monthly",
+      "occasional":"Occasional"
+     }
   }
 }

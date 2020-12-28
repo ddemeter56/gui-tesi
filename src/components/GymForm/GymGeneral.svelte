@@ -1,4 +1,5 @@
 <script>
+  import { _ } from "svelte-i18n";
   import Label from "../Label/Label.svelte";
   import Input from "../Input/Input.svelte";
   
@@ -11,11 +12,12 @@
 </script>
 
 <style>
+  
 </style>
 
 {#each gymGeneralCols as item}
-    <Label required={item.required} label={item.label}>
-      <Input 
+    <Label required={item.required} label={$_(`gymRegister.gymBasicStep.${item.value}`)}>
+      <Input  
         type={item.type}  
         required={item.required} 
         bind:value={gymGeneralData[item.value]} 

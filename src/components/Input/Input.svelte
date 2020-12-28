@@ -31,9 +31,7 @@
     .invalid {
         border: 2px solid red;
     }
-    .inputStyle{
-        width: 180px;
-    }
+    
     .disabled{
         background-color: rgb(168, 168, 168);
         color:black;

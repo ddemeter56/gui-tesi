@@ -58,6 +58,15 @@ export const gymInfos ={
             "type":"C"
         },
         {
+            "value":"phoneNumber",
+            "inputType":"Input",
+            "maxLength":25,
+            "required":true,
+            "label":"Phone",
+            "type":"P"
+        },
+        
+        {
             "value":"description",
             "inputType":"Input",
             "maxLength":3500,
@@ -112,15 +121,9 @@ export const gymInfos ={
             "required":false,
             "label":"Website",
             "type":"C"
-        },
-        {
-            "value":"phoneNumber",
-            "inputType":"Input",
-            "maxLength":25,
-            "required":true,
-            "label":"Phone",
-            "type":"P"
         }
+        
+        
     ]    
 };
 
@@ -172,7 +175,7 @@ export const openingInfos={
             "type":"C",
             "maxLength" : 50,
             "required":false,
-            "name":"Open times on facility"
+            "name":"Open times"
         },
         {
             "value":"mondayFrom",
@@ -180,7 +183,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Monday"
+            "name":"Monday from"
         },
         {
             "value":"mondayTo",
@@ -188,7 +191,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Monday",
+            "name":"Monday to",
         },
         {
             "value":"tuesdayFrom",
@@ -196,7 +199,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Tuesday",
+            "name":"Tuesday from",
         },
         {
             "value":"tuesdayTo",
@@ -204,7 +207,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Tuesday",
+            "name":"Tuesday to",
         },
         {
             "value":"wednesdayFrom",
@@ -212,7 +215,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Wednesday",
+            "name":"Wednesday from",
         },
         {
             "value":"wednesdayTo",
@@ -220,7 +223,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Wednesday",
+            "name":"Wednesday to",
         },
         {
             "value":"thursdayFrom",
@@ -228,7 +231,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Thursday",
+            "name":"Thursday from",
         },
         {
             "value":"thursdayTo",
@@ -236,7 +239,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Thursday",
+            "name":"Thursday to",
         },
         {
             "value":"fridayFrom",
@@ -244,7 +247,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Friday",
+            "name":"Friday from",
         },
         {
             "value":"fridayTo",
@@ -252,7 +255,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Friday",
+            "name":"Friday to",
         },
         {
             "value":"saturdayFrom",
@@ -260,7 +263,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Saturday",
+            "name":"Saturday from",
         },
         {
             "value":"saturdayTo",
@@ -268,7 +271,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Saturday",
+            "name":"Saturday to",
         },
         {
             "value":"sundayFrom",
@@ -276,7 +279,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Opening Hour on Sunday",
+            "name":"Sunday from",
         },
         {
             "value":"sundayTo",
@@ -284,7 +287,7 @@ export const openingInfos={
             "type":"T",
             "maxLength" : 5,
             "required":true,
-            "name":"Closing Hour on Sunday",
+            "name":"Sunday to",
         },
         
         

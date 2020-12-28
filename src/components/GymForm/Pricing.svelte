@@ -1,4 +1,5 @@
 <script>
+  import { _ } from "svelte-i18n";
   import Label from '../Label/Label.svelte';
   import Input from '../Input/Input.svelte';
   import Dropdown from '../DropdownSingle/DropdownSingle.svelte';
@@ -6,12 +7,12 @@
   export let selectedFacilities;
   export let pricingGeneralData;
 
-  const tableHeaders = ['selectedFacility','categoryType','ticketType','amount','currency','validForDays'];
+  const tableHeaders = [{value:'selectedFacility', label: $_('gymRegister.gymPricing.selectedFacility')},{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'currency', label: $_('gymRegister.gymPricing.currency')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}];
   $: console.log(selectedFacilities);
 
-  let categories = [  {value : 'Daily' },
-                      {value : 'Monthly' },
-                      {value : 'Occasional' } ]; 
+  let categories = [  {value : 'daily', label: $_('gymRegister.gymPricing.daily') },
+                      {value : 'monthly', label: $_('gymRegister.gymPricing.monthly') },
+                      {value : 'occasional', label: $_('gymRegister.gymPricing.occasional') } ]; 
 
   let actPrice = {};
 
@@ -20,27 +21,54 @@
     actPrice = {...actPrice};
   }
 
+  function fillTableData(price,header){
+    if(header.value === 'categoryType'){
+      console.log(header.value)
+      if(price[header.value] === 'daily'){
+        return $_('gymRegister.gymPricing.daily')
+      }else if(price[header.value] === 'monthly'){
+        return $_('gymRegister.gymPricing.monthly')
+      }else if(price[header.value] === 'occasional'){
+        return $_('gymRegister.gymPricing.occasional')
+      }
+    }
+    return price[header.value]
+  }
+  
+  function deleteFromPricing(el){
+    console.log(el)
+    let indexOfEl = pricingGeneralData.indexOf(el);
+    pricingGeneralData.splice(indexOfEl,1);
+    pricingGeneralData = pricingGeneralData;
+  }
 </script>
 
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    .tableContainer {
+        padding:5px;
+        background-color: rgb(247, 247, 247);
+        border: 1px solid rgb(224,224,224);
+        width: 700px;
+    }
+    th{
+        margin-right:15px;
+    }
+    td {
+        border: 1px solid #aaa;
+    }
+    tr:first-child{
+        background-color: rgb(162, 218, 255);
+        
+    }
+    tr:nth-child(even){
+        background-color: #c7efff;
+    }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+    .closingMark{
+      cursor: pointer;
+    }
 </style>
 
-<h1>ToDo lista szerűen új árakat hozzáadni a listához</h1>
 <Label label="Facility">
   <select bind:value={actPrice.selectedFacility}>
     {#each selectedFacilities as { facility_name, customName }}
@@ -72,11 +100,11 @@ tr:nth-child(even) {
 <button on:click={addToPricing} >Add to list </button>
 
 <hr />
-<table>
+<table class="tableContainer">
   <tr>
     {#each tableHeaders as header}
       <th>
-        {header}
+        {header.label}
       </th>
     {/each}
   </tr>
@@ -84,8 +112,9 @@ tr:nth-child(even) {
     {#each pricingGeneralData as price}
       <tr>
         {#each tableHeaders as header}
-          <td>{price[header]}</td>
+          <td>{fillTableData(price,header)}</td>
         {/each}
+        <span class="closingMark" on:click={deleteFromPricing(price)}>&#10062;</span>
       </tr>
     {/each}
   

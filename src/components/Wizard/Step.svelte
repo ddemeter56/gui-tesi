@@ -35,6 +35,7 @@
 		padding-bottom: 5px;
 	}
 	.content{
+		padding-top: 20px;
 		flex-grow:1;
 	}
 	.titles{
@@ -110,8 +111,11 @@
 	}
 
 	.slotStyle{
+		width:700px;
+		height:80vh;
+		padding-left: 60px;
 		position:fixed; 
-		top:0;
+		top:90px;
 	}
 }
 </style>
@@ -130,7 +134,7 @@
 	</div>
 	<div class="content">
 		{#if $activeSlot === slot}
-			<div transition:fly="{{ x: 1000, duration: 500 }}" class="slotStyle">
+			<div transition:fly="{{ x: 1000, duration: 500 }}" class="slotStyle scrollable">
 				<slot>
 				</slot>
 			</div>

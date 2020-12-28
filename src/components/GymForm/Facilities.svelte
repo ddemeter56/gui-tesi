@@ -1,4 +1,5 @@
 <script>
+    import { _ } from "svelte-i18n";
     import Label from "../Label/Label.svelte";
     import Input from "../Input/Input.svelte";
 
@@ -17,13 +18,16 @@
 </script>
 
 <style>
+    .allFacilityList{
+        height:550px;
+    }
 </style>
 
 {#each gymFacilityCols as item}
     
         {#if item.value === 'facilityName'}
-            <Label required={item.required} label={item.name}>
-                <select multiple bind:value={facilityGeneralData}>
+            <Label required={item.required} label={$_('gymRegister.gymFacilityStep.facilityList')}>
+                <select class="allFacilityList" multiple bind:value={facilityGeneralData}>
                     {#each facNameOptions as fac}
                         <option value={fac}>{fac.facility_name}</option>
                     {/each}
@@ -40,10 +44,10 @@
     <hr/>
 {/each}
 
-After you selected your facilities you can add custom ones in case you havent found some
+{$_('gymRegister.gymFacilityStep.customFacilityDesc')}
 <hr />
-<button on:click={() => {showFacilityOther = !showFacilityOther}}>Add more facility</button>
+<button on:click={() => {showFacilityOther = !showFacilityOther}}>{$_('gymRegister.gymFacilityStep.customFacilityButton')}</button>
 {#if showFacilityOther}
 <Input type='C' length={50} bind:value={customName} /> 
-<button on:click={addCustomFacility}>Add new facility</button>
+<button on:click={addCustomFacility}>{$_('gymRegister.gymFacilityStep.addCustomFacilityButton')}</button>
 {/if}

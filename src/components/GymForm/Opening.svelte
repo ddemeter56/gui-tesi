@@ -1,11 +1,11 @@
-<script>
+<script>    
+    import { _ } from "svelte-i18n";
     import Input from "../Input/Input.svelte";
     export let openingGeneralData;
     export let facilities;
     export let openingInfos;
 
-    // Ebben a sorban van a galiba, hogy ott marad olyan opening is aminek nem kellene
-    openingGeneralData = openingGeneralData.length === 0 ? [{facilityName: 'Általános nyitvatartás',fridayFrom: "",
+    openingGeneralData = openingGeneralData.length === 0 ? [{facilityName: $_('gymRegister.gymOpeningStep.generalOpening') ,fridayFrom: "",
                                                                 fridayTo: "",
                                                                 mondayFrom: "",
                                                                 mondayTo: "",
@@ -47,18 +47,33 @@
         },[])
      }
 
-    function markClosed(){
-
-    }
-
+     function deleteAll(){
+       openingGeneralData = [{facilityName: $_('gymRegister.gymOpeningStep.generalOpening') ,fridayFrom: "",
+                                                                fridayTo: "",
+                                                                mondayFrom: "",
+                                                                mondayTo: "",
+                                                                saturdayFrom: "",
+                                                                saturdayTo: "",
+                                                                sundayFrom: "",
+                                                                sundayTo: "",
+                                                                thursdayFrom: "",
+                                                                thursdayTo: "",
+                                                                tuesdayFrom: "",
+                                                                tuesdayTo: "",
+                                                                wednesdayFrom: "",
+                                                                wednesdayTo: '' }]
+     }
 </script>
 
 <style>
     .tableContainer {
-        width: 80vw;
-        overflow: auto;
+        padding:5px;
+        background-color: rgb(247, 247, 247);
+        border: 1px solid rgb(224,224,224);
     }
-
+    th{
+        margin-right:15px;
+    }
     td {
         border: 1px solid #aaa;
     }
@@ -73,28 +88,17 @@
         display: inline;
         padding: 0;
     }
-    .markClosed{
-        cursor: pointer;
-    }
-    .disabled{
-        background-color: rgb(168, 168, 168);
-        color:black;
-        cursor:not-allowed;
-    }
 </style>
 
 <div class="tableContainer">
     <table>
         {#each openingInfos.openingHoursForm as c, i}
             <tr>
-                <th>{c.name}</th>
+                <th>{$_(`gymRegister.gymOpeningStep.${c.value}`)}</th>
                 {#each openingGeneralData as row}
                     <td>
                         <div class="tdInputStyle">
                             <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black; cursor:not-allowed;" : ""}" type="text" maxLength={c.maxLength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
-                            {#if c.value !== 'facilityName'}
-                            <span class="markClosed" on:click={markClosed}>&#10006;</span>
-                            {/if}
                         </div>
                     </td>
                 {/each}
@@ -109,15 +113,21 @@
             {fac.facility_name || fac.customName}
         </li>
         <button on:click={addFacility(fac)}>
-            Add
+            {$_('gymRegister.gymOpeningStep.openAddFacility')}
         </button>
         <button on:click={deleteFacility(fac)}>
-            Delete
+            {$_('gymRegister.gymOpeningStep.openDeleteFacility')}
         </button>
     {/each}
 </ul>
 
+<hr />
 
-<button on:click={fillTimes}>Align this for every day</button>
 <Input type={"T"} bind:value={defaultOpening} />
 <Input type={"T"} bind:value={defaultClosing} />
+
+
+<button on:click={fillTimes}>{$_('gymRegister.gymOpeningStep.alignTimes')}</button>
+<hr />
+<button on:click={deleteAll}>{$_('gymRegister.gymOpeningStep.deleteAll')}</button>
+<hr />
