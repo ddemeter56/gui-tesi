@@ -1,24 +1,67 @@
 <script>
+    import { _ } from "svelte-i18n";
     import { Wizard, Step } from '../Wizard/wizard.js';
-    import FacilityGeneral from './FacilityGeneral.svelte';
+    import { gymRegisterStore } from '../../stores/gymRegister.js';
+    import Facilities from './Facilities.svelte';
     import GymGeneral from './GymGeneral.svelte';
+    import Opening from './Opening.svelte';
+    import Pricing from './Pricing.svelte';
+    import { gymInfos, facilityInfos, openingInfos } from './gymDatas.js';  
+
+    let form = {
+        gym : {},
+        facilities : [],
+        openings:[],
+        pricing: [],
+    }
     
-    let wholeForm = {
-        gymGeneralInfo : [],
-        facilityGeneralInfo : []
-    };
-    $: console.table(wholeForm);
+    function sendData(){
+        gymRegisterStore.submitForm(form);
+    }
+    $: console.log(form);
 </script>
 
-<Wizard on:wizardDone={() => alert("Done clicked")}>
-    <Step title={'GYM alapadatok'} desc={'A terem alapadatait itt adjuk meg'} icon={'icon'} active>
-        <GymGeneral bind:gymGeneralData={wholeForm.gymGeneralInfo}/>
-    </Step>
-    <Step title={'GYM facilityk'} desc={'A kondihoz tartozó facilityket itt adjuk meg'} icon={'icon'}>
-        <FacilityGeneral bind:facilityGeneralData={wholeForm.facilityGeneralInfo} />
-    </Step>
-    <Step title={'Facility nyitvatartások'} desc={'A kondi alap nyitvatartásának és esetleges facilityk nyitvatartásának megadása'} icon={'icon'}>
-    </Step>
-    <Step title={'GYM Pricing'} desc={'Árlista felvétele'} icon={'icon'}>
-    </Step>
-</Wizard>
+<style>
+    @media only screen and (min-width: 768px) {
+        .gymFormContainer{  
+            padding-left:150px;
+        }
+    }
+</style>
+
+<div class="gymFormContainer">
+    <Wizard on:wizardDone={sendData} title={$_('gymRegister.title')}>
+        <Step
+            title={$_('gymRegister.gymWizard.gymBasic')}
+            desc={$_('gymRegister.gymWizard.gymBasicDesc')}
+            icon={'icon'}
+            active>
+                <GymGeneral
+                bind:gymGeneralData={form.gym}
+                gymGeneralCols={gymInfos.gym} />
+        </Step>
+        <Step
+            title={$_('gymRegister.gymWizard.gymFacility')}
+            desc={$_('gymRegister.gymWizard.gymFacilityDesc')}
+            icon={'icon'}>
+            <Facilities
+                bind:facilityGeneralData={form.facilities}
+                gymFacilityCols={facilityInfos.facilityForm} />
+        </Step>
+        <Step
+            title={$_('gymRegister.gymWizard.gymOpening')}
+            desc={$_('gymRegister.gymWizard.gymOpeningDesc')}
+            icon={'icon'}>  
+    
+            <Opening
+                bind:openingGeneralData={form.openings}
+                bind:facilities={form.facilities}
+                {openingInfos} />
+        </Step>
+        <Step title={$_('gymRegister.gymWizard.gymPricing')} desc={$_('gymRegister.gymWizard.gymPricingDesc')} icon={'icon'} >
+            <Pricing selectedFacilities={form.facilities} bind:pricingGeneralData={form.pricing}/>
+        </Step>
+    </Wizard>
+
+</div>
+    

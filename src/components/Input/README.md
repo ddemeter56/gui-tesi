@@ -2,7 +2,7 @@
 
 
 
-Renders an `<input type="number">`, `<input type="text">`,  `<textarea>`, `<input type="email">`, `<input type="tel">` depending on attributes.
+Renders an `<input type="number">`, `<input type="text">`,  `<textarea>`, `<input type="email">`, `<input type="tel">` `<input type="time">`depending on attributes.
 
 
 

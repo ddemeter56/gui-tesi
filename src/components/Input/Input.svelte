@@ -22,7 +22,6 @@
     }
 
     $: validateValue(rawValue);
-    $: pattern, console.log(pattern);
 </script>
 
 <style>
@@ -32,6 +31,12 @@
     .invalid {
         border: 2px solid red;
     }
+    
+    .disabled{
+        background-color: rgb(168, 168, 168);
+        color:black;
+        cursor:not-allowed;
+    }
 </style>
 
 {#if type === 'N'}
@@ -40,7 +45,9 @@
         disabled={!editable}
         required={required}
         bind:value={rawValue}
-        class:invalid={!valid} />
+        class:invalid={!valid}
+        class:disabled={!editable} 
+        class="inputStyle" />
 {:else if type === 'C' && !multiline}
     <input
         type="text"
@@ -48,7 +55,9 @@
         disabled={!editable}
         required={required}
         bind:value={rawValue}
-        class:invalid={!valid} />
+        class:invalid={!valid} 
+        class:disabled={!editable} 
+        class="inputStyle" />
 {:else if type === 'P'}
     <input
         type="tel"
@@ -56,19 +65,36 @@
         disabled={!editable}
         required={required}
         bind:value={rawValue}
-        class:invalid={!valid} />
+        class:invalid={!valid} 
+        class:disabled={!editable} 
+        class="inputStyle" />
 {:else if type === 'E'}
     <input
         type="email"
         disabled={!editable}        
         required={required}
         bind:value={rawValue}
-        class:invalid={!valid} />
+        class:invalid={!valid} 
+        class:disabled={!editable} 
+        class="inputStyle" />
+{:else if type === 'T'}
+    <input
+        type="time"
+        min="00:00"
+        max="24:00"
+        disabled={!editable}        
+        required={required}
+        bind:value={rawValue}
+        class:invalid={!valid} 
+        class:disabled={!editable} 
+        class="inputStyle" />
 {:else}
     <textarea
         maxlength={length}
         disabled={!editable}
         required={required}
         bind:value={rawValue}
-        class:invalid={!valid} />
+        class:invalid={!valid} 
+        class:disabled={!editable} 
+        class="inputStyle" />
 {/if}

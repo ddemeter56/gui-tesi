@@ -3,6 +3,7 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
 	import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import { createEventDispatcher } from 'svelte';
@@ -85,16 +86,17 @@
 </script>
 
 <style>
-	
+	.stepContainer{
+	}
 </style>
 <h1 style='align: center'>{title}</h1>
 <div class='stepContainer'>
 	<slot>
 	</slot>
 </div>
-<button on:click={stepPrevious} disabled={prevButtonDisabled}>Previous</button>
-<button on:click={stepNext} disabled={nextButtonDisabled}>Next</button>
+<button on:click={stepPrevious} disabled={prevButtonDisabled}>{$_(`wizard.prevButton`)}</button>
+<button on:click={stepNext} disabled={nextButtonDisabled}>{$_(`wizard.nextButton`)}</button>
 {#if nextButtonDisabled}
-	<button on:click={wizardDone}>Done</button>
+	<button on:click={wizardDone}>{$_(`wizard.doneButton`)}</button>
 {/if}
 
