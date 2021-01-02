@@ -9,7 +9,7 @@
   "wizard":{
     "nextButton": "Next",
     "prevButton": "Previous",
-    "doneButton": "Done"
+    "doneButton": "Register"
   },
   "gymRegister":{
      "title":"Register your GYM",

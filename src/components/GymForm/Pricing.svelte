@@ -69,7 +69,7 @@
     }
 </style>
 
-<Label label="Facility">
+<Label label={$_('gymRegister.gymPricing.selectedFacility')}>
   <select bind:value={actPrice.selectedFacility}>
     {#each selectedFacilities as { facility_name, customName }}
     <option value={facility_name ? facility_name : customName}>{facility_name || customName}</option>
@@ -77,23 +77,23 @@
   </select>
 </Label>
 
-<Label label="Category">
+<Label label={$_('gymRegister.gymPricing.categoryType')}>
   <Dropdown items={categories} bind:selected={actPrice.categoryType} />
 </Label>
 <hr />
-<Label label="Ticket type">
+<Label label={$_('gymRegister.gymPricing.ticketType')}>
   <Input type='C' bind:value={actPrice.ticketType} />
 </Label>
 <hr />
-<Label label="Amount">
+<Label label={$_('gymRegister.gymPricing.amount')}>
   <Input type="N" bind:value={actPrice.amount}/>  
 </Label>
 <hr />
-<Label label="Currency">
+<Label label={$_('gymRegister.gymPricing.currency')}>
   <Input type='C' bind:value={actPrice.currency} />
 </Label>
 <hr />
-<Label label="Valid for days">
+<Label label={$_('gymRegister.gymPricing.validForDays')}>
   <Input type="N" bind:value={actPrice.validForDays} />
 </Label>
 
