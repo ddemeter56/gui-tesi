@@ -84,7 +84,8 @@
       "validForDays":"Érvényes napok száma",
       "daily":"Napi",
       "monthly":"Havi",
-      "occasional":"Alkalmi"
+      "occasional":"Alkalmi",
+      "addToList":"Hozzáadás"
      }
   }
 }

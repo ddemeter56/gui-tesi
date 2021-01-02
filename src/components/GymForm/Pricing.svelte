@@ -97,7 +97,7 @@
   <Input type="N" bind:value={actPrice.validForDays} />
 </Label>
 
-<button on:click={addToPricing} >Add to list </button>
+<button on:click={addToPricing} >{$_('gymRegister.gymPricing.addToList')}</button>
 
 <hr />
 <table class="tableContainer">

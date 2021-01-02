@@ -84,7 +84,8 @@
       "validForDays":"Valid for days",
       "daily":"Daily",
       "monthly":"Monthly",
-      "occasional":"Occasional"
+      "occasional":"Occasional",
+      "addToList":"Add"
      }
   }
 }
