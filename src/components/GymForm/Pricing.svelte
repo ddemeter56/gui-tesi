@@ -7,10 +7,10 @@
   export let selectedFacilities;
   export let pricingGeneralData;
 
-  const tableHeaders = [{value:'selectedFacility', label: $_('gymRegister.gymPricing.selectedFacility')},{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'currency', label: $_('gymRegister.gymPricing.currency')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}];
+  $: tableHeaders = [{value:'selectedFacility', label: $_('gymRegister.gymPricing.selectedFacility')},{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'currency', label: $_('gymRegister.gymPricing.currency')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}];
   $: console.log(selectedFacilities);
 
-  let categories = [  {value : 'daily', label: $_('gymRegister.gymPricing.daily') },
+  $: categories = [  {value : 'daily', label: $_('gymRegister.gymPricing.daily') },
                       {value : 'monthly', label: $_('gymRegister.gymPricing.monthly') },
                       {value : 'occasional', label: $_('gymRegister.gymPricing.occasional') } ]; 
 

@@ -20,7 +20,7 @@
   "gymRegister":{
      "title":"Register your GYM",
      "gymWizard":{
-        "gymBasic":"Basic information",
+        "gymBasic":"General informations",
         "gymBasicDesc":"Add your GYM basic informations in this step. Highlighted input fields must be filled",
         "gymFacility":"Facilities",
         "gymFacilityDesc":"Add your facilities. You can add custom facilities if they are not present in the current list. User can not search in custom added facilities for better experience of the user",

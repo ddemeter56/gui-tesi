@@ -5,7 +5,8 @@
     export let facilities;
     export let openingInfos;
 
-    openingGeneralData = openingGeneralData.length === 0 ? [{facilityName: $_('gymRegister.gymOpeningStep.generalOpening') ,fridayFrom: "",
+    $: if(openingGeneralData.length === 0 ) {
+        openingGeneralData = [{facilityName: $_('gymRegister.gymOpeningStep.generalOpening') ,fridayFrom: "",
                                                                 fridayTo: "",
                                                                 mondayFrom: "",
                                                                 mondayTo: "",
@@ -18,7 +19,8 @@
                                                                 tuesdayFrom: "",
                                                                 tuesdayTo: "",
                                                                 wednesdayFrom: "",
-                                                                wednesdayTo: '' }] : ([...openingGeneralData]);
+                                                                wednesdayTo: '' }] 
+    } else ([...openingGeneralData]);
     let defaultOpening = "08:00";
     let defaultClosing = "22:00";
 
@@ -98,7 +100,7 @@
                 {#each openingGeneralData as row}
                     <td>
                         <div class="tdInputStyle">
-                            <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black; cursor:not-allowed;" : ""}" type="text" maxLength={c.maxLength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
+                            <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black;" : ""}" type="text" maxLength={c.maxLength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
                         </div>
                     </td>
                 {/each}

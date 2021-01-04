@@ -20,7 +20,7 @@
   "gymRegister":{
      "title":"Terem regisztrálása",
      "gymWizard":{
-        "gymBasic":"Általános információ",
+        "gymBasic":"Általános információk",
         "gymBasicDesc":"A terem általános információinak megadása. A kiemelt mezők kitöltése kötelező",
         "gymFacility":"Létesítmények",
         "gymFacilityDesc":"Létesítmények hozzáadása. Egyedi létesítmény felvétele is lehetséges, ha az nem szerepel az előre megadott listában. A felhasználók nem tudnak keresni az így megadott létesítmények között (a jobb felhasználói élmény érdekében)",
