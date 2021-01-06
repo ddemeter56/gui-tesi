@@ -25,6 +25,7 @@ function convertForm(form){
   let {facilityName,...rest} = form.openings[0];
   newForm.gym = form.gym;
   newForm.gymOpening = rest;
+  newForm.gymPricing = form.pricing.filter(price => price.selectedFacility === 'generalPricing')
   
   newForm.facilities = form.facilities.map(item => {
       let {facility_cd,...rest} = item;
@@ -33,6 +34,7 @@ function convertForm(form){
       return {facility : newItem};
   });
 
+  
   newForm.facilities.map(item => { 
 
       item.ticketPricing = [];
@@ -50,6 +52,6 @@ function convertForm(form){
       })
   })
   console.log(newForm)
-
+  
   return newForm;
 }

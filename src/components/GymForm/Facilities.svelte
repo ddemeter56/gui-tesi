@@ -24,7 +24,6 @@
 </style>
 
 {#each gymFacilityCols as item}
-    
         {#if item.value === 'facilityName'}
             <Label required={item.required} label={$_('gymRegister.gymFacilityStep.facilityList')}>
                 <select class="allFacilityList" multiple bind:value={facilityGeneralData}>
@@ -37,17 +36,20 @@
 {/each}
 
 <hr/>
+
 {#each facilityGeneralData as fac}
     <Label label={`Description for ${fac.facility_name || fac.customName}`}>
         <Input type='C' length={100} bind:value={fac.description}/>
     </Label>
     <hr/>
 {/each}
-
 {$_('gymRegister.gymFacilityStep.customFacilityDesc')}
+
 <hr />
+
 <button on:click={() => {showFacilityOther = !showFacilityOther}}>{$_('gymRegister.gymFacilityStep.customFacilityButton')}</button>
+
 {#if showFacilityOther}
-<Input type='C' length={50} bind:value={customName} /> 
-<button on:click={addCustomFacility}>{$_('gymRegister.gymFacilityStep.addCustomFacilityButton')}</button>
+    <Input type='C' length={50} bind:value={customName} /> 
+    <button on:click={addCustomFacility}>{$_('gymRegister.gymFacilityStep.addCustomFacilityButton')}</button>
 {/if}

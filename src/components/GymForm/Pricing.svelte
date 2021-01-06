@@ -15,6 +15,7 @@
                       {value : 'occasional', label: $_('gymRegister.gymPricing.occasional') } ]; 
 
   let actPrice = {};
+  
 
   function addToPricing(){
     pricingGeneralData = [...pricingGeneralData, actPrice];
@@ -23,14 +24,11 @@
 
   function fillTableData(price,header){
     if(header.value === 'categoryType'){
-      console.log(header.value)
-      if(price[header.value] === 'daily'){
-        return $_('gymRegister.gymPricing.daily')
-      }else if(price[header.value] === 'monthly'){
-        return $_('gymRegister.gymPricing.monthly')
-      }else if(price[header.value] === 'occasional'){
-        return $_('gymRegister.gymPricing.occasional')
-      }
+        return $_(`gymRegister.gymPricing.${price[header.value]}`)
+    } else if (header.value === 'selectedFacility'){
+        if(price[header.value] === 'generalPricing'){
+          return $_(`gymRegister.gymPricing.${price[header.value]}`)
+        }
     }
     return price[header.value]
   }
@@ -71,9 +69,10 @@
 
 <Label label={$_('gymRegister.gymPricing.selectedFacility')}>
   <select bind:value={actPrice.selectedFacility}>
+    <option value={'generalPricing'}>{$_('gymRegister.gymPricing.generalPricing')}</option>
     {#each selectedFacilities as { facility_name, customName }}
-    <option value={facility_name ? facility_name : customName}>{facility_name || customName}</option>
-  {/each}
+      <option value={facility_name ? facility_name : customName}>{facility_name || customName}</option>
+    {/each}
   </select>
 </Label>
 
@@ -117,5 +116,4 @@
         <span class="closingMark" on:click={deleteFromPricing(price)}>&#10062;</span>
       </tr>
     {/each}
-  
 </table>
