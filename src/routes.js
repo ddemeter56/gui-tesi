@@ -1,7 +1,7 @@
 import Home from './routes/Home.svelte';
 import GymForm from './components/GymForm/GymForm.svelte';
 import About from './routes/About.svelte';
-import ptForm from './routes/Name.svelte';
+import ptForm from './components/PtForm/PtForm.svelte';
 import NotFound from './routes/NotFound.svelte';
 
 // Export the route definition object
