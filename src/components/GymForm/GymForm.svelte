@@ -3,7 +3,7 @@
     import { Wizard, Step } from '../Wizard/wizard.js';
     import { gymRegisterStore } from '../../stores/gymRegister.js';
     import Facilities from './Facilities.svelte';
-    import GymGeneral from './GymGeneral.svelte';
+    import GymGeneral from './General.svelte';
     import Opening from './Opening.svelte';
     import Pricing from './Pricing.svelte';
     import { gymInfos, facilityInfos, openingInfos } from './gymDatas.js';  

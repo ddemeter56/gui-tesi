@@ -12,6 +12,9 @@ function createPtCodes() {
     }),
     getSpecs: () => getData('http://localhost/api/public/codes/specialization').then((result) => {
       return result;
+    }),
+    getCertiGroups: () =>  getData('http://localhost/api/public/codes/certification/grouped').then((result) => {
+      return result;
     })
   }
 }

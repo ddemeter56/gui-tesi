@@ -10,7 +10,7 @@
   let customName;
 
   function addCustomSpec() {
-    selectedSpecs = [...selectedSpecs, {code : null, customName}]
+    selectedSpecs = [...selectedSpecs, {code : 1, customName}]
     }
 </script>
 
@@ -26,7 +26,7 @@
   </select>
 </Label>
 
-
+<hr />  
 
 {#each selectedSpecs as selectedSpec}
   <Label label={`Description for ${selectedSpec.name || selectedSpec.customName}`}>
@@ -36,7 +36,7 @@
 {/each}
 
 <hr/>
-<button on:click={() => {showSpecOther = !showSpecOther}}>{'Add custom'}</button>
+<button on:click={() => {showSpecOther = !showSpecOther}}>{ showSpecOther ? 'Hide custom' : 'Add custom' }</button>
 
 {#if showSpecOther}
     <Input type='C' length={50} bind:value={customName} /> 

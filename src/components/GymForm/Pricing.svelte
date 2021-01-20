@@ -107,13 +107,12 @@
       </th>
     {/each}
   </tr>
-  
-    {#each pricingGeneralData as price}
-      <tr>
-        {#each tableHeaders as header}
-          <td>{fillTableData(price,header)}</td>
-        {/each}
-        <span class="closingMark" on:click={deleteFromPricing(price)}>&#10062;</span>
-      </tr>
-    {/each}
+  {#each pricingGeneralData as price}
+    <tr>
+      {#each tableHeaders as header}
+        <td>{fillTableData(price,header)}</td>
+      {/each}
+      <span class="closingMark" on:click={deleteFromPricing(price)}>&#10062;</span>
+    </tr>
+  {/each}
 </table>
