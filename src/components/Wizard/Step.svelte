@@ -27,7 +27,10 @@
 </script>
 	
 <style>
-
+	.slotStyle{
+		background-color:#333;
+		border-radius:5px;
+	}
 	.stepContainer{
 		display:flex;
 		flex-direction: column;
@@ -40,24 +43,25 @@
 	}
 	.titles{
 		width:95%;
-		border: 2px solid rgb(225, 226, 255);
-		background-color: rgb(214, 214, 214);
+		border: 1px outset rgb(233, 233, 233);
+		background-color:rgb(199, 199, 199);
+		border-radius: 5px;
 		cursor:not-allowed;
 		padding-top:15px;
 		transition: border-left 150ms;
 	}
 	.activeStep{
-		background:rgb(226, 255, 255);
+		background:white;
 		cursor:auto;
 		transition-timing-function: linear;
-		border-left: 13px solid rgb(145, 255, 255);
+		border-left: 5px solid maroon;
 	}
 	.done{
-		background:rgb(226, 255, 255);
+		background: white;
 		cursor:pointer;
 	}
 	.current{
-		background:rgb(226, 255, 255);
+		background:white;
 		cursor:pointer;
 	}
 	.description{
@@ -78,8 +82,9 @@
 	.titles{
 		width:20%;
 		flex:20% 1 auto;
-  	border: 2px solid rgb(225, 226, 255);
-		background-color: rgb(214, 214, 214);
+		border: 1px outset rgb(233, 233, 233);
+		border-radius: 5px;
+		background-color:rgb(199, 199, 199);
 		cursor:not-allowed;
 		padding-top:15px;
 		transition: border-left 150ms;
@@ -89,17 +94,17 @@
 		height:1px;
 	}
 	.activeStep{
-		background:rgb(226, 255, 255);
+		background:white;
 		cursor:auto;
 		transition-timing-function: linear;
-		border-left: 13px solid rgb(145, 255, 255);
+		border-left: 5px solid maroon;
 	}
 	.done{
-		background:rgb(226, 255, 255);
+		background: white;
 		cursor:pointer;
 	}
 	.current{
-		background:rgb(226, 255, 255);
+		background:white;
 		cursor:pointer;
 	}
 	.description{
@@ -111,9 +116,11 @@
 	}
 
 	.slotStyle{
-		width:700px;
-		height:80vh;
+		width:50vw;
+		height:85vh;
 		padding-left: 60px;
+		padding-right: 60px;
+		margin-left: 60px;
 		position:fixed; 
 		top:90px;
 	}

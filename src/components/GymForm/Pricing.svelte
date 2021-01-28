@@ -43,10 +43,8 @@
 
 <style>
     .tableContainer {
-        padding:5px;
-        background-color: rgb(247, 247, 247);
-        border: 1px solid rgb(224,224,224);
-        width: 700px;
+        width: 100%;
+        background-color: rgb(224,224,224);
     }
     th{
         margin-right:15px;
@@ -55,13 +53,12 @@
         border: 1px solid #aaa;
     }
     tr:first-child{
-        background-color: rgb(162, 218, 255);
-        
+        background-color: maroon;
+        color:white;
     }
     tr:nth-child(even){
-        background-color: #c7efff;
+      background-color: white;
     }
-
     .closingMark{
       cursor: pointer;
     }
@@ -70,8 +67,8 @@
 <Label label={$_('gymRegister.gymPricing.selectedFacility')}>
   <select bind:value={actPrice.selectedFacility}>
     <option value={'generalPricing'}>{$_('gymRegister.gymPricing.generalPricing')}</option>
-    {#each selectedFacilities as { facility_name, customName }}
-      <option value={facility_name ? facility_name : customName}>{facility_name || customName}</option>
+    {#each selectedFacilities as { name, customName }}
+      <option value={name ? name : customName}>{name || customName}</option>
     {/each}
   </select>
 </Label>
@@ -112,7 +109,7 @@
       {#each tableHeaders as header}
         <td>{fillTableData(price,header)}</td>
       {/each}
-      <span class="closingMark" on:click={deleteFromPricing(price)}>&#10062;</span>
+      <span class="closingMark" on:click={deleteFromPricing(price)}>&#10060;</span>
     </tr>
   {/each}
 </table>

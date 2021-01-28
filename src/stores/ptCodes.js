@@ -1,7 +1,5 @@
 import { getData } from '../utils/backendComm.js';
 import { writable } from 'svelte/store';
-import { notifyStore } from './notifyStore.js';
-
 
 function createPtCodes() {
   const { subscribe, set } = writable(null);

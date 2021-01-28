@@ -18,7 +18,7 @@
 
 </style>
 
-<Label required label={'Specialities'}>
+<Label required label={$_('ptRegister.ptSpecStep.specs')}>
   <select style="height:50vh" multiple bind:value={selectedSpecs}>
     {#each specs.specializations as spec}
         <option value={spec}>{spec.name}</option>
@@ -29,16 +29,18 @@
 <hr />  
 
 {#each selectedSpecs as selectedSpec}
-  <Label label={`Description for ${selectedSpec.name || selectedSpec.customName}`}>
+  <Label label={`${$_('gymRegister.gymFacilityStep.descFor')} ${selectedSpec.name || selectedSpec.customName}`}>
     <Input type='C' length={100} bind:value={selectedSpec.description}/>
   </Label>
   <hr/>
 {/each}
 
 <hr/>
-<button on:click={() => {showSpecOther = !showSpecOther}}>{ showSpecOther ? 'Hide custom' : 'Add custom' }</button>
+<button on:click={() => {showSpecOther = !showSpecOther}}>{ showSpecOther ? $_('ptRegister.ptCertiStep.hideCustom') : $_('ptRegister.ptCertiStep.showCustom') }</button>
 
 {#if showSpecOther}
-    <Input type='C' length={50} bind:value={customName} /> 
-    <button on:click={addCustomSpec}>{'Add'}</button>
+    <Label label={$_('ptRegister.ptSpecStep.specName')}>
+      <Input type='C' length={50} bind:value={customName} /> 
+    </Label>
+    <button on:click={addCustomSpec}>{$_('ptRegister.ptCertiStep.addCustom')}</button>
 {/if}

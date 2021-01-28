@@ -51,7 +51,9 @@
         "facilityDesc":"Létesítmény leírása: ",
         "customFacilityDesc":"Ha nem találtad meg a létesítményed a listában, itt megadhatod",
         "customFacilityButton":"Új egyedi létesítmény",
-        "addCustomFacilityButton" : "Hozzáadás"
+        "addCustomFacilityButton" : "Hozzáadás",
+        "facilityName": "Létesítmény neve",
+        "descFor":"Leírás"
      },
      "gymOpeningStep":{
         "generalOpening":"Általános nyitvatartás",
@@ -88,5 +90,48 @@
       "occasional":"Alkalmi",
       "addToList":"Hozzáadás"
      }
-  }
+  },
+  "ptRegister":{
+   "title":"Edző regisztráció",
+   "ptWizard":{
+      "ptBasic":"Általános információ",
+      "ptBasicDesc":"Általános információk megadása",
+      "ptCertification":"Képesítések",
+      "ptCertificationDesc":"Add hozzá a képesítéseidet. Ha valamit nem találsz, egyedi képesítést is hozzáadhatsz",
+      "ptSpecialization":"Specializációk",
+      "ptSpecializationDesc":"Specializációk kiválasztása. Ajánlott az előre definiált specializációk közül választanod, az egyedileg hozzáadott specializációk nem kerülnek bele a felhasználók által használt keresési algoritmusba",
+      "ptPricing":"Árazás",
+      "ptPricingDesc":"Árazás megadása. Az általános árak kitöltése kötelező (például óradíj). Ha egy specializáció óradíja különbözik, itt hozzáadhatod más árakkal"
+   },
+   "ptBasicStep": {
+      "firstName":"Keresztnév",
+      "lastName":"Vezetéknév",
+      "email":"E-mail",
+      "phoneNumber":"Telefonszám",
+      "languageCodes":"Beszélt nyelvek",
+      "description":"Leírás",
+      "shortDescription":"Rövid leírás",
+      "facebookUserId":"Facebook felhasználó link",
+      "instagramUserId":"Instagram felhasználónév",
+      "twitterUserId":"Twitter oldal link",
+      "youtubeUserId":"Youtube csatorna link",
+      "webPageUserId":"Weboldal link"
+   },
+   "ptCertiStep":{
+      "categories": "Képesítés kategóriák",
+      "categoryCerties": "Kategóriához kapcsolódó képesítések",
+      "addCerti": "Képesítés hozzáadása",
+      "addCustom": "Egyedi képesítés hozzáadása",
+      "showCustom": "Egyedi mutatása",
+      "hideCustom": "Egyedi elrejtése"
+   },
+   "ptSpecStep":{
+      "specs":"Specialitások",
+      "addCustom":"Egyedi specializáció hozzáadása",
+      "specName":"Specializáció neve"
+   },
+   "ptPricingStep":{
+      "selectedSpecs": "Kiválasztott specializációk"
+   }
+}
 }

@@ -28,9 +28,9 @@ function convertForm(form){
   newForm.gymPricing = form.pricing.filter(price => price.selectedFacility === 'generalPricing')
   
   newForm.facilities = form.facilities.map(item => {
-      let {facility_cd,...rest} = item;
+      let {code,...rest} = item;
       let newItem = rest;
-      newItem.facilityCode = facility_cd;
+      newItem.code = code;
       return {facility : newItem};
   });
 
@@ -39,13 +39,13 @@ function convertForm(form){
 
       item.ticketPricing = [];
       form.openings.map(open => {
-          if((item.facility.facility_name || item.facility.customName) === open.facilityName){
+          if((item.facility.name || item.facility.customName) === open.facilityName){
               let {facilityName,...rest} = open;
               item.opening = rest;
           }
       }) 
       form.pricing.map(price => {
-          if((item.facility.facility_name || item.facility.customName) === price.selectedFacility){
+          if((item.facility.name || item.facility.customName) === price.selectedFacility){
               let {selectedFacility,...rest} = price;
               item.ticketPricing.push(rest);
           }

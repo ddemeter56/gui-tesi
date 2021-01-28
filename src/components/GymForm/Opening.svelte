@@ -1,6 +1,7 @@
 <script>    
     import { _ } from "svelte-i18n";
     import Input from "../Input/Input.svelte";
+    import Text from "../Text/Text.svelte";
     export let openingGeneralData;
     export let facilities;
     export let openingInfos;
@@ -26,12 +27,12 @@
 
 
     function deleteFacility(fac){
-        openingGeneralData = openingGeneralData.filter(open => open.facilityName !== fac.facility_name);
+        openingGeneralData = openingGeneralData.filter(open => open.facilityName !== fac.name);
     }
     function addFacility(fac){
-        let filter = openingGeneralData.filter(open => open.facilityName === fac.facility_name || open.facilityName === fac.customName )
+        let filter = openingGeneralData.filter(open => open.facilityName === fac.name || open.facilityName === fac.customName )
         if(filter.length === 0){
-            openingGeneralData = [...openingGeneralData, {facilityName : fac.facility_name ? fac.facility_name : fac.customName, mondayFrom: "", mondayTo: "", tuesdayFrom: "", tuesdayTo: "", wednesdayFrom:"" , wednesdayTo:"", thursdayFrom: "", thursdayTo: "", fridayFrom: "", fridayTo: "", saturdayFrom: "", saturdayTo: "", sundayFrom: "", sundayTo: ""}];
+            openingGeneralData = [...openingGeneralData, {facilityName : fac.name ? fac.name : fac.customName, mondayFrom: "", mondayTo: "", tuesdayFrom: "", tuesdayTo: "", wednesdayFrom:"" , wednesdayTo:"", thursdayFrom: "", thursdayTo: "", fridayFrom: "", fridayTo: "", saturdayFrom: "", saturdayTo: "", sundayFrom: "", sundayTo: ""}];
         }
     }
 
@@ -80,11 +81,11 @@
         border: 1px solid #aaa;
     }
     tr:first-child{
-        background-color: rgb(162, 218, 255);
-        
+        background-color: maroon;
+        color: white;
     }
     tr:nth-child(even){
-        background-color: #c7efff;
+        background-color: white;
     }
     .tdInputStyle{
         display: inline;
@@ -100,7 +101,7 @@
                 {#each openingGeneralData as row}
                     <td>
                         <div class="tdInputStyle">
-                            <input style="{c.value === 'facilityName' ? " background-color: rgb(168, 168, 168);  color:black;" : ""}" type="text" maxLength={c.maxLength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
+                            <input style="{c.value === 'facilityName' ? " background-color: rgb(199, 199, 199);  color:maroon; font-weight:800; cursor:not-allowed;" : ""}" type="text" maxLength={c.maxLength} disabled={c.value === 'facilityName'} value={row[c.value]} on:input={e => row[c.value] = e.target.value}/>
                         </div>
                     </td>
                 {/each}
@@ -112,7 +113,9 @@
 <ul>
     {#each facilities as fac}
         <li>
-            {fac.facility_name || fac.customName}
+            <Text>
+                {fac.name || fac.customName}
+            </Text>
         </li>
         <button on:click={addFacility(fac)}>
             {$_('gymRegister.gymOpeningStep.openAddFacility')}

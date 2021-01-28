@@ -1,6 +1,7 @@
 <script>
   import { fly } from 'svelte/transition';
   import { _ } from "svelte-i18n";
+	import LanguageSelector from "../LanguageSelector/LanguageSelector.svelte";
   import Router from "svelte-spa-router";
 
   // Import the list of routes
@@ -37,7 +38,7 @@
       margin-left: 15px;
       width: 65px;
       height: 65px;
-      background-color: red;
+      background-color: maroon;
     }
 
     .listWrapper {
@@ -89,8 +90,7 @@
       float: left;
       margin-left: 50px;
       width: 65px;
-      height: 65px;
-      background-color: red;
+      background-color: maroon;
     }
 
     ul {
@@ -138,6 +138,7 @@
     class="listWrapper"
     transition:fly="{{ x: 200, duration: 500 }}">
     <ul>
+      <li><LanguageSelector /></li>
       <li on:click={() => activeMenu = false}><a href="#/">{$_('navbar.home')}</a></li>
       <li on:click={() => activeMenu = false}><a href="#/about">{$_('navbar.about')}</a></li>
       <li on:click={() => activeMenu = false}><a href="#/gymRegister">{$_('navbar.gymReg')}</a></li>

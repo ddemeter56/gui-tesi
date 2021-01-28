@@ -13,7 +13,6 @@
   let customCerti;
   let customVisible = false;
   $: groups = certies.groups.map((i, index) => ({"label": i.group, "index": index, "value": i.certifications}));
-  $: console.log(selectedGroup);
 
   // Duplikátumokat is hozzá lehet adni
   function addToSelectedCerties(){
@@ -28,32 +27,32 @@
 
 </style>
 
-<Label required label="Certification categories">
+<Label required label={$_('ptRegister.ptCertiStep.categories')}>
   <Dropdown items={groups} bind:selected={selectedGroup} />
 </Label>
 
 {#if selectedGroup}
-  <Label required label="Category related certifications">
+  <Label required label={$_('ptRegister.ptCertiStep.categoryCerties')}>
     <select bind:value={actCerti}>
       {#each selectedGroup as certi}
           <option value={certi}>{certi.name === 'rekreációs mozgásprogram-vezető' ? certi.additional : certi.name}</option>
       {/each}
     </select>
   </Label>
-  <button on:click={addToSelectedCerties}>Add certification</button>
-  <button on:click={() => customVisible = !customVisible}> {customVisible ? 'Hide custom' : 'Show custom'} </button>
+  <button on:click={addToSelectedCerties}>{$_('ptRegister.ptCertiStep.addCerti')}</button>
+  <button on:click={() => customVisible = !customVisible}> {customVisible ? $_('ptRegister.ptCertiStep.hideCustom') : $_('ptRegister.ptCertiStep.showCustom')} </button>
 {/if}
 
 {#if customVisible}
   <hr />
   <Input type="C" length={100} bind:value={customCerti} />
-  <button on:click={addCustom}>Add custom certification</button>
+  <button on:click={addCustom}>{$_('ptRegister.ptCertiStep.addCustom')}</button>
 {/if}
 
 <hr />
 {#if selectedCerties.length > 0}
   {#each selectedCerties as selectedCerti}
-    <Label label={`Description for ${selectedCerti.name || selectedCerti.customCertification}`}>
+    <Label label={`${$_('gymRegister.gymFacilityStep.descFor')} ${selectedCerti.name || selectedCerti.customCertification}`}>
       <Input type='C' length={100} bind:value={selectedCerti.description}/>
     </Label>
     <hr />

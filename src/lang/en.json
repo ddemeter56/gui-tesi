@@ -51,7 +51,9 @@
         "facilityDesc":"Add description of",
         "customFacilityDesc":"In case you haven't found your facility in the list you can it here.",
         "customFacilityButton":"New custom facility",
-        "addCustomFacilityButton" : "Add"
+        "addCustomFacilityButton" : "Add",
+        "facilityName": "Facility name",
+        "descFor":"Description for"
      },
      "gymOpeningStep":{
         "generalOpening":"General opening",
@@ -88,5 +90,48 @@
       "occasional":"Occasional",
       "addToList":"Add"
      }
+  },
+  "ptRegister":{
+     "title":"Register trainer",
+     "ptWizard":{
+        "ptBasic":"General information",
+        "ptBasicDesc":"General information about you",
+        "ptCertification":"Certifications",
+        "ptCertificationDesc":"You can add your certifications here, if you can't find your certification you can add a custom certification",
+        "ptSpecialization":"Specializations",
+        "ptSpecializationDesc":"Find your specialization(s) in our predefined list. Also you can add custom specialization. Pay attention that users can't search in custom specialization for better user experience",
+        "ptPricing":"Pricing",
+        "ptPricingDesc":"Add your pricing. A general pricing ( hourly fees etc.) is must added. Furthermore, if you want you can add price related to a specialization."
+      },
+      "ptBasicStep": {
+         "firstName":"First name",
+         "lastName":"Last name",
+         "email":"E-mail",
+         "phoneNumber":"Phone number",
+         "languageCodes":"Spoken languages",
+         "description":"Description",
+         "shortDescription":"Short description",
+         "facebookUserId":"Facebook user link",
+         "instagramUserId":"Instagram user name",
+         "twitterUserId":"Twitter page link",
+         "youtubeUserId":"Youtube channel link",
+         "webPageUserId":"Web page link"
+      },
+      "ptCertiStep":{
+         "categories": "Certification categories",
+         "categoryCerties": "Category related certifications",
+         "addCerti": "Add certification",
+         "addCustom": "Add custom certification",
+         "showCustom": "Show custom",
+         "hideCustom": "Hide custom"
+      },
+      "ptSpecStep":{
+         "specs":"Specialities",
+         "addCustom":"Add custom specialization",
+         "specName":"Specialization name"
+      },
+      "ptPricingStep":{
+         "selectedSpecs": "Selected specializations"
+      }
   }
 }

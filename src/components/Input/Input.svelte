@@ -25,13 +25,11 @@
 </script>
 
 <style>
-    input {
+    input, textarea {
         outline: none;
+        border: none;
+        background-color: rgb(92, 92, 92);
     }
-    .invalid {
-        border: 2px solid red;
-    }
-    
     .disabled{
         background-color: rgb(168, 168, 168);
         color:black;

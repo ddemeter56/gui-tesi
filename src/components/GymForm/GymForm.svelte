@@ -6,8 +6,11 @@
     import GymGeneral from './General.svelte';
     import Opening from './Opening.svelte';
     import Pricing from './Pricing.svelte';
-    import { gymInfos, facilityInfos, openingInfos } from './gymDatas.js';  
+    import { gymInfos, openingInfos } from './gymDatas.js';  
+    import { gymCodes } from '../../stores/gymCodes.js';
 
+    let facilityCodes = gymCodes.getFacilityCodes();
+ 
     let form = {
         gym : {},
         facilities : [],
@@ -22,6 +25,13 @@
 </script>
 
 <style>
+    .gymFormContainer{
+        height: 100%;
+        background-color: rgb(87, 87, 87);
+       /* background-image: url('/images/dumbbell.jfif');
+        background-repeat: no-repeat;
+        background-size: cover;*/
+    }
     @media only screen and (min-width: 768px) {
         .gymFormContainer{  
             padding-left:150px;
@@ -44,9 +54,11 @@
             title={$_('gymRegister.gymWizard.gymFacility')}
             desc={$_('gymRegister.gymWizard.gymFacilityDesc')}
             icon={'icon'}>
+            {#await facilityCodes then facilityCodes}
             <Facilities
                 bind:facilityGeneralData={form.facilities}
-                gymFacilityCols={facilityInfos.facilityForm} />
+                gymFacilityCols={facilityCodes} />
+            {/await}
         </Step>
         <Step
             title={$_('gymRegister.gymWizard.gymOpening')}

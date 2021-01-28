@@ -88,8 +88,15 @@
 <style>
 	.stepContainer{
 	}
+	.wizardTitle{
+		text-align: left;
+		font-size:35px;
+		padding: 15px;
+		color: white;
+		font-weight:200;
+	}
 </style>
-<h1 style='align: center'>{title}</h1>
+<div class="wizardTitle">{title}</div>
 <div class='stepContainer'>
 	<slot>
 	</slot>

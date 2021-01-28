@@ -4,13 +4,13 @@
   import Input from "../Input/Input.svelte";
   import Dropdown from "../DropdownSingle/DropdownSingle.svelte";
 
-  export let selectedCertifications;
+  export let selectedSpecializations;
   export let pricingGeneralData;
 
   $: tableHeaders = [
     {
-      value: "selectedFacility",
-      label: $_("gymRegister.gymPricing.selectedFacility"),
+      value: "selectedSpecialization",
+      label: $_('ptRegister.ptPricingStep.selectedSpecs'),
     },
     { value: "categoryType", label: $_("gymRegister.gymPricing.categoryType") },
     { value: "ticketType", label: $_("gymRegister.gymPricing.ticketType") },
@@ -64,10 +64,10 @@
     border: 1px solid #aaa;
   }
   tr:first-child {
-    background-color: rgb(162, 218, 255);
+    background-color: white;
   }
   tr:nth-child(even) {
-    background-color: #c7efff;
+    background-color: rgb(247, 247, 247);
   }
 
   .closingMark {
@@ -75,15 +75,12 @@
   }
 </style>
 
-<Label label="Selected certification">
-  <select bind:value={actPrice.selectedFacility}>
-    <option value={"generalPricing"}
-      >{$_("gymRegister.gymPricing.generalPricing")}</option
-    >
-    {#each selectedCertifications as { name, customCertification }}
-      <option value={name ? name : customCertification}
-        >{name || customCertification}</option
-      >
+<Label label={$_('ptRegister.ptPricingStep.selectedSpecs')}>
+  <select bind:value={actPrice.selectedSpecialization}>
+    <option value={"generalPricing"}>{$_("gymRegister.gymPricing.generalPricing")}</option>
+    {#each selectedSpecializations as { name, customName }}
+      <option value={name ? name : customName}
+        >{name || customName }</option>
     {/each}
   </select>
 </Label>
@@ -126,8 +123,7 @@
       {#each tableHeaders as header}
         <td>{fillTableData(price, header)}</td>
       {/each}
-      <span class="closingMark" on:click={deleteFromPricing(price)}
-        >&#10062;</span
+      <span class="closingMark" on:click={deleteFromPricing(price)}>&#10060;</span
       >
     </tr>
   {/each}
