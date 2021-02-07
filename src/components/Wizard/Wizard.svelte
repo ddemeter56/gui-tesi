@@ -86,8 +86,6 @@
 </script>
 
 <style>
-	.stepContainer{
-	}
 	.wizardTitle{
 		text-align: left;
 		font-size:35px;

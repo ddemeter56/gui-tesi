@@ -12,67 +12,112 @@
     export let social = null;
     export let imgSrc = "";
 
-    const forward = () => {
+    function forward() {
         dispatch("forward", {
             id,
             type,
         });
     };
+    let openDialogGallery = false;
 </script>
 
 <style>
-    /*basics styling just to see the card itself*/
     .card {
-        width: 50%;
-        display: flex;
-        margin: 10px;
-        border: 1px solid #ccc;
-        box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+        width:40%;
+        height:250px;
+        display:flex;
+        flex-direction: row;
+        position: relative;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        margin:10px;
+        background-color: white;
+        color:black;
+        border-radius: 5px;
+        padding-left: 8px;
     }
-    .imageHolder {
-        flex-basis: 50%;
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
-    .headerHolder {
-        flex-basis: 40%;
+    .cardLeft{
+        width: 70%;
     }
-
-    .card img {
-        width: 100%;
-        height: 100%;
+    .cardRight{
+        width: 30%;
     }
-    .card .text {
-        padding: 0 20px 20px;
+    .socialMedia {
+        width: 16px;
+        height: 16px;
     }
-
-    .socials {
-        flex-basis: 10%;
-        display: flex;
-        flex-direction: column;
+    .cardHeader{
+        display:flex;
         justify-content: space-between;
     }
-
-    .socials a {
-        margin: 0 auto;
-        height: 50px;
-        width: 50px;
+    .cardTitle {
+        font-size: 32px;
+    }
+    .cardTitle:hover {
+        text-decoration: underline;
+        cursor:pointer;
+    }
+    .cardPhoneAndAddress {
+        font-size: 12px;
+    }
+    .cardShortDesc {
+        font-size:15px;
+        padding-top:10px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
+    .cardImage{
+        object-fit:cover;
+        width:100%;
+        height:250px;
     }
 </style>
 
 <div class="card">
-    <div class="imageHolder" on:click={forward}>
-        <img src={imgSrc} alt={`An image of ${name}`} />
+    <div class="cardLeft">
+        <div class="cardHeader">
+            <div class="cardTitle" on:click={forward}>
+                {name}
+            </div>
+            <div class="socialMediaHolder">
+                {#each social as soc}
+                    <a href={soc.url}>
+                        <img title={soc.name} class="socialMedia" src={soc.imgUrl} alt={soc.name} target="_blank" />
+                    </a>
+                {/each}
+            </div>
+        </div>
+        <div class="cardPhoneAndAddress">
+            {phone}
+            {address}
+        </div>
+        <div title={shortDesc} class="cardShortDesc">
+            {shortDesc}
+        </div>
+        <div class="cardFooter">
+            <div class="cardFooterTop">
+                <span style="color:gold">&#9733;</span>
+                <span style="color:gold">&#9733;</span>
+                <span style="color:gold">&#9733;</span>
+                <span style="color:gold">&#9733;</span>
+            </div>
+            <div class="cardFooterMid">
+
+            </div>
+            <div class="cardFooterBottom">
+                
+            </div>
+        </div>
     </div>
-    <div class="socials">
-        {#each social as soc}
-            <a href={soc.url}>
-                <img src={soc.imgUrl} alt={soc.name} target="_blank" />
-            </a>
-        {/each}        
-    </div>
-    <div class="headerHolder" on:click={forward}>
-        <h2>{name}</h2>
-        <p>{phone}</p>
-        <p>{address}</p>
-        <p>{shortDesc}</p>
+    <div class="cardRight">
+        <div title="Open gallery" class="cardGalleryShow" on:mouseenter={() => { openDialogGallery = true; }}>
+            <img class="cardImage" src={imgSrc} alt={`An image of ${name}`} />
+         </div>
     </div>
 </div>
