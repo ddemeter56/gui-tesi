@@ -93,12 +93,19 @@
       background-color: maroon;
     }
 
+    .navBarUl{
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      padding-right: 15px;
+    }
     ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
     }
+
 
     li {
       float: right;
@@ -137,7 +144,7 @@
   <div
     class="listWrapper"
     transition:fly="{{ x: 200, duration: 500 }}">
-    <ul>
+    <ul class="navBarUl">
       <li><LanguageSelector /></li>
       <li on:click={() => activeMenu = false}><a href="#/">{$_('navbar.home')}</a></li>
       <li on:click={() => activeMenu = false}><a href="#/about">{$_('navbar.about')}</a></li>

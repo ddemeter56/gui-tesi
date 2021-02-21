@@ -36,6 +36,14 @@ import GymSearch from "../Search/GymSearch.svelte";
             width: 40%;
         }
     }
+    
+    @media only screen and (max-width: 768px) {
+        .card{
+            width: 95%;
+        }
+    }
+
+    
     .card {
         height:250px;
         display:flex;
