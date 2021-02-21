@@ -83,6 +83,7 @@
       background-color: #333;
       display: flex;
       justify-content: space-between;
+      position: relative;
     }
 
     .navBarLogoHolder {
