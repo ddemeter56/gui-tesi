@@ -12,5 +12,4 @@ function createGymCodes() {
 }
 
 
-
 export const gymCodes = createGymCodes();

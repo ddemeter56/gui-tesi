@@ -21,9 +21,8 @@
     user-select: none;
   }
   .selectedTab {
-	border-bottom: 6px solid maroon;
-  color: white;
-  background-color: rgb(87,87,87);
+    border-bottom: 2px solid maroon;
+    color: white;
  }
 
  .tab:hover{

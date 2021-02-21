@@ -42,6 +42,21 @@
 </script>
 
 <style>
+
+
+  @media only screen and (min-width: 768px) {
+    .tablistContainerH{ 
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .tablistContainerH{ 
+      padding-top:15px;
+    }
+  }
+
   .top, .bottom {
     display: flex;
     flex-direction: row;
@@ -75,6 +90,7 @@
     width: 100%; 
     padding-left: 1rem; 
     padding-right: 1rem;
+    background-color: #333;
   }
 
   .tablistContainerV {

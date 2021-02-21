@@ -120,3 +120,7 @@ button:hover {
 .textContainer{
 	color: white;
 }
+
+.virtualGap {
+  border-left: 6px solid rgb(56, 56, 56);
+}

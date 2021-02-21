@@ -52,7 +52,7 @@
   div {
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    box-shadow: 0 10px 10px 0 rgb(0 0 0 / 30%);
   }
 
   .top {

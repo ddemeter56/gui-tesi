@@ -3,36 +3,8 @@
     import GymSearch from '../components/Search/GymSearch.svelte';
     import Paper from '../components/Paper/Paper.svelte';
     import Card from '../components/Card/Card.svelte';
-
-    let rest={
-		social:[
-		{	
-			name:"instagram",
-			url:"http://www.instagram.com",
-			imgUrl:"https://image.flaticon.com/icons/png/128/174/174855.png"
-		},
-		{	
-			name:"facebook",
-			url:"http://www.facebook.com",
-			imgUrl:"https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/social-facebook-icon.png"
-		},
-		{
-			name:"website",
-			url:"http://www.google.com",
-			imgUrl:"https://icon-library.com/images/website-icon-png-transparent/website-icon-png-transparent-14.jpg"
-		}
-		
-	],
-		id:1,
-		type:'G',
-		name:'Cutler',
-    shortDesc: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
-	  address:"8900 Zalaegerszeg hegyalja utca 14",
-		phone:"+3630123456",
-		imgSrc:"https://www.cutlerzalaegerszeg.hu/index_htm_files/12785@2x.jpg"
-	}
-
-  let numArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    import FilterBar from '../components/FilterBar/FilterBar.svelte';
+    import { gymSearchResult } from '../stores/gymSearchResult.js';
 
     let searchPressed = false;
 
@@ -41,9 +13,19 @@
       searchPressed = event.detail.pressed;
     }
 
-
+    $: console.log($gymSearchResult);
 </script>
 <style>
+  @media only screen and (max-width: 768px) {
+    .resultTabs{
+      background-color: #333;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+  }
   @media only screen and (min-width: 768px) {
     .homeContainer{
       height:100%;
@@ -51,21 +33,24 @@
     .searchAndResults{
       display: flex;
       justify-content: flex-start;
-      align-items: center;
       gap: 25px;
       background-color: rgb(87, 87, 87);
+      min-height: 75vh;
+      max-height: 90vh;
+      box-shadow: -5px -5px 20px 0px #333 inset;
     }
     .searchTabs{
-      width:30%;
+      width:20%;
       padding: 15px 0px 25px 25px;
     }
     .resultTabs{
       display:flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
-      width:70%;
+      width:80%;
       color:white;
-      max-height: 500px;
+      background-color: rgb(92,92,92);
+      box-shadow: -5px -5px 20px 0px #333 inset;
     }
     .marketingCards{
       background-color: rgb(190, 190, 190);
@@ -97,7 +82,7 @@
           </Tabs>
       </div>
     <div class="resultTabs scrollable">
-      {#if !searchPressed}
+      {#if !searchPressed && $gymSearchResult.gyms.length === 0}
         <Paper>
           <span slot="paperIcon">&#128170;</span>
           <span slot="paperTitle">Best gyms</span>
@@ -109,17 +94,58 @@
           <span slot="paperText">Find a professional with the right specializations that meet your goals. Get fit or rehabilitize we help you!</span>
         </Paper>
       {:else}
-        {#each numArray as num}
-          <Card {...rest} />
-        {/each}
+        {#if $gymSearchResult.gyms.length >= 1}
+          <FilterBar 
+            type={'GYM'}
+            found={$gymSearchResult.paginationInfo.itemCount}
+            pageNum={$gymSearchResult.paginationInfo.currentPage}
+            maxPage={$gymSearchResult.paginationInfo.totalPages}
+            visibleItems={$gymSearchResult.paginationInfo.itemsPerPage}
+            />
+            {#each $gymSearchResult.gyms as gym}
+              <Card
+                id={gym.id} 
+                name={gym.name}
+                type={'gym'}
+                phone={gym.phone}
+                imgSrc={'https://www.cutlerzalaegerszeg.hu/index_htm_files/12785@2x.jpg'}
+                pricingMax={gym.priceMax}
+                pricingMin={gym.pricingMin}
+                address={gym.addressString}
+                shortDesc={gym.shortDescription}
+                facebookUserId={gym.facebookUserId}
+                instagramUserId={gym.instagramUserId}
+                twitterUserId={gym.twitterUserId}
+                youtubeUserId={gym.youtubeUserId}
+                webPageUserId={gym.webPageUserId}
+                facilities={gym.facilities}
+                />
+            {/each}
+        {/if}
       {/if}
     </div>
   </div>
   <div class="marketingCards scrollable">
-    <Paper>Ez egy lépés</Paper>
-    <Paper>Ez egy lépés</Paper>
-    <Paper>Ez egy lépés</Paper>
-    <Paper>Ez egy lépés</Paper>
+    <Paper>
+      <span slot="paperIcon">&#128170;</span>
+      <span slot="paperTitle">Best gyms</span>
+      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+    </Paper>
+    <Paper>
+      <span slot="paperIcon">&#128170;</span>
+      <span slot="paperTitle">Best gyms</span>
+      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+    </Paper>
+    <Paper>
+      <span slot="paperIcon">&#128170;</span>
+      <span slot="paperTitle">Best gyms</span>
+      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+    </Paper>
+    <Paper>
+      <span slot="paperIcon">&#128170;</span>
+      <span slot="paperTitle">Best gyms</span>
+      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+    </Paper>
   </div>
   <div class="footer">
     

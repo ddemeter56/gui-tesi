@@ -2,6 +2,16 @@
 </script>
 
 <style>
+  @media only screen and (max-width: 768px) {
+    .paperContainer{
+      margin-top:40px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .paperContainer{
+      margin: 15px;
+    }
+  }
   .paperContainer{
     width: 300px;
     height: 300px;
@@ -9,7 +19,6 @@
     color: maroon;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    margin: 15px;
     border-radius:5px;
   }
   
@@ -31,7 +40,6 @@
   }
   .paperText{
     padding: 10px;
-    height: 40%;
     border-top: rgb(230, 230, 230) 1px solid;
     background-color: white;
     color: maroon;

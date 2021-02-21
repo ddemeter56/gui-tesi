@@ -1,5 +1,5 @@
 export async function postData(url = '', data = {}){
-  const response = await fetch(url,{
+  const response = await fetch(url, {
           method: 'POST',
           mode: 'cors',
           cache: 'no-cache',
@@ -15,13 +15,13 @@ export async function postData(url = '', data = {}){
 
 
 export async function getData(url = ''){
-  const response = await fetch(url,{
+  const response = await fetch(url, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache',
     credentials: 'same-origin',
     headers :{
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
   }
   })
   return response.json()

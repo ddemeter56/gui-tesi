@@ -36,9 +36,8 @@
     .navBarLogoHolder {
       float: left;
       margin-left: 15px;
-      width: 65px;
-      height: 65px;
       background-color: maroon;
+      color: white;
     }
 
     .listWrapper {
