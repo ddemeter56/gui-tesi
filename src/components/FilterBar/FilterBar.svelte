@@ -1,11 +1,8 @@
 <script>
   import Dropdown from '../DropdownSingle/DropdownSingle.svelte';
-  import { gymSearchResult, queryOptions, searchForm, createQuery } from '../../stores/gymSearchResult.js';
-  export let type = '';
+  import { gymSearchResult, queryOptions, searchForm, createQuery, pageSize } from '../../stores/gymSearchResult.js';
+
   export let found = null;
-  export let pageNum = null;
-  export let maxPage = null;
-  export let visibleItems = 10;
 
   let selectedSort = queryOptions.sortByProperty;
   let selectedDisplay;
@@ -78,8 +75,7 @@
 <div class="filterBarContainer">
   <div class="filterBarLeft">
     <div>Result: {found}</div>
-    <div>Page: {pageNum} / {maxPage}</div>
-    <div>Items per page: {visibleItems}</div>
+    <div>Item limit per page: {pageSize}</div>
   </div>
   <div class="filterBarRight">
     <Dropdown items={displayOptions} bind:selected={selectedDisplay} icon={"https://www.flaticon.com/svg/vstatic/svg/238/238910.svg?token=exp=1613760807~hmac=ef7a1d26886bda9164e4e5bb85c560a5"} />

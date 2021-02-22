@@ -2,7 +2,7 @@ import { getData } from '../utils/backendComm.js';
 import { writable } from 'svelte/store';
 import { notifyStore } from './notifyStore.js';
 
-const limit = 10;
+export const pageSize = 50;
 
 function createResultStore() {
 	const { subscribe, set } = writable({ gyms: [] });
@@ -29,7 +29,7 @@ export let searchForm = {};
 export function createQuery(obj) {
 	let str = '';
 	searchForm = obj;
-	obj = { ...obj, ...queryOptions, limit };
+	obj = { ...obj, ...queryOptions, pageSize };
 	for (let key in obj) {
 		if(obj[key]) {
 			if (str !== '') {

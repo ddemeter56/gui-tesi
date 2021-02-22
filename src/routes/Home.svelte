@@ -97,10 +97,7 @@
         {#if $gymSearchResult.gyms.length >= 1}
           <FilterBar 
             type={'GYM'}
-            found={$gymSearchResult.paginationInfo.itemCount}
-            pageNum={$gymSearchResult.paginationInfo.currentPage}
-            maxPage={$gymSearchResult.paginationInfo.totalPages}
-            visibleItems={$gymSearchResult.paginationInfo.itemsPerPage}
+            found={$gymSearchResult.count}
             />
             {#each $gymSearchResult.gyms as gym}
               <Card
