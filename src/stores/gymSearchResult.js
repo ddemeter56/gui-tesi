@@ -36,7 +36,7 @@ export function createQuery(obj) {
 					str += '&';
 			}
 
-			str += key + '=' + encodeURIComponent(obj[key]); // encodeURI(obj[key])????
+			str += key + '=' + encodeURIComponent(obj[key]);
 		}
 	}
 	return str;

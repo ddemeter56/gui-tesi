@@ -106,8 +106,10 @@
                 type={'gym'}
                 phone={gym.phone}
                 imgSrc={'https://www.cutlerzalaegerszeg.hu/index_htm_files/12785@2x.jpg'}
-                pricingMax={gym.priceMax}
-                pricingMin={gym.pricingMin}
+                maxPrice={gym.maxPrice}
+                minPrice={gym.minPrice}
+                earliestOpening={gym.earliestOpening}
+                latestClosing={gym.latestClosing}
                 address={gym.addressString}
                 shortDesc={gym.shortDescription}
                 facebookUserId={gym.facebookUserId}

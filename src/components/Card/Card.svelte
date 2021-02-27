@@ -19,9 +19,10 @@ import GymSearch from "../Search/GymSearch.svelte";
     export let imgSrc = "";
     // footer reszbe hashtag szerűen ki lehetne tenni a gym-hez tartozó facilityket
     export let facilities = [];
-    export let pricingMin = null;
-    export let pricingMax = null;
-
+    export let minPrice = null;
+    export let maxPrice = null;
+    export let earliestOpening = null;
+    export let latestClosing = null; 
     function forward() {
         dispatch("forward", {
             id,
@@ -150,8 +151,12 @@ import GymSearch from "../Search/GymSearch.svelte";
                 <div class="cardPrice">
                     <span tilte="Highest and lowest price" style="color:maroon">&dollar;</span>
                     <span>
-                        {pricingMin}- {pricingMax}
+                        {minPrice}- {maxPrice}
                     </span>
+                </div>
+                <div class="cardOpenHours">
+                    <span>&#128339;</span>
+                    <span>{earliestOpening}- {latestClosing}</span>
                 </div>
             </div>
             <div class="cardFooterMid">

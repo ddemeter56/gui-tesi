@@ -46,8 +46,8 @@
     <Input type="N" bind:value={gymSearchParams.maxPrice}/>
   </Label>
   <Label label='Nyitvatartás'>
-    <Input type="T" bind:value={gymSearchParams.openFrom}/>
-    <Input type="T" bind:value={gymSearchParams.openTo}/>
+    <Input type="T" bind:value={gymSearchParams.openBefore}/>
+    <Input type="T" bind:value={gymSearchParams.openAfter}/>
   </Label>
   <Label label='Létesítmények'>
     {#await facilityList then facilityList}
