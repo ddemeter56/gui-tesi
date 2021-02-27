@@ -10,7 +10,9 @@
 	<link rel='stylesheet' href='/global.css'>
 	<link rel='stylesheet' href='/build/bundle.css'>
 
-	<script defer src='/build/bundle.js'></script>
+	<!--If code splitting in use we don't need this-->
+	<!--<script defer src='/build/bundle.js'></script>-->
+	<script type="module" defer src='/bundle/main.js'></script>
 </head>
 
 <body>

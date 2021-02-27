@@ -1,0 +1,1 @@
+{"version":3,"file":"[slug]-01f8f949.js","sources":["../../src/pages/gym/[slug].svelte"],"sourcesContent":["<script>\n    export let slug;\n</script>\n\n<h1>Selected gym id is :  <code>{slug}</code></h1>"],"names":["ctx","slug"],"mappings":"8LAIiCA,+DAAAA,yDAHlBC"}

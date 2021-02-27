@@ -2,10 +2,14 @@
   import { fly } from 'svelte/transition';
   import { _ } from "svelte-i18n";
 	import LanguageSelector from "../LanguageSelector/LanguageSelector.svelte";
-  import Router from "svelte-spa-router";
+  import { url, isActive } from "@sveltech/routify";
 
-  // Import the list of routes
-  import routes from "../../routes";
+  const links = [
+    ["./index", $_('navbar.home')],
+    ["./about", $_('navbar.about')],
+    ["./register/gym", $_('navbar.gymReg')],
+    ["./register/pro", $_('navbar.ptReg')]
+  ]
 
   let activeMenu = false;
   let innerWidth;
@@ -124,6 +128,10 @@
       background-color: #111;
       color: rgb(201, 201, 201);
     }
+
+    .selected{
+      background-color: maroon;
+    }
   }
 </style>
 
@@ -146,10 +154,10 @@
     transition:fly="{{ x: 200, duration: 500 }}">
     <ul class="navBarUl">
       <li><LanguageSelector /></li>
-      <li on:click={() => activeMenu = false}><a href="#/">{$_('navbar.home')}</a></li>
-      <li on:click={() => activeMenu = false}><a href="#/about">{$_('navbar.about')}</a></li>
-      <li on:click={() => activeMenu = false}><a href="#/gymRegister">{$_('navbar.gymReg')}</a></li>
-      <li on:click={() => activeMenu = false}><a href="#/professionalRegister">{$_('navbar.ptReg')}</a></li>
+      {#each links as [path, name]}
+        <li on:click={() => activeMenu = false}><a href={$url(path)} class:selected={$isActive(path)} >{name}</a></li>
+      {/each}
+      
     </ul>
     {#if innerWidth < 768}
       <span
@@ -159,5 +167,3 @@
   </div>
   {/if}
 </div>
-
-<Router {routes} />

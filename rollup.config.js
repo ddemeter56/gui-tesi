@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import { routify } from "@sveltech/routify";
 import json from '@rollup/plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
@@ -30,13 +31,28 @@ function serve() {
 
 export default {
 	input: 'src/main.js',
+	/*
+	// Original output if code splitting is not needed
 	output: {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
+	*/
+	output: {
+		sourcemap: true,
+		format: 'esm',
+		name: 'app',
+		dir: 'public/bundle',
+	},
 	plugins: [
+		routify({
+			singleBuild: production,
+			//This maybe can cause performance trouble with GYM and PT pages
+			// if deleted dont forget
+			dynamicImports: true,
+		}),
 		json(),
 		svelte({
 			// enable run-time checks when not in production

@@ -1,6 +1,6 @@
 <script>
-    import { createEventDispatcher } from "svelte";   
-import GymSearch from "../Search/GymSearch.svelte";
+    import { createEventDispatcher } from "svelte";
+    import { url } from "@sveltech/routify";   
     import Tag from '../Tag/Tag.svelte';
 
     let dispatch = createEventDispatcher();
@@ -129,7 +129,7 @@ import GymSearch from "../Search/GymSearch.svelte";
     <div class="cardLeft">
             <div class="cardHeader">
                 <div class="cardTitle" on:click={forward}>
-                    <div title={name}>{name}</div>
+                    <a href={$url(`gym/${id}`)} title={name}>{name}</a>
                 </div>
             </div>
             <div class="cardPhoneAndAddress">
