@@ -2,10 +2,8 @@
   import { getContext } from 'svelte';
   import { TABS } from './Tabs.svelte';
 
-  export let thickness = null;
-  export let adjust = 'left';
   export let style = '';
-
+  export let showTopBorder = false;
   const { tabListPosition } = getContext(TABS);
 
   function getStyle(pos, thick) {
@@ -31,7 +29,7 @@
 
 
   @media only screen and (min-width: 768px) {
-    .tablistContainer{ 
+    .topBorder{ 
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
     }
@@ -52,6 +50,6 @@
   }
 </style>
 
-<div class="tablistContainer">
+<div class="tablistContainer" class:topBorder={showTopBorder} style={style}>
   <slot></slot>
 </div>

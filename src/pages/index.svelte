@@ -65,7 +65,7 @@
   <div class="searchAndResults">
       <div class="searchTabs">  
           <Tabs>
-            <TabList>
+            <TabList showTopBorder>
               <Tab>
                 GYM search
               </Tab>

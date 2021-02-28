@@ -49,6 +49,7 @@
         height:250px;
         display:flex;
         flex-direction: row;
+        flex-grow: 1;
         position: relative;
         align-items: flex-start;
         justify-content: space-evenly;

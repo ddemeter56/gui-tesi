@@ -31,6 +31,7 @@
       background-color: #333;
       color: white;
       border-top: 1px solid maroon;
+      border-bottom: 1px solid maroon;
     }
     .gymPageHeaderLeft{
       display: flex;
