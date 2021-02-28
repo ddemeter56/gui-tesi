@@ -1,5 +1,15 @@
 <script>
+    import { gymPageLoader } from '../../stores/gymPageLoader.js';
+    import GymPage from '../../components/GymPage/GymPage.svelte';
     export let slug;
+
+    let gymData = gymPageLoader.loadGym(slug);
+    
 </script>
 
-<h1>Selected gym id is :  <code>{slug}</code></h1>
+
+{#await gymData}
+  Loading bro
+{:then data}
+  <GymPage {data} />
+{/await}

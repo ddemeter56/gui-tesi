@@ -34,7 +34,7 @@
 <style>
     @media only screen and (min-width: 768px) {
         .card{
-            width: 40%;
+            width: calc(100% * (1/4) + 180px - 1px);
         }
     }
     

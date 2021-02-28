@@ -31,7 +31,6 @@ function serve() {
 
 export default {
 	input: 'src/main.js',
-	/*
 	// Original output if code splitting is not needed
 	output: {
 		sourcemap: true,
@@ -39,19 +38,10 @@ export default {
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
-	*/
-	output: {
-		sourcemap: true,
-		format: 'esm',
-		name: 'app',
-		dir: 'public/bundle',
-	},
+	
 	plugins: [
 		routify({
 			singleBuild: production,
-			//This maybe can cause performance trouble with GYM and PT pages
-			// if deleted dont forget
-			dynamicImports: true,
 		}),
 		json(),
 		svelte({
