@@ -7,6 +7,8 @@
     "start": "sirv public --single  "
   },
   "devDependencies": {
+    "@beyonk/svelte-carousel": "^2.8.0",
+    "@beyonk/svelte-mapbox": "^7.2.0",
     "@fouita/slider": "0.0.3",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",

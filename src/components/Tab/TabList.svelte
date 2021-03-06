@@ -36,9 +36,6 @@
   }
 
   @media only screen and (max-width: 768px) {
-    .tablistContainer{ 
-      padding-top:15px;
-    }
   }
 
   .tablistContainer {

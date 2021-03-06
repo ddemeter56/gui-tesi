@@ -3,7 +3,7 @@
   import { TABS } from './Tabs.svelte';
 
   export let style = '';
-  export let cssClass = '';
+  export let isScrollable = false;
 
   const panel = {};
   const { registerPanel, selectedPanel } = getContext(TABS);
@@ -19,7 +19,7 @@
 </style>
 
 {#if $selectedPanel === panel}
-  <div class="tab-panel scrollable {cssClass}" {style} >
+  <div class="tab-panel" class:scrollable={isScrollable} style={style} >
     <slot></slot>
   </div>
 {/if}

@@ -2,6 +2,7 @@
   import { getContext } from 'svelte';
   import { TABS } from './Tabs.svelte';
 
+  export let style = '';
   const tab = {};
   const { registerTab, selectTab, selectedTab } = getContext(TABS);
 
@@ -10,26 +11,26 @@
 
 <style>
 
-  div {
-    background: none;
-    border: none;
-    border-radius: 0;
-    color: rgb(228, 228, 228);
-    float:left;
-    padding: 5px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .selectedTab {
-    border-bottom: 2px solid maroon;
-    color: white;
- }
+div {
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: rgb(228, 228, 228);
+  float:left;
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+.selectedTab {
+  border-bottom: 3px solid maroon;
+  color: white;
+}
 
- .tab:hover{
+.tab:hover{
   color: rgb(185, 185, 185);
- }
+}
 </style>
 
-<div class="tab" class:selectedTab="{$selectedTab === tab}" on:click="{() => selectTab(tab)}">
+<div class="tab" style={style} class:selectedTab="{$selectedTab === tab}" on:click="{() => selectTab(tab)}">
   <slot></slot>
 </div>

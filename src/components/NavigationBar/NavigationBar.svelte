@@ -30,6 +30,7 @@
       position: -webkit-sticky;
       position: sticky;
       top: 0;
+      z-index: 999;
     }
 
     .navHamburger {
@@ -48,7 +49,7 @@
       width: 100vw;
       height: 100vh;
       top: 0;
-      background-color: orange;
+      background-color: maroon;
       position: fixed;
       margin: 0;
       display: flex;
