@@ -71,6 +71,11 @@
 		display:flex;
 		justify-content:space-around;
 	}
+	@media only screen and (max-width:768px){
+		.stepContainer{
+			background-color: #333;
+		}
+	}
 	@media only screen and (min-width: 768px) {
   /* For desktop: */
   .stepContainer{
@@ -116,10 +121,11 @@
 	}
 
 	.slotStyle{
-		width:50vw;
+		box-shadow: 0px 0px 20px 0px #333;
+		width:35vw;
 		height:85vh;
-		padding-left: 60px;
-		padding-right: 60px;
+		padding-left: 30px;
+		padding-right: 30px;
 		margin-left: 60px;
 		position:fixed; 
 		top:90px;

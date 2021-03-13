@@ -3,11 +3,12 @@
   import Label from '../Label/Label.svelte';
   import Input from '../Input/Input.svelte';
   import Dropdown from '../DropdownSingle/DropdownSingle.svelte';
+  import PriceTable from '../PriceTable/PriceTable.svelte';
 
   export let selectedFacilities;
   export let pricingGeneralData;
 
-  $: tableHeaders = [{value:'selectedFacility', label: $_('gymRegister.gymPricing.selectedFacility')},{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'currency', label: $_('gymRegister.gymPricing.currency')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}];
+  $: tableHeaders = [{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}, {value: 'currency', label: $_('gymRegister.gymPricing.currency')}];
   $: console.log(selectedFacilities);
 
   $: categories = [  {value : 'daily', label: $_('gymRegister.gymPricing.daily') },
@@ -33,35 +34,15 @@
     return price[header.value]
   }
   
-  function deleteFromPricing(el){
-    console.log(el)
-    let indexOfEl = pricingGeneralData.indexOf(el);
+  function deleteFromPricing(event){
+    console.log(event.detail.price)
+    let indexOfEl = pricingGeneralData.indexOf(event.detail.price);
     pricingGeneralData.splice(indexOfEl,1);
     pricingGeneralData = pricingGeneralData;
   }
 </script>
 
 <style>
-    .tableContainer {
-        width: 100%;
-        background-color: rgb(224,224,224);
-    }
-    th{
-        margin-right:15px;
-    }
-    td {
-        border: 1px solid #aaa;
-    }
-    tr:first-child{
-        background-color: maroon;
-        color:white;
-    }
-    tr:nth-child(even){
-      background-color: white;
-    }
-    .closingMark{
-      cursor: pointer;
-    }
 </style>
 
 <Label label={$_('gymRegister.gymPricing.selectedFacility')}>
@@ -96,20 +77,5 @@
 <button on:click={addToPricing} >{$_('gymRegister.gymPricing.addToList')}</button>
 
 <hr />
-<table class="tableContainer">
-  <tr>
-    {#each tableHeaders as header}
-      <th>
-        {header.label}
-      </th>
-    {/each}
-  </tr>
-  {#each pricingGeneralData as price}
-    <tr>
-      {#each tableHeaders as header}
-        <td>{fillTableData(price,header)}</td>
-      {/each}
-      <span class="closingMark" on:click={deleteFromPricing(price)}>&#10060;</span>
-    </tr>
-  {/each}
-</table>
+
+<PriceTable headers={tableHeaders} data={pricingGeneralData} showDelete on:deleteFromPricing={deleteFromPricing}/>

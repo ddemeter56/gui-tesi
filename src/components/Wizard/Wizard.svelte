@@ -93,15 +93,21 @@
 		color: white;
 		font-weight:200;
 	}
+	@media only screen and (max-width:768px){
+		.wizardButtons{
+			background-color: #333;
+		}
+	}
 </style>
 <div class="wizardTitle">{title}</div>
 <div class='stepContainer'>
 	<slot>
 	</slot>
 </div>
-<button on:click={stepPrevious} disabled={prevButtonDisabled}>{$_(`wizard.prevButton`)}</button>
-<button on:click={stepNext} disabled={nextButtonDisabled}>{$_(`wizard.nextButton`)}</button>
-{#if nextButtonDisabled}
-	<button on:click={wizardDone}>{$_(`wizard.doneButton`)}</button>
-{/if}
-
+<div class="wizardButtons">
+	<button on:click={stepPrevious} disabled={prevButtonDisabled}>{$_(`wizard.prevButton`)}</button>
+	<button on:click={stepNext} disabled={nextButtonDisabled}>{$_(`wizard.nextButton`)}</button>
+	{#if nextButtonDisabled}
+		<button on:click={wizardDone}>{$_(`wizard.doneButton`)}</button>
+	{/if}
+</div>

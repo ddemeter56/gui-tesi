@@ -38,7 +38,7 @@
   }
   @media only screen and (min-width: 768px) {
         .ptFormContainer{  
-            padding-left:150px;
+            padding-left:20%;
         }
     }
 </style>

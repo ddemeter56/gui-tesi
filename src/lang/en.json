@@ -57,6 +57,8 @@
      },
      "gymOpeningStep":{
         "generalOpening":"General opening",
+        "availableFacilities": "Previously selected facilities",
+        "alignOpening": "Align opening time to all selected",
         "facilityName":"Open times",
         "mondayFrom":"Monday from",
         "mondayTo":"Monday to",

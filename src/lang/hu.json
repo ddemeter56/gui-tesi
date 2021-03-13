@@ -57,6 +57,8 @@
      },
      "gymOpeningStep":{
         "generalOpening":"Általános nyitvatartás",
+        "availableFacilities": "Előzőleg kiválasztott létesítmények",
+        "alignOpening": "Nyitvatartási idő hozzárendelése minden kiválasztotthoz",
         "facilityName":"Nyitvatartási idők",
         "mondayFrom":"Hétfő nyitás",
         "mondayTo":"Hétfő zárás",

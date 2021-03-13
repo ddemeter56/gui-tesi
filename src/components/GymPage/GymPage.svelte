@@ -4,7 +4,9 @@
   import Carousel from '@beyonk/svelte-carousel';
   import { Map, Geocoder, Marker, controls } from '@beyonk/svelte-mapbox'
   import { convertLocationToGeoCode } from '../../utils/mapboxGeoCode.js';
+  import GymPrice from './GymPrice.svelte';
   import { onMount } from 'svelte';
+
 
   export let data = null;
 
@@ -128,6 +130,7 @@
       height:45vh;
       padding-top: 5px;
       padding-right: 15px;
+      padding-left:5px;
     }
     .gymPageMap{
       height: 600px;
@@ -201,7 +204,10 @@
             </Tab>
           </TabList>
           <TabPanel isScrollable style="height:50vh">
-            Price
+            <GymPrice generalPrice={{ code: 'generalPrice', prices: data.pricing }}
+              facilityPrices={data.facilities.map((fac) => ({ code: fac.facilityCode.code, prices: fac.pricing }) )}
+              facilityNames={data.facilities.map((fac) => ({ value: fac.facilityCode.code, label: fac.customName === '' ? fac.facilityCode.name : fac.customName }))} 
+            />
           </TabPanel>
           <TabPanel isScrollable style="height:50vh">
             Opening

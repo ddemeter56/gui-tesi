@@ -1,11 +1,15 @@
 <script>    
     import { _ } from "svelte-i18n";
     import Input from "../Input/Input.svelte";
-    import Text from "../Text/Text.svelte";
+
     export let openingGeneralData;
     export let facilities;
     export let openingInfos;
 
+
+    let selectedFacility;
+    $: console.log(selectedFacility);
+    $: console.log(facilities);
     $: if(openingGeneralData.length === 0 ) {
         openingGeneralData = [{facilityName: $_('gymRegister.gymOpeningStep.generalOpening') ,fridayFrom: "",
                                                                 fridayTo: "",
@@ -71,11 +75,10 @@
 <style>
     .tableContainer {
         padding:5px;
-        background-color: rgb(247, 247, 247);
-        border: 1px solid rgb(224,224,224);
     }
     th{
         margin-right:15px;
+        padding: 5px;
     }
     td {
         border: 1px solid #aaa;
@@ -84,8 +87,9 @@
         background-color: maroon;
         color: white;
     }
-    tr:nth-child(even){
-        background-color: white;
+    tr {
+        background-color: rgb(92, 92, 92);
+        color: white;
     }
     .tdInputStyle{
         display: inline;
@@ -109,27 +113,29 @@
         {/each}
     </table>
 </div>
-
-<ul>
-    {#each facilities as fac}
-        <li>
-            <Text>
-                {fac.name || fac.customName}
-            </Text>
-        </li>
-        <button on:click={addFacility(fac)}>
-            {$_('gymRegister.gymOpeningStep.openAddFacility')}
-        </button>
-        <button on:click={deleteFacility(fac)}>
-            {$_('gymRegister.gymOpeningStep.openDeleteFacility')}
-        </button>
+<div class="stepParagraph">
+    {$_('gymRegister.gymOpeningStep.availableFacilities')}:
+</div>
+<select bind:value={selectedFacility} style="margin-bottom: 5px">
+    {#each facilities as facility}
+      <option value={facility}>{facility.name || facility.customName}</option>
     {/each}
-</ul>
-
+</select>
+<button on:click={addFacility(selectedFacility)}>
+    {$_('gymRegister.gymOpeningStep.openAddFacility')}
+</button>
+<button on:click={deleteFacility(selectedFacility)}>
+    {$_('gymRegister.gymOpeningStep.openDeleteFacility')}
+</button>
 <hr />
 
-<Input type={"T"} bind:value={defaultOpening} />
-<Input type={"T"} bind:value={defaultClosing} />
+<div class="stepParagraph">
+    {$_('gymRegister.gymOpeningStep.alignOpening')}:
+</div>
+<div style="padding-bottom: 5px;">
+    <Input type={"T"} bind:value={defaultOpening} />
+    <Input type={"T"} bind:value={defaultClosing} />    
+</div>
 
 
 <button on:click={fillTimes}>{$_('gymRegister.gymOpeningStep.alignTimes')}</button>

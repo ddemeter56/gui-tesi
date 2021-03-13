@@ -14,9 +14,6 @@
   let activeMenu = false;
   let innerWidth;
   let innerHeight;
-
-  $: console.log(activeMenu);
-  $: console.log(innerWidth);
 </script>
 
 <style>

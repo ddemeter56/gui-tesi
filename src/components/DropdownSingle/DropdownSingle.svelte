@@ -35,7 +35,7 @@
   {/if}
   <!-- svelte-ignore a11y-no-onchange -->
   <select bind:value={selected} disabled={!editable} {required} on:change={itemChanged}>
-      {#each items as { value, label }}
+    {#each items as { value, label }}
       <option {value}>{label || value}</option>
     {/each}
   </select>

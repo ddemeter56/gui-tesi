@@ -124,3 +124,8 @@ button:hover {
 .virtualGap {
   border-left: 6px solid rgb(56, 56, 56);
 }
+
+.stepParagraph {
+	color: white;
+	font-size: 1.1rem
+}

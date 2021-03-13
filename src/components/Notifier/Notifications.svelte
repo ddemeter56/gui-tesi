@@ -79,7 +79,7 @@
 	:global(.toasts) > .toast {
 		position: relative;
 		margin: 1vh 1vw;
-		min-width: 20vw;
+		min-width: 40vw;
 		position: relative;
 		animation: animate-in 600ms forwards;
 		color: #fff;

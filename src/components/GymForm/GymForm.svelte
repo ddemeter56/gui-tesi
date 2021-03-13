@@ -34,7 +34,7 @@
     }
     @media only screen and (min-width: 768px) {
         .gymFormContainer{  
-            padding-left:150px;
+            padding-left:20%;
         }
     }
 </style>

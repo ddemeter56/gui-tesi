@@ -49,7 +49,7 @@
         height:250px;
         display:flex;
         flex-direction: row;
-        flex-grow: 1;
+        /*flex-grow: 1; Mekkora legyen a kartya*/
         position: relative;
         align-items: flex-start;
         justify-content: space-evenly;
@@ -109,6 +109,9 @@
         object-fit:cover;
         width:100%;
         height:250px;
+    }
+    .cardFooter{
+        width: 110%;
     }
     .cardFooterTop{  
         display: flex;
