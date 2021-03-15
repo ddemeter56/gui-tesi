@@ -27,7 +27,9 @@
         "gymOpening":"Nyitvatartási idő",
         "gymOpeningDesc":"Nyitvatartási idő megadása. Ha egy létesítmény nyitvatartási ideje eltér a általános nyitvatartási időtől az itt adható meg",
         "gymPricing":"Árlista",
-        "gymPricingDesc":"Árlista feltöltése napi, havi, alkalmi díjakkal. Ha egy létesítményre más árak érvényesek az itt adható meg"
+        "gymPricingDesc":"Árlista feltöltése napi, havi, alkalmi díjakkal. Ha egy létesítményre más árak érvényesek az itt adható meg",
+        "gymImageUpload": "Képek feltöltése",
+        "gymImageUploadDesc": "A képek feltöltéséhez kattints a feltöltésre és válaszd ki a képeket a számítógépedről."
      },
      "gymBasicStep":{
         "name":"Név",

@@ -21,7 +21,6 @@
     const address = `${data.country} ${data.postcode} ${data.city} ${data.street} ${data.streetNum}`;
     convertLocationToGeoCode(address, 'pk.eyJ1IjoiZGRlbWV0ZXI1NiIsImEiOiJja2x4cmFvYXgxM3AyMm5wbDNoM21yNWNzIn0.GuKEhOpA1o-Ke4AYcAS3lw').then((response) => {
       response.json().then((data) => {
-        console.log(data.features[0].center[0]);
         someLng = data.features[0].center[0];
         someLat = data.features[0].center[1];
         mapComponent.setCenter([ someLng, someLat ],1);

@@ -27,7 +27,9 @@
         "gymOpening":"Opening hours",
         "gymOpeningDesc":"Add your open hours. If a facility operates in different business hour you can add it here",
         "gymPricing":"Pricing",
-        "gymPricingDesc":"You can add your daily, monthly or your occasional fees here. If a facility operates with different prices you can add it here"
+        "gymPricingDesc":"You can add your daily, monthly or your occasional fees here. If a facility operates with different prices you can add it here",
+        "gymImageUpload": "Upload images",
+        "gymImageUploadDesc": "Images can be uploaded in this step. Click upload and select your files from your computer."
      },
      "gymBasicStep":{
         "name":"Name",

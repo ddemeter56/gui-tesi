@@ -10,7 +10,6 @@
     export let name;
     export let shortDesc;
     export let address = null;
-    export let phone = null;
     export let facebookUserId = null;
     export let instagramUserId = null;
     export let twitterUserId = null;
@@ -137,7 +136,6 @@
                 </div>
             </div>
             <div class="cardPhoneAndAddress">
-                {phone}
                 {address}
             </div>
         

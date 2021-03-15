@@ -1,8 +1,12 @@
 <script>
-  import { fly } from 'svelte/transition';
   import { _ } from "svelte-i18n";
 	import LanguageSelector from "../LanguageSelector/LanguageSelector.svelte";
+  import DropdownMenu from "../DropdownMenu/DropdownMenu.svelte";
   import { url, isActive } from "@sveltech/routify";
+  import { processUrlTokens } from "../../utils/processUrlTokens.js";
+  import { userState } from "../../stores/userState.js";
+
+  processUrlTokens();
 
   const links = [
     ["./index", $_('navbar.home')],
@@ -13,7 +17,6 @@
 
   let activeMenu = false;
   let innerWidth;
-  let innerHeight;
 </script>
 
 <style>
@@ -62,7 +65,7 @@
     li {
       padding: 10px 0px 15px 0px;
     }
-    li a {
+    li a, .dropdownMenuButton {
       color: white;
       text-align: start;
       padding: 14px 16px 15px;
@@ -147,20 +150,39 @@
     </div>
   {/if}
   {#if activeMenu || innerWidth > 768} 
-  <div
-    class="listWrapper"
-    transition:fly="{{ x: 200, duration: 500 }}">
+  <div class="listWrapper">
     <ul class="navBarUl">
       <li><LanguageSelector /></li>
       {#each links as [path, name]}
         <li on:click={() => activeMenu = false}><a href={$url(path)} class:selected={$isActive(path)} >{name}</a></li>
       {/each}
-      
+      {#if !$userState.isLoggedIn}
+        <li>
+          <a href={`http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost:5000&login=true&scope=openid&nonce=${Date.now()}`} 
+            on:click={userState.checkUserState()}>Log in</a>
+        </li>
+        <li>
+          <a>Register</a>
+        </li>
+      {/if}
+      <li>
+        <DropdownMenu menuitems={[{ name: 'about', label: 'Label' }]} id='info_menu' dark>
+          <div class="dropdown-button">
+            <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{'Register'}</span>
+          </div>
+        </DropdownMenu>
+      </li>
+      {#if $userState.isLoggedIn}
+        <li>
+            <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} on:click={() => window.localStorage.clear()}>Log out</a>
+        </li>
+      {/if}
     </ul>
     {#if innerWidth < 768}
       <span
         class="closeSpan"
-        on:click={() => { activeMenu = !activeMenu; }}>&#10006;</span>
+        on:click={() => { activeMenu = !activeMenu; }}>&#10006;
+      </span>
     {/if}
   </div>
   {/if}

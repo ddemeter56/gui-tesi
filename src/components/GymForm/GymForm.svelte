@@ -6,6 +6,7 @@
     import GymGeneral from './General.svelte';
     import Opening from './Opening.svelte';
     import Pricing from './Pricing.svelte';
+    import ImageUpload from './ImageUpload.svelte';
     import { gymInfos, openingInfos } from './gymDatas.js';  
     import { gymCodes } from '../../stores/gymCodes.js';
 
@@ -72,6 +73,9 @@
         </Step>
         <Step title={$_('gymRegister.gymWizard.gymPricing')} desc={$_('gymRegister.gymWizard.gymPricingDesc')} icon={'icon'} >
             <Pricing selectedFacilities={form.facilities} bind:pricingGeneralData={form.pricing}/>
+        </Step>
+        <Step title={$_('gymRegister.gymWizard.gymImageUpload')} desc={$_('gymRegister.gymWizard.gymImageUploadDesc')} icon={'icon'}>
+            <ImageUpload />
         </Step>
     </Wizard>
 

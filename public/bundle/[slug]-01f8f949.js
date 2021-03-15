@@ -1,2 +1,0 @@
-import{S as s,i as e,s as t,j as a,u,l as r,r as i,G as l,o as n,p as o}from"./main-14edd864.js";function c(s){let e,t,c,d;return{c(){e=a("h1"),t=u("Selected gym id is :  "),c=a("code"),d=u(s[0])},m(s,a){r(s,e,a),i(e,t),i(e,c),i(c,d)},p(s,[e]){1&e&&l(d,s[0])},i:n,o:n,d(s){s&&o(e)}}}function d(s,e,t){let{slug:a}=e;return s.$$set=s=>{"slug"in s&&t(0,a=s.slug)},[a]}export default class extends s{constructor(s){super(),e(this,s,d,c,t,{slug:0})}}
-//# sourceMappingURL=[slug]-01f8f949.js.map

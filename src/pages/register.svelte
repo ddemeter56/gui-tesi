@@ -1,0 +1,1 @@
+Hi please register as gym or pt
