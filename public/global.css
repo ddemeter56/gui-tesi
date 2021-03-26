@@ -163,6 +163,7 @@ button:hover {
 	text-decoration: none;
 	cursor: pointer;
 	white-space: nowrap;
+	padding: 5px;
 }
 
 .dropdown-menuitem-hr {
@@ -170,7 +171,6 @@ button:hover {
 	border-bottom: 1px solid #ccc;
 	width: calc(100% - 16px);
 	box-sizing: border-box;
-	margin: 2px 8px  2px 8px;
 }
 
 .dropdown-menu-container {

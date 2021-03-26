@@ -2,21 +2,35 @@
   import { _ } from "svelte-i18n";
 	import LanguageSelector from "../LanguageSelector/LanguageSelector.svelte";
   import DropdownMenu from "../DropdownMenu/DropdownMenu.svelte";
-  import { url, isActive } from "@sveltech/routify";
+  import { url, isActive, goto } from "@sveltech/routify";
   import { processUrlTokens } from "../../utils/processUrlTokens.js";
   import { userState } from "../../stores/userState.js";
 
   processUrlTokens();
 
-  const links = [
+  $: links = [
     ["./index", $_('navbar.home')],
-    ["./about", $_('navbar.about')],
-    ["./register/gym", $_('navbar.gymReg')],
-    ["./register/pro", $_('navbar.ptReg')]
+    ["./about", $_('navbar.about')]
   ]
 
   let activeMenu = false;
   let innerWidth;
+
+  function handleRegistrationClick(event) {
+    console.log('Registration click');
+    console.log(event);
+    const item = event.detail.item;
+    if (item) {
+      if (item.name === 'gymRegister') {
+        // akkor érhetőek el ezek a formok ha be van jelentkezve!!
+        // figyelni h url alapján se tudjon csak úgy odamenni, legyen bejelentkezve
+        $goto('./register/gym') 
+      }
+      if (item.name === 'ptRegister') { 
+        $goto('./register/pro') 
+      }
+    }
+  }
 </script>
 
 <style>
@@ -65,7 +79,7 @@
     li {
       padding: 10px 0px 15px 0px;
     }
-    li a, .dropdownMenuButton {
+    li a {
       color: white;
       text-align: start;
       padding: 14px 16px 15px;
@@ -159,19 +173,19 @@
       {#if !$userState.isLoggedIn}
         <li>
           <a href={`http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost:5000&login=true&scope=openid&nonce=${Date.now()}`} 
-            on:click={userState.checkUserState()}>Log in</a>
+            on:click={userState.checkUserState()}>{$_('navbar.login')}</a>
         </li>
         <li>
-          <a>Register</a>
+          <DropdownMenu 
+            menuitems={[{ name: 'gymRegister', label: $_('navbar.gymReg') }, {name: 'ptRegister', label: $_('navbar.ptReg')}]} 
+            on:itemSelected={handleRegistrationClick} id='info_menu' dark>
+            <div class="dropdown-button">
+              <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{$_('navbar.register')}</span>
+            </div>
+          </DropdownMenu>
         </li>
       {/if}
-      <li>
-        <DropdownMenu menuitems={[{ name: 'about', label: 'Label' }]} id='info_menu' dark>
-          <div class="dropdown-button">
-            <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{'Register'}</span>
-          </div>
-        </DropdownMenu>
-      </li>
+      
       {#if $userState.isLoggedIn}
         <li>
             <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} on:click={() => window.localStorage.clear()}>Log out</a>

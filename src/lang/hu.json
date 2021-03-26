@@ -9,6 +9,8 @@
   "navbar" : {
     "home" : "Kezdőlap",
     "about": "Rólunk",
+    "register": "Regisztráció",
+    "login": "Bejelentkezés",
     "gymReg": "Terem regisztrálása",
     "ptReg": "Regisztrálás edzőként"
   },

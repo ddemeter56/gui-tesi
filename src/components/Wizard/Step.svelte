@@ -1,7 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
 	import { key } from './Wizard.svelte';
-	import { fly } from 'svelte/transition';
 
 	export let title;
 	export let desc = "";
@@ -147,7 +146,7 @@
 	</div>
 	<div class="content">
 		{#if $activeSlot === slot}
-			<div transition:fly="{{ x: 1000, duration: 500 }}" class="slotStyle scrollable">
+			<div class="slotStyle scrollable">
 				<slot>
 				</slot>
 			</div>

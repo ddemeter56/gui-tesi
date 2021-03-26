@@ -1,14 +1,23 @@
 <script>
     import { _ } from "svelte-i18n";
     import { Wizard, Step } from '../Wizard/wizard.js';
-    import { gymRegisterStore } from '../../stores/gymRegister.js';
+    import { gymRegisterStore, showUserRegisterDialog } from '../../stores/gymRegister.js';
+    import { userState } from "../../stores/userState.js";
+    import { goto } from '@sveltech/routify';
+    import { gymInfos, openingInfos } from './gymDatas.js';  
+    import { gymCodes } from '../../stores/gymCodes.js';
+
+    import Dialog from '../Dialog/Dialog.svelte';
     import Facilities from './Facilities.svelte';
     import GymGeneral from './General.svelte';
     import Opening from './Opening.svelte';
     import Pricing from './Pricing.svelte';
     import ImageUpload from './ImageUpload.svelte';
-    import { gymInfos, openingInfos } from './gymDatas.js';  
-    import { gymCodes } from '../../stores/gymCodes.js';
+    import GymOwnerRegister from '../Register/GymOwnerRegister.svelte';
+
+    $: if(!$userState.isLoggedIn) {
+        $showUserRegisterDialog = true;
+    }
 
     let facilityCodes = gymCodes.getFacilityCodes();
  
@@ -19,8 +28,14 @@
         pricing: [],
     }
     
+    let userInfo;
+    $: console.log(userInfo);
     function sendData(){
         gymRegisterStore.submitForm(form);
+    }
+
+    function sendRegisterData() {
+        gymRegisterStore.registerUser(userInfo);
     }
     $: console.log(form);
 </script>
@@ -40,6 +55,15 @@
     }
 </style>
 
+{#if $showUserRegisterDialog}
+    <Dialog title='Register GYM Owner user' height={'60%'} width={'30%'} bind:opened={$showUserRegisterDialog}>
+        <GymOwnerRegister bind:userInfo/>
+        <span slot="footer">
+            <button on:click={() => sendRegisterData()}>Register</button>
+            <button on:click={$goto('/')}>Back to home</button>
+        </span>
+    </Dialog>
+{/if}
 <div class="gymFormContainer">
     <Wizard on:wizardDone={sendData} title={$_('gymRegister.title')}>
         <Step
@@ -78,6 +102,4 @@
             <ImageUpload />
         </Step>
     </Wizard>
-
 </div>
-    

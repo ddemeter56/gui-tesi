@@ -9,6 +9,8 @@
   "navbar" : {
     "home" : "Home",
     "about": "About",
+    "register": "Register",
+    "login": "Log in",
     "gymReg": "Register your GYM",
     "ptReg": "Register as Trainer"
   },

@@ -20,6 +20,12 @@
 		dispatch('searchPressed', { pressed: true });
 	}
 
+  function onEnterPress(e) {
+    console.log(e)
+    if(e.keyCode === 13) {
+      searchedPressed();
+    }
+  }
 </script>
 <style>
   @media only screen and (min-width: 768px) {
@@ -33,7 +39,7 @@
     background-color: #333;
   }
 </style>
-
+<svelte:window on:keydown={onEnterPress}/>
 <div class="searchHolder scrollable">
   <Label label='Ország'>
     <Input type="C" length=40 bind:value={gymSearchParams.country} />

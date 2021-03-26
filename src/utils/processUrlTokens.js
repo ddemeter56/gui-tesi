@@ -34,7 +34,7 @@ export function processUrlTokens() {
   }
 }
 
-function redirectToLogin() {
+export function redirectToLogin() {
   window.location.href =
     "http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost/login-test.html&login=true&scope=openid&nonce=" + Date.now();
 };

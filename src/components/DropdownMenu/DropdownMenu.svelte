@@ -69,8 +69,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left:10px;
-    padding-right: 10px;
     margin: 0;
     height: 100%;
   }
