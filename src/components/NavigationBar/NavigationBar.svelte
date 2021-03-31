@@ -190,6 +190,15 @@
         <li>
             <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} on:click={() => window.localStorage.clear()}>Log out</a>
         </li>
+        <li>
+          <DropdownMenu 
+            menuitems={[{ name: 'gymRegister', label: $_('navbar.gymReg') }, {name: 'ptRegister', label: $_('navbar.ptReg')}]} 
+            on:itemSelected={handleRegistrationClick} id='info_menu' dark>
+            <div class="dropdown-button">
+              <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{$_('navbar.register')}</span>
+            </div>
+          </DropdownMenu>
+        </li>
       {/if}
     </ul>
     {#if innerWidth < 768}
