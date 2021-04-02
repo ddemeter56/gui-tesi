@@ -83,12 +83,12 @@
       </div>
     <div class="resultTabs scrollable">
       {#if !searchPressed && $gymSearchResult.gyms.length === 0}
-        <Paper>
+        <Paper paperType='large'>
           <span slot="paperIcon">&#128170;</span>
           <span slot="paperTitle">Best gyms</span>
           <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
         </Paper>
-        <Paper>
+        <Paper paperType='large'>
           <span slot="paperIcon">&#127947;</span>
           <span slot="paperTitle">Best trainers</span>
           <span slot="paperText">Find a professional with the right specializations that meet your goals. Get fit or rehabilitize we help you!</span>
