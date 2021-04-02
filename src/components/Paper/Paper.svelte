@@ -56,6 +56,13 @@
     border-image-slice: 1;
     border-width: 5px;
     border-image-source: linear-gradient(to left, #5e5e5e, maroon, #5e5e5e);
+    
+    box-shadow: 0 4px 8px 0 rgba(117, 117, 117, 0.2);
+    transition: 0.3s;
+  }
+  
+  .large-paper-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(66, 66, 66, 0.2);
   }
 </style>
 
