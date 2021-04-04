@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin:15px;
-    border: 1px solid rgb(87, 87, 87);
+    border: 1px solid rgb(97 21 21 / 63%);
     border-style:outset;
     transition: border 0.1s;
     cursor: pointer;

@@ -83,15 +83,26 @@
       </div>
     <div class="resultTabs scrollable">
       {#if !searchPressed && $gymSearchResult.gyms.length === 0}
-        <Paper paperType='large'>
-          <span slot="paperIcon">&#128170;</span>
-          <span slot="paperTitle">Best gyms</span>
-          <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
-        </Paper>
-        <Paper paperType='large'>
+        <Paper paperType='large' backgroundImg='trainer.jpg'>
           <span slot="paperIcon">&#127947;</span>
           <span slot="paperTitle">Best trainers</span>
-          <span slot="paperText">Find a professional with the right specializations that meet your goals. Get fit or rehabilitize we help you!</span>
+          <span slot="paperText">From personal trainers to rehab. Get fit or rehabilitize we help you!<br/>
+            From personal trainers to rehab. From personal trainers to rehab. From personal trainers to rehab.
+            From personal trainers to rehab.
+          </span>
+          <span slot="paperButton">
+            <button>Im a trainer!</button>
+          </span>
+        </Paper>
+        <Paper paperType='large' backgroundImg='gym.jfif'>
+          <span slot="paperIcon">&#128170;</span>
+          <span slot="paperTitle">Best gyms</span>
+          <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder<br />
+            Find the best GYMs around you. Meet your requirements wi. Find the best GYMs around you. Meet your requirements wi
+          </span>
+          <span slot="paperButton">
+            <button>Register your GYM NOW</button>
+          </span>
         </Paper>
       {:else}
         {#if $gymSearchResult.gyms.length >= 1}

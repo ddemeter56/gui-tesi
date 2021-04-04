@@ -21,8 +21,10 @@ div {
   cursor: pointer;
   user-select: none;
 }
-.selectedTab {
-  border-bottom: 3px solid maroon;
+.selectedTab {    
+    border-bottom: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #333, maroon, #333);
   color: white;
 }
 

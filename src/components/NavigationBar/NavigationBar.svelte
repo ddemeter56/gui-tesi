@@ -9,8 +9,8 @@
   processUrlTokens();
 
   $: links = [
-    ["./index", $_('navbar.home')],
-    ["./about", $_('navbar.about')]
+    ["./index", $_('navbar.home'), 'icons/home'],
+    ["./about", $_('navbar.about'), 'icons/about']
   ]
 
   let activeMenu = false;
@@ -55,7 +55,6 @@
     .navBarLogoHolder {
       float: left;
       margin-left: 15px;
-      background-color: maroon;
       color: white;
     }
 
@@ -103,13 +102,13 @@
       display: flex;
       justify-content: space-between;
       position: relative;
+      border-bottom: 2px solid grey;
     }
 
     .navBarLogoHolder {
       float: left;
       margin-left: 50px;
       width: 65px;
-      background-color: maroon;
     }
 
     .navBarUl{
@@ -145,7 +144,9 @@
     }
 
     .selected{
-      background-color: maroon;
+      border-bottom: 4px solid;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to left, #333, maroon, #333);
     }
   }
 </style>
@@ -153,7 +154,16 @@
 <svelte:window bind:innerWidth />
 
 <div class="navBarWrapper">
-  <div class="navBarLogoHolder">Logo me</div>
+  <div class="navBarLogoHolder">
+    <img src="logo.png" alt="logo" style="width: 80px"/>
+  </div>
+  <ul class="navBarUl">
+    {#each links as [path, name]}
+      <li on:click={() => activeMenu = false}>
+        <a href={$url(path)} class:selected={$isActive(path)}>{name}</a>
+      </li>
+    {/each}
+  </ul>
   {#if innerWidth < 768}
     <div
       class="navHamburger"
@@ -167,13 +177,12 @@
   <div class="listWrapper">
     <ul class="navBarUl">
       <li><LanguageSelector /></li>
-      {#each links as [path, name]}
-        <li on:click={() => activeMenu = false}><a href={$url(path)} class:selected={$isActive(path)} >{name}</a></li>
-      {/each}
+     
       {#if !$userState.isLoggedIn}
         <li>
           <a href={`http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost:5000&login=true&scope=openid&nonce=${Date.now()}`} 
-            on:click={userState.checkUserState()}>{$_('navbar.login')}</a>
+            on:click={userState.checkUserState()}>{$_('navbar.login')}
+          </a>
         </li>
         <li>
           <DropdownMenu 

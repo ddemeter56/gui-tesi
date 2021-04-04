@@ -1,5 +1,7 @@
 <script>
   export let paperType = 'small';
+  export let backgroundImg = '';
+
 </script>
 
 <style>
@@ -7,10 +9,33 @@
     .small-paper-container{
       margin-top:40px;
     }
+    
+    .large-paper-container{
+      width: 95%;
+      height: 100%;
+      color: white;
+    }
+    .large-paper-content-container {
+      margin-bottom: 15px;
+    }
+    .large-paper-button-container {
+      padding-bottom: 5px;
+    }
   }
   @media only screen and (min-width: 768px) {
     .small-paper-container{
       margin: 15px;
+    }
+    
+    .large-paper-container{
+      width: 45%;
+      height: 85%;
+    }
+
+    .large-paper-button-container {
+      width: 100%;
+      bottom: 15px;
+      position: absolute;
     }
   }
   .small-paper-container{
@@ -48,34 +73,64 @@
   }
 
   .large-paper-container{
-    width: 45%;
-    height: 85%;
     background-color: rgb(236, 236, 236);
     margin-top: 3%;    
     border: 4px solid;
     border-image-slice: 1;
     border-width: 5px;
     border-image-source: linear-gradient(to left, #5e5e5e, maroon, #5e5e5e);
-    
     box-shadow: 0 4px 8px 0 rgba(117, 117, 117, 0.2);
     transition: 0.3s;
+    background-size: cover;
   }
   
   .large-paper-container:hover {
-    box-shadow: 0 8px 16px 0 rgba(66, 66, 66, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(255, 0, 0, 0.219);
+  }
+
+  .large-paper-content-container {
+    width: 85%;
+    height: 85%;
+    background-color: rgba(0, 0, 0, 0.514);
+    text-align: center;
+    margin-left: 7.5%;
+    margin-top: 7.5%;
+    position: relative;
+    border-radius: 3px;
+  }
+
+  .large-paper-icon {
+    font-size: 3.5rem;
+  }
+  .large-paper-title {
+    font-size: 1.75rem;
+  }
+  .large-paper-text {
+    font-size: 1.1rem;
+    padding: 25px 3px 10px 3px;
+  }
+  .large-paper-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
 
 {#if paperType === 'large'}
-  <div class="large-paper-container">
-    <div class="large-paper-icon">
-      <slot name="paperIcon"></slot>
-    </div>
-    <div class="large-paper-title">
-      <slot name="paperTitle"></slot>
-    </div>
-    <div class="large-paper-description">
-      <slot name="paperDesc"></slot>
+  <div class="large-paper-container" style={`background-image: url('images/${backgroundImg}')`}>
+    <div class="large-paper-content-container">
+      <div class="large-paper-icon">
+        <slot name="paperIcon"></slot>
+      </div>
+      <div class="large-paper-title">
+        <slot name="paperTitle"></slot>
+      </div>
+      <div class="large-paper-text">
+        <slot name="paperText"></slot>
+      </div>
+      <div class="large-paper-button-container">
+        <slot name="paperButton"></slot>
+      </div>
     </div>
   </div>
 {:else if paperType === 'small'}
