@@ -9,31 +9,35 @@
   processUrlTokens();
 
   $: links = [
-    ["./index", $_('navbar.home'), 'icons/home'],
-    ["./about", $_('navbar.about'), 'icons/about']
+    ["./about", $_('navbar.about'), 'icons/about.png'],
+    ["./index", $_('navbar.home'), 'icons/home.png']
   ]
 
   let activeMenu = false;
   let innerWidth;
 
   function handleRegistrationClick(event) {
-    console.log('Registration click');
-    console.log(event);
     const item = event.detail.item;
     if (item) {
       if (item.name === 'gymRegister') {
-        // akkor érhetőek el ezek a formok ha be van jelentkezve!!
-        // figyelni h url alapján se tudjon csak úgy odamenni, legyen bejelentkezve
         $goto('./register/gym') 
       }
       if (item.name === 'ptRegister') { 
         $goto('./register/pro') 
       }
+      if (item.name === 'userRegister') {
+        window.location = 'http://localhost:8080/auth/realms/Tesi/login-actions/registration?client_id=browser-login&tab_id=PQYagmNLTAw';
+      }
     }
   }
+  $: console.log($userState);
 </script>
 
 <style>
+  .links {
+    display: flex;
+    align-items: center;
+  }
   @media only screen and (max-width: 768px) {
     .navBarWrapper {
       width: auto;
@@ -135,15 +139,17 @@
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
-      transition: 0.5s;
     }
 
-    li a:hover {
+    .links {
+      transition: 0.5s;
+    }
+    .links:hover {
       background-color: #111;
       color: rgb(201, 201, 201);
     }
 
-    .selected{
+    .selected {
       border-bottom: 4px solid;
       border-image-slice: 1;
       border-image-source: linear-gradient(to left, #333, maroon, #333);
@@ -154,16 +160,19 @@
 <svelte:window bind:innerWidth />
 
 <div class="navBarWrapper">
-  <div class="navBarLogoHolder">
-    <img src="logo.png" alt="logo" style="width: 80px"/>
-  </div>
   <ul class="navBarUl">
-    {#each links as [path, name]}
-      <li on:click={() => activeMenu = false}>
-        <a href={$url(path)} class:selected={$isActive(path)}>{name}</a>
-      </li>
+    {#each links as [path, name, src]}
+      <div class="links" class:selected={$isActive(path)}>
+        <img {src} alt="{src}" style="width: 20px; padding-left: 10px;"/>
+        <li on:click={() => activeMenu = false}>
+          <a href={$url(path)}>{name}</a>
+        </li>
+      </div>
     {/each}
   </ul>
+  <div class="navBarLogoHolder">
+    <img src="loogo.png" alt="logo" style="width: 120px"/>
+  </div>
   {#if innerWidth < 768}
     <div
       class="navHamburger"
@@ -184,31 +193,28 @@
             on:click={userState.checkUserState()}>{$_('navbar.login')}
           </a>
         </li>
-        <li>
-          <DropdownMenu 
-            menuitems={[{ name: 'gymRegister', label: $_('navbar.gymReg') }, {name: 'ptRegister', label: $_('navbar.ptReg')}]} 
-            on:itemSelected={handleRegistrationClick} id='info_menu' dark>
-            <div class="dropdown-button">
-              <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{$_('navbar.register')}</span>
-            </div>
-          </DropdownMenu>
-        </li>
       {/if}
       
       {#if $userState.isLoggedIn}
         <li>
-            <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} on:click={() => window.localStorage.clear()}>Log out</a>
-        </li>
-        <li>
-          <DropdownMenu 
-            menuitems={[{ name: 'gymRegister', label: $_('navbar.gymReg') }, {name: 'ptRegister', label: $_('navbar.ptReg')}]} 
-            on:itemSelected={handleRegistrationClick} id='info_menu' dark>
-            <div class="dropdown-button">
-              <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{$_('navbar.register')}</span>
-            </div>
-          </DropdownMenu>
+            <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} 
+              on:click={() => window.localStorage.clear()}>{$_('navbar.logout')}
+            </a>
         </li>
       {/if}
+      <li>
+        <DropdownMenu 
+          menuitems={[
+            { name: 'userRegister', label: $_('navbar.userReg')},
+            { name: 'gymRegister', label: $_('navbar.gymReg')},
+            { name: 'ptRegister', label: $_('navbar.ptReg')},
+          ]} 
+          on:itemSelected={handleRegistrationClick} id='info_menu' dark>
+          <div class="dropdown-button">
+            <span style="padding-right:10px; padding-left:5px;  pointer-events: none;">{$_('navbar.register')}</span>
+          </div>
+        </DropdownMenu>
+      </li>
     </ul>
     {#if innerWidth < 768}
       <span

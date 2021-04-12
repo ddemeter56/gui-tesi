@@ -11,8 +11,10 @@
     "about": "About",
     "register": "Register",
     "login": "Log in",
+    "logout": "Log out",
     "gymReg": "Register your GYM",
-    "ptReg": "Register as Trainer"
+    "ptReg": "Register as Trainer",
+    "userReg": "Register as visitor"
   },
   "wizard":{
     "nextButton": "Next",
@@ -34,6 +36,7 @@
         "gymImageUploadDesc": "Images can be uploaded in this step. Click upload and select your files from your computer."
      },
      "gymBasicStep":{
+        "referenceCode": "Unique reference name",
         "name":"Name",
         "country":"Country",
         "postcode":"Postcode",

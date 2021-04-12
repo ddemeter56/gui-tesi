@@ -8,7 +8,7 @@ function createGymStore() {
 
 	return {
     subscribe,
-    submitForm: (oldForm) => postData('http://localhost/api/public/register/gym',convertForm(oldForm)).then((result) => {
+    submitForm: (oldForm) => postData('http://localhost/api/register/gym',convertForm(oldForm), window.localStorage.getItem('access_token')).then((result) => {
       console.log(result);
       notifyStore.showNotify(result.error ? 'danger' : 'success',result.message)
     }),

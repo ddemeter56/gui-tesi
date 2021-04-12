@@ -1,6 +1,15 @@
 export const gymInfos ={
     "gym":[
         {   
+            "value":"referenceCode",
+            "inputType":"Input",
+            "maxLength":75,
+            "required":true,
+            "label":"Reference Code",
+            "type":"C",
+            
+        },
+        {   
             "value":"name",
             "inputType":"Input",
             "maxLength":75,

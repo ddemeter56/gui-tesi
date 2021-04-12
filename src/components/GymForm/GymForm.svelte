@@ -17,6 +17,8 @@
 
     $: if(!$userState.isLoggedIn) {
         $showUserRegisterDialog = true;
+    } else {
+        $showUserRegisterDialog = false;
     }
 
     let facilityCodes = gymCodes.getFacilityCodes();

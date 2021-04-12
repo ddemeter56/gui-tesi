@@ -1,7 +1,7 @@
 <script>
   import { locale } from 'svelte-i18n';
   import Dropdown from '../DropdownSingle/DropdownSingle.svelte';
-  $: localStorage.setItem('lang', $locale);
+  $: localStorage.setItem('lang', 'hu');
 
   const items = [
     { value: 'default', label: 'Default' },

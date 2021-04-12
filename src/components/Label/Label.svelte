@@ -11,8 +11,6 @@
     flex-direction: column;
     justify-content: space-between;
     margin:15px;
-    border: 1px solid rgb(97 21 21 / 63%);
-    border-style:outset;
     transition: border 0.1s;
     cursor: pointer;
     color: rgb(224, 224, 224);
@@ -31,7 +29,7 @@
     justify-content: space-between;
   }
   .label:focus-within{
-    border: 2px #333 solid;
+    border: 2px rgb(156, 156, 156) solid;
     color: #fff;
   }
 </style>

@@ -11,8 +11,10 @@
     "about": "Rólunk",
     "register": "Regisztráció",
     "login": "Bejelentkezés",
+    "logout": "Kijelentkezés",
     "gymReg": "Terem regisztrálása",
-    "ptReg": "Regisztrálás edzőként"
+    "ptReg": "Regisztrálás edzőként",
+    "userReg": "Látogató regisztrálása"
   },
   "wizard":{
     "nextButton": "Következő",
@@ -34,6 +36,7 @@
         "gymImageUploadDesc": "A képek feltöltéséhez kattints a feltöltésre és válaszd ki a képeket a számítógépedről."
      },
      "gymBasicStep":{
+        "referenceCode": "Egyedi referencia név",
         "name":"Név",
         "country":"Ország",
         "postcode":"Irányítószám",

@@ -10,7 +10,7 @@ function createGymStore() {
 
   return {
     subscribe,
-    submitForm: (oldForm) => postData('http://localhost/api/public/register/pt', convertForm(oldForm)).then((result) => {
+    submitForm: (oldForm) => postData('http://localhost/api/register/pt', convertForm(oldForm)).then((result) => {
       console.log(result);
       notifyStore.showNotify(result.error ? 'danger' : 'success', result.message)
     })
