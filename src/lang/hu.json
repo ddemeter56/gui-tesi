@@ -14,7 +14,8 @@
     "logout": "Kijelentkezés",
     "gymReg": "Terem regisztrálása",
     "ptReg": "Regisztrálás edzőként",
-    "userReg": "Látogató regisztrálása"
+    "userReg": "Látogató regisztrálása",
+    "adminPage": "Oldalam szerkesztése"
   },
   "wizard":{
     "nextButton": "Következő",

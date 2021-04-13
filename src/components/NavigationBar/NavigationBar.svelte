@@ -160,16 +160,19 @@
 <svelte:window bind:innerWidth />
 
 <div class="navBarWrapper">
-  <ul class="navBarUl">
-    {#each links as [path, name, src]}
-      <div class="links" class:selected={$isActive(path)}>
-        <img {src} alt="{src}" style="width: 20px; padding-left: 10px;"/>
-        <li on:click={() => activeMenu = false}>
-          <a href={$url(path)}>{name}</a>
-        </li>
-      </div>
-    {/each}
-  </ul>
+  
+  {#if innerWidth > 768}
+    <ul class="navBarUl">
+        {#each links as [path, name, src]}
+          <div class="links" class:selected={$isActive(path)}>
+            <img {src} alt="{src}" style="width: 20px; padding-left: 10px;"/>
+            <li on:click={() => activeMenu = false}>
+              <a href={$url(path)}>{name}</a>
+            </li>
+          </div>
+        {/each}
+    </ul>
+  {/if}
   <div class="navBarLogoHolder">
     <img src="loogo.png" alt="logo" style="width: 120px"/>
   </div>
@@ -185,10 +188,27 @@
   {#if activeMenu || innerWidth > 768} 
   <div class="listWrapper">
     <ul class="navBarUl">
+
+      {#if $userState.isLoggedIn && $userState.roles.includes('gym_owner', 'gym_manager', 'pt_owner')}
+        <li class="links">
+          <a href={$url('./admin')}>
+            {$_('navbar.adminPage')}
+          </a>
+        </li>
+      {/if}
       <li><LanguageSelector /></li>
      
+      {#if innerWidth < 768}
+        {#each links as [path, name]}
+          <div class="links" class:selected={$isActive(path)}>
+            <li on:click={() => activeMenu = false}>
+              <a href={$url(path)}>{name}</a>
+            </li>
+          </div>
+        {/each}
+      {/if}
       {#if !$userState.isLoggedIn}
-        <li>
+        <li class="links">
           <a href={`http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost:5000&login=true&scope=openid&nonce=${Date.now()}`} 
             on:click={userState.checkUserState()}>{$_('navbar.login')}
           </a>
@@ -196,12 +216,13 @@
       {/if}
       
       {#if $userState.isLoggedIn}
-        <li>
+        <li class="links">
             <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} 
               on:click={() => window.localStorage.clear()}>{$_('navbar.logout')}
             </a>
         </li>
       {/if}
+      
       <li>
         <DropdownMenu 
           menuitems={[

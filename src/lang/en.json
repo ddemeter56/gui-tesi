@@ -14,7 +14,8 @@
     "logout": "Log out",
     "gymReg": "Register your GYM",
     "ptReg": "Register as Trainer",
-    "userReg": "Register as visitor"
+    "userReg": "Register as visitor",
+    "adminPage": "Modify my page"
   },
   "wizard":{
     "nextButton": "Next",

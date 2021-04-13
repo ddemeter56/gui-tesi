@@ -11,7 +11,7 @@
   function fillTableData(price,header){
     if(header.value === 'categoryType'){
         return $_(`gymRegister.gymPricing.${price[header.value]}`)
-    } else if (header.value === 'selectedFacility'){
+    } else if (header.value === 'selectedFacility' || header.value === 'selectedSpecialization'){
         if(price[header.value] === 'generalPricing'){
           return $_(`gymRegister.gymPricing.${price[header.value]}`)
         }

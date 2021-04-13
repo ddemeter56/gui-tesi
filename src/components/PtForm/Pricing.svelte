@@ -3,15 +3,14 @@
   import Label from "../Label/Label.svelte";
   import Input from "../Input/Input.svelte";
   import Dropdown from "../DropdownSingle/DropdownSingle.svelte";
+  import PriceTable from "../PriceTable/PriceTable.svelte";
+
 
   export let selectedSpecializations;
   export let pricingGeneralData;
 
   $: tableHeaders = [
-    {
-      value: "selectedSpecialization",
-      label: $_('ptRegister.ptPricingStep.selectedSpecs'),
-    },
+    { value: "selectedSpecialization", label: $_('ptRegister.ptPricingStep.selectedSpecs') },
     { value: "categoryType", label: $_("gymRegister.gymPricing.categoryType") },
     { value: "ticketType", label: $_("gymRegister.gymPricing.ticketType") },
     { value: "amount", label: $_("gymRegister.gymPricing.amount") },
@@ -26,20 +25,10 @@
   ];
 
   let actPrice = {};
+
   function addToPricing(){
     pricingGeneralData = [...pricingGeneralData, actPrice];
     actPrice = {...actPrice};
-  }
-
-  function fillTableData(price,header){
-    if(header.value === 'categoryType'){
-        return $_(`gymRegister.gymPricing.${price[header.value]}`)
-    } else if (header.value === 'selectedFacility'){
-        if(price[header.value] === 'generalPricing'){
-          return $_(`gymRegister.gymPricing.${price[header.value]}`)
-        }
-    }
-    return price[header.value]
   }
   
   function deleteFromPricing(el){
@@ -51,36 +40,15 @@
 </script>
 
 <style>
-  .tableContainer {
-    padding: 5px;
-    background-color: rgb(247, 247, 247);
-    border: 1px solid rgb(224, 224, 224);
-    width: 700px;
-  }
-  th {
-    margin-right: 15px;
-  }
-  td {
-    border: 1px solid #aaa;
-  }
-  tr:first-child {
-    background-color: white;
-  }
-  tr:nth-child(even) {
-    background-color: rgb(247, 247, 247);
-  }
-
-  .closingMark {
-    cursor: pointer;
-  }
 </style>
 
 <Label label={$_('ptRegister.ptPricingStep.selectedSpecs')}>
   <select bind:value={actPrice.selectedSpecialization}>
-    <option value={"generalPricing"}>{$_("gymRegister.gymPricing.generalPricing")}</option>
+    <option value={'generalPricing'}>{$_('gymRegister.gymPricing.generalPricing')}</option>
     {#each selectedSpecializations as { name, customName }}
-      <option value={name ? name : customName}
-        >{name || customName }</option>
+      <option value={name ? name : customName}>
+        {name || customName }
+      </option>
     {/each}
   </select>
 </Label>
@@ -110,21 +78,5 @@
 <button on:click={addToPricing} >{$_('gymRegister.gymPricing.addToList')}</button>
 
 <hr />
-<table class="tableContainer">
-  <tr>
-    {#each tableHeaders as header}
-      <th>
-        {header.label}
-      </th>
-    {/each}
-  </tr>
-  {#each pricingGeneralData as price}
-    <tr>
-      {#each tableHeaders as header}
-        <td>{fillTableData(price, header)}</td>
-      {/each}
-      <span class="closingMark" on:click={deleteFromPricing(price)}>&#10060;</span
-      >
-    </tr>
-  {/each}
-</table>
+
+<PriceTable headers={tableHeaders} data={pricingGeneralData} showDelete on:deleteFromPricing={deleteFromPricing} />

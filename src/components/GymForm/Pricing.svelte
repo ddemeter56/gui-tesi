@@ -8,7 +8,14 @@
   export let selectedFacilities;
   export let pricingGeneralData;
 
-  $: tableHeaders = [{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}, {value: 'currency', label: $_('gymRegister.gymPricing.currency')}];
+  $: tableHeaders = [
+    {value: 'selectedFacility', label: $_('gymRegister.gymPricing.selectedFacility')},
+    {value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},
+    {value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},
+    {value: 'amount', label :$_('gymRegister.gymPricing.amount')},
+    {value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')},
+    {value: 'currency', label: $_('gymRegister.gymPricing.currency')}
+  ];
   $: console.log(selectedFacilities);
 
   $: categories = [  {value : 'daily', label: $_('gymRegister.gymPricing.daily') },
@@ -23,17 +30,6 @@
     actPrice = {...actPrice};
   }
 
-  function fillTableData(price,header){
-    if(header.value === 'categoryType'){
-        return $_(`gymRegister.gymPricing.${price[header.value]}`)
-    } else if (header.value === 'selectedFacility'){
-        if(price[header.value] === 'generalPricing'){
-          return $_(`gymRegister.gymPricing.${price[header.value]}`)
-        }
-    }
-    return price[header.value]
-  }
-  
   function deleteFromPricing(event){
     console.log(event.detail.price)
     let indexOfEl = pricingGeneralData.indexOf(event.detail.price);
