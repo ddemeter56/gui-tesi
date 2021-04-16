@@ -12,18 +12,6 @@
   let selectedItem = 'generalPrice';
 
   let prices = [...facilityPrices, generalPrice];
-
-
-  function fillTableData(price,header){
-    if(header.value === 'categoryType'){
-        return $_(`gymRegister.gymPricing.${price[header.value]}`)
-    } else if (header.value === 'selectedFacility'){
-        if(price[header.value] === 'generalPricing'){
-          return $_(`gymRegister.gymPricing.${price[header.value]}`)
-        }
-    }
-    return price[header.value]
-  }
   
   $: tableHeaders = [{value: 'categoryType', label: $_('gymRegister.gymPricing.categoryType')},{value: 'ticketType', label: $_('gymRegister.gymPricing.ticketType')},{value : 'amount', label :$_('gymRegister.gymPricing.amount')},{value: 'validForDays', label: $_('gymRegister.gymPricing.validForDays')}, {value: 'currency', label: $_('gymRegister.gymPricing.currency')}];
 

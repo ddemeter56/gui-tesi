@@ -9,8 +9,8 @@
   processUrlTokens();
 
   $: links = [
-    ["./about", $_('navbar.about'), 'icons/about.png'],
-    ["./index", $_('navbar.home'), 'icons/home.png']
+    ["./about", $_('navbar.about'), `/icons/about.png`],
+    ["./index", $_('navbar.home'), `/icons/home.png`]
   ]
 
   let activeMenu = false;
@@ -174,7 +174,7 @@
     </ul>
   {/if}
   <div class="navBarLogoHolder">
-    <img src="loogo.png" alt="logo" style="width: 120px"/>
+    <img src="/loogo.png" alt="logo" style="width: 120px"/>
   </div>
   {#if innerWidth < 768}
     <div

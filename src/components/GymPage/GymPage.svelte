@@ -2,11 +2,11 @@
   import { Tab, TabList, TabPanel, Tabs } from '../Tab/tabs.js';
   import ExpandableContainer from '../ExpandableContainer/ExpandableContainer.svelte';
   import Carousel from '@beyonk/svelte-carousel';
-  import { Map, Geocoder, Marker, controls } from '@beyonk/svelte-mapbox'
+  import { Map, Marker, controls } from '@beyonk/svelte-mapbox'
   import { convertLocationToGeoCode } from '../../utils/mapboxGeoCode.js';
   import GymPrice from './GymPrice.svelte';
   import { onMount } from 'svelte';
-
+  import GymOpening from './GymOpening.svelte';
 
   export let data = null;
 
@@ -204,12 +204,15 @@
           </TabList>
           <TabPanel isScrollable style="height:50vh">
             <GymPrice generalPrice={{ code: 'generalPrice', prices: data.pricing }}
-              facilityPrices={data.facilities.map((fac) => ({ code: fac.facilityCode.code, prices: fac.pricing }) )}
+              facilityPrices={data.facilities.map((fac) => ({ code: fac.facilityCode.code, prices: fac.pricing }))}
               facilityNames={data.facilities.map((fac) => ({ value: fac.facilityCode.code, label: fac.customName === '' ? fac.facilityCode.name : fac.customName }))} 
             />
           </TabPanel>
           <TabPanel isScrollable style="height:50vh">
-            Opening
+            <GymOpening generalOpening={{ code: 'generalOpening', openings: data.opening }}
+              facilityOpenings={data.facilities.map((fac) => ({ code: fac.facilityCode.code, openings: fac.opening }))}
+              facilityNames={data.facilities.map((fac) => ({ value: fac.facilityCode.code, label: fac.customName === '' ? fac.facilityCode.name : fac.customName }))}
+            />
           </TabPanel>
           <TabPanel isScrollable style="height:50vh">
             Trainers
