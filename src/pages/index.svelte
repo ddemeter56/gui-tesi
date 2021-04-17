@@ -5,6 +5,7 @@
     import Card from '../components/Card/Card.svelte';
     import FilterBar from '../components/FilterBar/FilterBar.svelte';
     import { gymSearchResult } from '../stores/gymSearchResult.js';
+    import Footer from '../components/Footer/Footer.svelte';
 
     let searchPressed = false;
 
@@ -158,7 +159,7 @@
     </Paper>
   </div>
   <div class="footer">
-    
+    <Footer />
   </div>  
 </div>
 

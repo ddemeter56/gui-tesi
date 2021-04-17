@@ -7,6 +7,9 @@
   export let facilityNames = [];
 
   $: console.log(facilityNames);
+  $: console.log(facilityOpenings);
+
+   
   let dropDownItems = [...facilityNames, { value: 'generalOpening', label: 'General Opening'}];
   let selectedItem = 'generalOpening';
 
@@ -69,27 +72,18 @@
 </script>
 
 <style>
-  .tableContainer {
-      padding:5px;
+  .gym-opening-container{
+    padding-bottom: 5px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
   }
-  th{
-      margin-right:15px;
-      padding: 5px;
+  .gym-opening-day{
+    color:white;
+    font-size: 1.2rem;
   }
-  td {
-      border: 1px solid #aaa;
-  }
-  tr:first-child{
-      background-color: maroon;
-      color: white;
-  }
-  tr {
-      background-color: rgb(92, 92, 92);
-      color: white;
-  }
-  .tdInputStyle{
-      display: inline;
-      padding: 0;
+  .gym-opening-hours{
+    color: maroon;  
   }
 </style>
 
@@ -98,9 +92,14 @@
 {#each openings as opening}
   {#if opening.code === selectedItem}
       {#each headers as header}
-        {header.label}
-        {fillOpeningHours(header)}
-        <br />
+        <div class="gym-opening-container"></div>
+          <div class="gym-opening-day">
+            {header.label}  
+          </div>
+          <div class="gym-opening-hours">
+            {fillOpeningHours(header)}
+          </div>
+        <div />
       {/each}
   {/if}
 {/each}
