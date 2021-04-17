@@ -7,6 +7,7 @@
   import GymPrice from './GymPrice.svelte';
   import { onMount } from 'svelte';
   import GymOpening from './GymOpening.svelte';
+  import Footer from '../Footer/Footer.svelte';
 
   export let data = null;
 
@@ -265,5 +266,8 @@
       <GeolocateControl options={{ some: 'control-option' }} on:eventname={eventHandler} />
       <ScaleControl />
     </Map>
+  </div>
+  <div class="gymFooter">
+    <Footer />
   </div>
 </div>

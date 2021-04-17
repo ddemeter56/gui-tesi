@@ -79,10 +79,12 @@
     flex-direction: column;
   }
   .gym-opening-day{
-    color:white;
+    display:inline-block;
+    color: #333;
     font-size: 1.2rem;
   }
   .gym-opening-hours{
+    display:inline-block;
     color: maroon;  
   }
 </style>
@@ -96,6 +98,7 @@
           <div class="gym-opening-day">
             {header.label}  
           </div>
+          -
           <div class="gym-opening-hours">
             {fillOpeningHours(header)}
           </div>
