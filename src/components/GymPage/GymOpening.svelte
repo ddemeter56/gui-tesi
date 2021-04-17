@@ -12,15 +12,42 @@
 
   let openings = [...facilityOpenings, generalOpening];
 
+
+  function fillOpenTimes(dayFrom, dayTo){
+    if( dayFrom || dayTo ) {
+      return `${dayFrom} - ${dayTo}`;
+    } else {
+      return 'Closed';
+    }
+  }
+  
+
+  $: selectedOpening = openings.filter((opening) => {
+    if(opening.code === selectedItem) {
+      return opening.openings;
+    }
+  })
+
+  $: console.log(selectedOpening);
   //ToDo  1. lekezelni minden napok
   //      2. lekezelni a null-opkat -> zarva
   function fillOpeningHours(row) {
     console.log(selectedOpening[0].openings[0]);
     switch (row.value) {
       case 'monday':
-        return `${selectedOpening[0].openings[0].mondayFrom} - ${selectedOpening[0].openings[0].mondayTo}`; 
+        return fillOpenTimes(selectedOpening[0].openings[0].mondayFrom, selectedOpening[0].openings[0].mondayTo);
       case 'tuesday':
-        return `${selectedOpening[0].openings[0].tuesdayFrom} - ${selectedOpening[0].openings[0].tuesdayTo}`; 
+        return fillOpenTimes(selectedOpening[0].openings[0].tuesdayFrom, selectedOpening[0].openings[0].tuesdayTo);
+      case 'wednesday':
+        return fillOpenTimes(selectedOpening[0].openings[0].wednesdayFrom, selectedOpening[0].openings[0].wednesdayTo);
+      case 'thursday':
+        return fillOpenTimes(selectedOpening[0].openings[0].thursdayFrom, selectedOpening[0].openings[0].thursdayTo);
+      case 'friday':
+        return fillOpenTimes(selectedOpening[0].openings[0].fridayFrom, selectedOpening[0].openings[0].fridayTo); 
+      case 'saturday':
+        return fillOpenTimes(selectedOpening[0].openings[0].saturdayFrom, selectedOpening[0].openings[0].saturdayTo); 
+      case 'sunday':
+        return fillOpenTimes(selectedOpening[0].openings[0].sundayFrom, selectedOpening[0].openings[0].sundayTo);        
       default:
         return 'fejezz be pls'
     }
@@ -35,11 +62,7 @@
     { value: 'sunday', label: $_('gymRegister.gymOpeningStep.sundayFrom')},
   ]
 
-  $: selectedOpening = openings.filter((opening) => {
-    if(opening.code === selectedItem) {
-      return opening.openings;
-    }
-  })
+
   $: console.log(dropDownItems);
   $: console.log(openings);
 
