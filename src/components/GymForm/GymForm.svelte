@@ -1,28 +1,30 @@
 <script>
     import { _ } from "svelte-i18n";
     import { Wizard, Step } from '../Wizard/wizard.js';
-    import { gymRegisterStore, showUserRegisterDialog } from '../../stores/gymRegister.js';
+    import { gymRegisterStore } from '../../stores/gymRegister.js';
     import { userState } from "../../stores/userState.js";
     import { goto } from '@sveltech/routify';
     import { gymInfos, openingInfos } from './gymDatas.js';  
     import { gymCodes } from '../../stores/gymCodes.js';
-
+    import { showUserRegisterDialog } from '../../stores/dialogStores.js';
     import Dialog from '../Dialog/Dialog.svelte';
     import Facilities from './Facilities.svelte';
     import GymGeneral from './General.svelte';
     import Opening from './Opening.svelte';
     import Pricing from './Pricing.svelte';
     import ImageUpload from './ImageUpload.svelte';
-    import GymOwnerRegister from '../Register/GymOwnerRegister.svelte';
+    import GymOwnerRegister from '../Register/OwnerRegister.svelte';
 
-    $: if(!$userState.isLoggedIn) {
+    $: if(!$userState.isLoggedIn || !$userState.roles.includes('gym_owner', 'gym_manager')) {
         $showUserRegisterDialog = true;
     } else {
         $showUserRegisterDialog = false;
     }
 
-    let facilityCodes = gymCodes.getFacilityCodes();
- 
+    if(!$gymCodes) {
+        gymCodes.getFacilityCodes()
+    };
+
     let form = {
         gym : {},
         facilities : [],
@@ -81,11 +83,11 @@
             title={$_('gymRegister.gymWizard.gymFacility')}
             desc={$_('gymRegister.gymWizard.gymFacilityDesc')}
             icon={'icon'}>
-            {#await facilityCodes then facilityCodes}
+            {#if $gymCodes}
             <Facilities
                 bind:facilityGeneralData={form.facilities}
-                gymFacilityCols={facilityCodes} />
-            {/await}
+                gymFacilityCols={$gymCodes} />
+            {/if}
         </Step>
         <Step
             title={$_('gymRegister.gymWizard.gymOpening')}

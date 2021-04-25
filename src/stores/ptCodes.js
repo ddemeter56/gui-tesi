@@ -5,13 +5,13 @@ function createPtCodes() {
   const { subscribe, set } = writable(null);
 
   return {
-    getLangCodes: () => getData('http://localhost/api/public/codes/language').then((result) => {
+    getLangCodes: () => getData('public/codes/language').then((result) => {
       return result;
     }),
-    getSpecs: () => getData('http://localhost/api/public/codes/specialization').then((result) => {
+    getSpecs: () => getData('public/codes/specialization').then((result) => {
       return result;
     }),
-    getCertiGroups: () =>  getData('http://localhost/api/public/codes/certification/grouped').then((result) => {
+    getCertiGroups: () =>  getData('public/codes/certification/grouped').then((result) => {
       return result;
     })
   }

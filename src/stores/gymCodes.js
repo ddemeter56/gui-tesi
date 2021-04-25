@@ -5,7 +5,9 @@ function createGymCodes() {
   const { subscribe, set } = writable(null);
 
   return {
-    getFacilityCodes: () => getData('http://localhost/api/public/codes/facility').then((result) => {
+    subscribe,
+    getFacilityCodes: () => getData('public/codes/facility').then((result) => {
+      set(result)
       return result;
     })
   }

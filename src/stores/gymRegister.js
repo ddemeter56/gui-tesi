@@ -2,17 +2,18 @@ import { postData } from '../utils/backendComm.js';
 import { writable } from 'svelte/store';
 import { notifyStore } from './notifyStore.js';
 import { redirectToLogin } from '../utils/processUrlTokens.js';
+import { showUserRegisterDialog } from './dialogStores.js';
 
 function createGymStore() {
 	const { subscribe } = writable(null);
 
 	return {
     subscribe,
-    submitForm: (oldForm) => postData('http://localhost/api/register/gym',convertForm(oldForm), window.localStorage.getItem('access_token')).then((result) => {
+    submitForm: (oldForm) => postData('register/gym', convertForm(oldForm), window.localStorage.getItem('access_token')).then((result) => {
       console.log(result);
       notifyStore.showNotify(result.error ? 'danger' : 'success',result.message)
     }),
-    registerUser: (userInfo) => postData('http://localhost/api/user-registration/gym-owner', userInfo).then((result) => {
+    registerUser: (userInfo) => postData('user-registration/gym-owner', userInfo).then((result) => {
         notifyStore.showNotify(result.error ? 'danger' : 'success', result.message);
         showUserRegisterDialog.set(result.error ? true : false);
         if(!result.error) {
@@ -21,8 +22,6 @@ function createGymStore() {
     })
 	};
 }
-
-export const showUserRegisterDialog = writable(null);
 
 export const gymRegisterStore = createGymStore();
 

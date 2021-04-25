@@ -9,11 +9,15 @@
   $: console.log(facilityNames);
   $: console.log(facilityOpenings);
 
-   
-  let dropDownItems = [...facilityNames, { value: 'generalOpening', label: 'General Opening'}];
+  let openings = [...facilityOpenings.filter((fac) => {if(fac.openings.length > 0){return fac}}), generalOpening];
+
+  
+  $: console.log(dropDownItems);
+  $: console.log(openings);
+
+  let dropDownItems = [...facilityNames.map((fac) => ({value: fac.facilityCode.code, label: fac.customName === '' ? fac.facilityCode.name : fac.customName})), { value: 'generalOpening', label: 'General Opening'}];
   let selectedItem = 'generalOpening';
 
-  let openings = [...facilityOpenings, generalOpening];
 
 
   function fillOpenTimes(dayFrom, dayTo){
@@ -66,8 +70,6 @@
   ]
 
 
-  $: console.log(dropDownItems);
-  $: console.log(openings);
 
 </script>
 

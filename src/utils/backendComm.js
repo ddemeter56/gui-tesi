@@ -1,9 +1,9 @@
-export async function postData(url = '', data = {}, authorization){
+export async function postData(service = '', data = {}, authorization){
   let headers = { "Content-Type": "application/json" };
   if (authorization) {
     headers.Authorization = `Bearer ${authorization}`;
   }
-  const response = await fetch(url, {
+  const response = await fetch(`http://${APP_CONTEXT}/api/${service}`, {
           method: 'POST',
           mode: 'cors',
           cache: 'no-cache',
@@ -11,17 +11,17 @@ export async function postData(url = '', data = {}, authorization){
           headers,
           body: JSON.stringify(data)
   })
-
   return response.json()
 }
 
 
-export async function getData(url = '', authorization){
+export async function getData(service = '', authorization){
   let headers = { "Content-Type": "application/json" };
   if (authorization) {
     headers.Authorization = `Bearer ${authorization}`;
   }
-  const response = await fetch(url, {
+  console.log(APP_CONTEXT);
+  const response = await fetch(`http://${APP_CONTEXT}/api/${service}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache',

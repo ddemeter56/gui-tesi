@@ -7,7 +7,10 @@
 
 	const dispatch = createEventDispatcher();
 
-  let facilityList = gymCodes.getFacilityCodes();
+  if(!$gymCodes) {
+    gymCodes.getFacilityCodes()
+  };
+
   let gymSearchParams = {};
   let facilitiesCodes = [];
 
@@ -56,13 +59,13 @@
     <Input type="T" bind:value={gymSearchParams.openAfter}/>
   </Label>
   <Label label='Létesítmények'>
-    {#await facilityList then facilityList}
+    {#if $gymCodes}
       <select class="allFacilityList" multiple bind:value={facilitiesCodes}>
-          {#each facilityList.facilities as fac}
+          {#each $gymCodes.facilities as fac}
               <option value={fac}>{fac.name}</option>
           {/each}
       </select>
-    {/await}
+    {/if}
   </Label>
   <button style="float:right; margin-right:15px; margin-bottom:15px;" on:click={searchedPressed}>Keresés</button>
 </div>

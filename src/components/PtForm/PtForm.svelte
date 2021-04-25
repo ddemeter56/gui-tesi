@@ -4,11 +4,24 @@
   import { ptInfos } from './ptDatas.js';  
   import { ptCodes } from '../../stores/ptCodes.js';
   import { ptRegisterStore } from '../../stores/ptRegister.js';
+  import { goto } from '@sveltech/routify';
+  import { showUserRegisterDialog } from '../../stores/dialogStores.js';
+  import { userState } from "../../stores/userState.js";
   import PtGeneral from './General.svelte';
+  import Dialog from '../Dialog/Dialog.svelte';
   import PtCertifications from './Certifications.svelte';
   import PtSpecializations from './Specializations.svelte';
   import PtPricing from './Pricing.svelte';
+  import PtOwnerRegister from '../Register/OwnerRegister.svelte';
 
+
+  $: if(!$userState.isLoggedIn || !$userState.roles.includes('personal_trainer')) {
+        $showUserRegisterDialog = true;
+    } else {
+        $showUserRegisterDialog = false;
+    }
+
+  let userInfo;
   let langCodes = ptCodes.getLangCodes();
   // Ide jon majd egy certi lekerdezes
   let specs = ptCodes.getSpecs();
@@ -28,6 +41,10 @@
   function sendData(){
     ptRegisterStore.submitForm(form)
   }
+
+  function sendRegisterData() {
+    ptRegisterStore.registerUser(userInfo);
+  }
   $: console.log(form);
 </script>
 
@@ -43,6 +60,15 @@
     }
 </style>
 
+{#if $showUserRegisterDialog}
+    <Dialog title='Register Personal trainer user' height={'60%'} width={'30%'} bind:opened={$showUserRegisterDialog}>
+        <PtOwnerRegister bind:userInfo/>
+        <span slot="footer">
+            <button on:click={() => sendRegisterData()}>Register</button>
+            <button on:click={$goto('/')}>Back to home</button>
+        </span>
+    </Dialog>
+{/if}
 <div class="ptFormContainer">
   <Wizard on:wizardDone={sendData} title={$_('ptRegister.title')}>
     <Step title={$_('ptRegister.ptWizard.ptBasic')}

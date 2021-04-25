@@ -1,6 +1,5 @@
 import { getData } from '../utils/backendComm.js';
 import { writable } from 'svelte/store';
-import { notifyStore } from './notifyStore.js';
 
 export const pageSize = 50;
 
@@ -9,7 +8,7 @@ function createResultStore() {
 
 	return {
     subscribe,
-		searchGyms: (params) => getData(`http://localhost/api/public/list/gym?${params}`).then((result) => {
+		searchGyms: (params) => getData(`public/list/gym?${params}`).then((result) => {
 			set(result);
 		})
 	};

@@ -212,7 +212,11 @@
           <TabPanel isScrollable style="height:50vh">
             <GymOpening generalOpening={{ code: 'generalOpening', openings: data.opening }}
               facilityOpenings={data.facilities.map((fac) => ({ code: fac.facilityCode.code, openings: fac.opening }))}
-              facilityNames={data.facilities.map((fac) => ({ value: fac.facilityCode.code, label: fac.customName === '' ? fac.facilityCode.name : fac.customName }))}
+              facilityNames={data.facilities.filter((fac) => { 
+                if(fac.opening.length > 0) {
+                  return fac;
+                }
+              })}
             />
           </TabPanel>
           <TabPanel isScrollable style="height:50vh">

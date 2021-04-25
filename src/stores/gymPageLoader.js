@@ -6,7 +6,7 @@ function createGymPageLoader() {
 
 	return {
 		subscribe,
-		loadGym: (id) => getData(`http://localhost/api/public/list/gym/${id}`).then((result) => {
+		loadGym: (id) => getData(`public/list/gym/${id}`).then((result) => {
       set(result);
       return result;
     })

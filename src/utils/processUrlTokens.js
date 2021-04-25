@@ -35,11 +35,12 @@ export function processUrlTokens() {
 }
 
 export function redirectToLogin() {
+  // csere https
   window.location.href =
-    "http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost:5000&login=true&scope=openid&nonce=" + Date.now();
+    `http://${APP_CONTEXT}:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://${APP_CONTEXT}:5000&login=true&scope=openid&nonce=` + Date.now();
 };
 
 function logout() {
   window.localStorage.clear();
-  window.location.href = "http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000";
+  window.location.href = `http://${APP_CONTEXT}:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://${APP_CONTEXT}:5000`;
 };

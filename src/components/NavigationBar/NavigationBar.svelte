@@ -26,7 +26,8 @@
         $goto('./register/pro') 
       }
       if (item.name === 'userRegister') {
-        window.location = 'http://localhost:8080/auth/realms/Tesi/login-actions/registration?client_id=browser-login&tab_id=PQYagmNLTAw';
+        // http csere
+        window.location = `http://${APP_CONTEXT}:8080/auth/realms/Tesi/login-actions/registration?client_id=browser-login&tab_id=PQYagmNLTAw`;
       }
     }
   }
@@ -189,7 +190,7 @@
   <div class="listWrapper">
     <ul class="navBarUl">
 
-      {#if $userState.isLoggedIn && $userState.roles.includes('gym_owner', 'gym_manager', 'pt_owner')}
+      {#if $userState.isLoggedIn && $userState.roles.includes('gym_owner', 'gym_manager', 'personal_trainer')}
         <li class="links">
           <a href={$url('./admin')}>
             {$_('navbar.adminPage')}
@@ -209,7 +210,7 @@
       {/if}
       {#if !$userState.isLoggedIn}
         <li class="links">
-          <a href={`http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://localhost:5000&login=true&scope=openid&nonce=${Date.now()}`} 
+          <a href={`http://${APP_CONTEXT}:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://${APP_CONTEXT}:5000&login=true&scope=openid&nonce=${Date.now()}`} 
             on:click={userState.checkUserState()}>{$_('navbar.login')}
           </a>
         </li>
@@ -217,7 +218,7 @@
       
       {#if $userState.isLoggedIn}
         <li class="links">
-            <a href={"http://localhost:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://localhost:5000"} 
+            <a href={`http://${APP_CONTEXT}:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://${APP_CONTEXT}:5000`} 
               on:click={() => window.localStorage.clear()}>{$_('navbar.logout')}
             </a>
         </li>

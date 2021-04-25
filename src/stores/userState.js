@@ -8,14 +8,11 @@ function createUserState() {
   return {
     subscribe,
     checkUserState: function() {
-      console.log('check user state has been called');
       if(window.localStorage.getItem('access_token')) {
         // Probáljuk itt ki a access_tokent
-        console.log('access token found!');
         let validTo = new Date(parseInt(window.localStorage.getItem('token_requested_at')));
         validTo.setSeconds(validTo.getSeconds() + parseInt(window.localStorage.getItem('expires_in')))
-        console.log(validTo);
-        getData('http://localhost/api/user-management/role-check', window.localStorage.getItem('access_token')).then((result) => {
+        getData('user-management/role-check', window.localStorage.getItem('access_token')).then((result) => {
           set({ isLoggedIn: validTo > new Date() ? true : false, roles: result.roles}); 
         })
       } else {
