@@ -3,7 +3,7 @@ export async function postData(service = '', data = {}, authorization){
   if (authorization) {
     headers.Authorization = `Bearer ${authorization}`;
   }
-  const response = await fetch(`http://${APP_CONTEXT}/api/${service}`, {
+  const response = await fetch(`${API_URL}/api/${service}`, {
           method: 'POST',
           mode: 'cors',
           cache: 'no-cache',
@@ -20,8 +20,8 @@ export async function getData(service = '', authorization){
   if (authorization) {
     headers.Authorization = `Bearer ${authorization}`;
   }
-  console.log(APP_CONTEXT);
-  const response = await fetch(`http://${APP_CONTEXT}/api/${service}`, {
+  console.log(API_URL);
+  const response = await fetch(`${API_URL}/api/${service}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache',

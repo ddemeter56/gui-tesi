@@ -7,13 +7,15 @@
 	<title>TESI | A mozgás közössége</title>
 
 	<link rel='icon' type='image/png' href='/favicon.png'>
-	<link rel='stylesheet' href='./global.css'>
-	<link rel='stylesheet' href='./build/bundle.css'>
+	<link rel='stylesheet' href='/global.css'>
+	<link rel='stylesheet' href='/build/bundle.css'>
 
-	<script defer src='./build/bundle.js'></script>
+	<script defer src='/build/bundle.js'></script>
 
 	<script>
-		var APP_CONTEXT = window.location.hostname;
+		var APP_CONTEXT = window.location.origin;
+		var KEYCLOAK_URL = APP_CONTEXT === "http://localhost:5000" ? "http://localhost:8080" : "https://auth.tesi.life";
+		var API_URL = APP_CONTEXT === "http://localhost:5000" ? "http://localhost:80" : "https://api.tesi.life";
 	</script>
 </head>
 

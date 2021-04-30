@@ -111,10 +111,10 @@
         <tr class="dropdown-table-tr" style="cursor: pointer;" on:click={() => setSelectedItem(item, i)}>
           {#if (item.icon) }
             <td class="dropdown-menuitem">
-              <img src="{`${window.APP_CONTEXT}/icons/16px/${item.icon}.png`}" alt="icon" />
+              
             </td>
           {:else if (item.checked === true) }
-            <td class="dropdown-menuitem"><img src="{`${window.APP_CONTEXT}/icons/16px/Check.png`}" alt="icon" /></td>
+            <td class="dropdown-menuitem"></td>
           {:else}
             <td></td>
           {/if}

@@ -27,7 +27,7 @@
       }
       if (item.name === 'userRegister') {
         // http csere
-        window.location = `http://${APP_CONTEXT}:8080/auth/realms/Tesi/login-actions/registration?client_id=browser-login&tab_id=PQYagmNLTAw`;
+        window.location = `${KEYCLOAK_URL}/auth/realms/Tesi/login-actions/registration?client_id=browser-login&tab_id=PQYagmNLTAw`;
       }
     }
   }
@@ -210,7 +210,7 @@
       {/if}
       {#if !$userState.isLoggedIn}
         <li class="links">
-          <a href={`http://${APP_CONTEXT}:8080/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=http://${APP_CONTEXT}:5000&login=true&scope=openid&nonce=${Date.now()}`} 
+          <a href={`${window.KEYCLOAK_URL}/auth/realms/Tesi/protocol/openid-connect/auth?response_type=token&client_id=browser-login&redirect_uri=${window.APP_CONTEXT}&login=true&scope=openid&nonce=${Date.now()}`} 
             on:click={userState.checkUserState()}>{$_('navbar.login')}
           </a>
         </li>
@@ -218,7 +218,7 @@
       
       {#if $userState.isLoggedIn}
         <li class="links">
-            <a href={`http://${APP_CONTEXT}:8080/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=http://${APP_CONTEXT}:5000`} 
+            <a href={`${window.KEYCLOAK_URL}/auth/realms/Tesi/protocol/openid-connect/logout?client_id=browser-login&redirect_uri=${window.APP_CONTEXT}`} 
               on:click={() => window.localStorage.clear()}>{$_('navbar.logout')}
             </a>
         </li>

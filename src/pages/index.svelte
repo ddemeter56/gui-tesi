@@ -1,17 +1,19 @@
 <script>
     import { Tab, TabList, TabPanel, Tabs } from '../components/Tab/tabs.js';
     import GymSearch from '../components/Search/GymSearch.svelte';
+    import PtSearch from '../components/Search/PtSearch.svelte';
     import Paper from '../components/Paper/Paper.svelte';
     import Card from '../components/Card/Card.svelte';
     import FilterBar from '../components/FilterBar/FilterBar.svelte';
-    import { gymSearchResult } from '../stores/gymSearchResult.js';
     import Footer from '../components/Footer/Footer.svelte';
-
+    import { gymSearchResult } from '../stores/gymSearchResult.js';
+  
     let searchPressed = false;
+    let searchFor = '';
 
     function handleSearchPressed(event){
-      console.log(event.detail.pressed);
-      searchPressed = event.detail.pressed;
+        searchPressed = event.detail.pressed;
+        searchFor = event.detail.searchType;
     }
 
     $: console.log($gymSearchResult);
@@ -78,7 +80,7 @@
               <GymSearch on:searchPressed={handleSearchPressed} />
             </TabPanel>
             <TabPanel>
-              PT SEARCH CONTENT COMES HERE  
+              <PtSearch on:searchPressed={handleSearchPressed} />
             </TabPanel>
           </Tabs>
       </div>

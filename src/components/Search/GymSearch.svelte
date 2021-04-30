@@ -20,7 +20,7 @@
     gymSearchParams = {...gymSearchParams, facilityCodes: facilitiesCodes.join(',')};
 
     gymSearchResult.searchGyms(createQuery(gymSearchParams));
-		dispatch('searchPressed', { pressed: true });
+		dispatch('searchPressed', { pressed: true, type: 'gym' });
 	}
 
   function onEnterPress(e) {
