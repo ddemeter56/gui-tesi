@@ -7,6 +7,7 @@
     import FilterBar from '../components/FilterBar/FilterBar.svelte';
     import Footer from '../components/Footer/Footer.svelte';
     import { gymSearchResult } from '../stores/gymSearchResult.js';
+    import { goto } from '@sveltech/routify';
   
     let searchPressed = false;
     let searchFor = '';
@@ -19,6 +20,17 @@
     $: console.log($gymSearchResult);
 </script>
 <style>
+  .marketingCards{
+    display: flex;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+  .marketing-to-about{
+    font-size: 1.1rem;
+    padding-top: 5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
   @media only screen and (max-width: 768px) {
     .resultTabs{
       background-color: #333;
@@ -27,6 +39,11 @@
       flex-direction: column;
       align-items: center;
       padding-bottom: 20px;
+    }
+    .marketingCards{
+      flex-direction: column;
+      background: linear-gradient(180deg, #333, transparent);
+      gap: 55px;  
     }
   }
   @media only screen and (min-width: 768px) {
@@ -57,9 +74,9 @@
     }
     .marketingCards{
       background-color: rgb(190, 190, 190);
-      display:flex;
+      flex-direction: row;
+      background: linear-gradient(180deg, #717171, transparent);
       justify-content: space-evenly;
-      padding-bottom: 50px;
     }
   }
 </style>
@@ -89,7 +106,8 @@
         <Paper paperType='large' backgroundImg='trainer.jpg'>
           <span slot="paperIcon">&#127947;</span>
           <span slot="paperTitle">Best trainers</span>
-          <span slot="paperText">From personal trainers to rehab. Get fit or rehabilitize we help you!<br/>
+          <span slot="paperText">
+            From personal trainers to rehab. Get fit or rehabilitize we help you!<br/>
             From personal trainers to rehab. From personal trainers to rehab. From personal trainers to rehab.
             From personal trainers to rehab.
           </span>
@@ -140,24 +158,37 @@
   </div>
   <div class="marketingCards scrollable">
     <Paper>
-      <span slot="paperIcon">&#128170;</span>
-      <span slot="paperTitle">Best gyms</span>
-      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+      <span slot="paperIcon">🏃‍♀️</span>
+      <span slot="paperTitle">Trying to get fit?</span>
+      <span slot="paperText">
+        Use our built in system to find GYMs or Trainers! <br />
+        Set your first appointment today!
+      </span>
     </Paper>
     <Paper>
       <span slot="paperIcon">&#128170;</span>
-      <span slot="paperTitle">Best gyms</span>
-      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+      <span slot="paperTitle">You own a GYM?</span>
+      <span slot="paperText">
+        Take our benefits and let our members to find you! <br />
+        Bring your trainers with You! <br />
+        <div class="marketing-to-about" on:click={() => $goto('about')}>Check our GYM options</div></span>
     </Paper>
     <Paper>
-      <span slot="paperIcon">&#128170;</span>
-      <span slot="paperTitle">Best gyms</span>
-      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+      <span slot="paperIcon">📅</span>
+      <span slot="paperTitle">Are you a trainer?</span>
+      <span slot="paperText">
+        Creating your own content never been easier. <br />
+        After registration you will have your own page with your own content. <br />
+        <div class="marketing-to-about" on:click={() => $goto('about')}>Check our Trainer options.</div>
+      </span>
     </Paper>
     <Paper>
-      <span slot="paperIcon">&#128170;</span>
-      <span slot="paperTitle">Best gyms</span>
-      <span slot="paperText">Find the best GYMs around you. Meet your requirements with our easy to use GYM finder</span>
+      <span slot="paperIcon">❓</span>
+      <span slot="paperTitle">Why Tesi?</span>
+      <span slot="paperText">
+        Our mission is to connect people with sport.
+        <div class="marketing-to-about" on:click={() => $goto('about')}>Check our Trainer options.</div>
+      </span>
     </Paper>
   </div>
   <div class="footer">

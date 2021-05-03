@@ -30,6 +30,9 @@
         window.location = `${KEYCLOAK_URL}/auth/realms/Tesi/login-actions/registration?client_id=browser-login&tab_id=PQYagmNLTAw`;
       }
     }
+    if(innerWidth < 768) {
+      activeMenu = false;
+    }
   }
   $: console.log($userState);
 </script>

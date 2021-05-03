@@ -3,20 +3,18 @@
   import Input from '../Input/Input.svelte';
   import { ptCodes } from '../../stores/ptCodes.js';
 	import { createEventDispatcher } from 'svelte';
-  import { gymSearchResult, createQuery } from '../../stores/gymSearchResult.js';
 
 	const dispatch = createEventDispatcher();
-  
-  if(!$ptCodes.langCodes) {
-    ptCodes.getLangCodes();
+
+  let langsArray = ptCodes.getLangCodes();
+
+  let specsArray = ptCodes.getSpecs();
+
+
+  let ptSearchParams = {
+    specializations: [],
+    languageCodes: []
   };
-
-  if(!$ptCodes.specs) {
-    ptCodes.getSpecs();
-  };
-
-
-  let ptSearchParams = {};
   let facilitiesCodes = [];
 
   function searchedPressed() {
@@ -31,6 +29,9 @@
       searchedPressed();
     }
   }
+
+  $: console.log(langsArray);
+  $: console.log(specsArray);
 </script>
 <style>
   @media only screen and (min-width: 768px) {
@@ -57,22 +58,22 @@
     <Input type="N" bind:value={ptSearchParams.maxPrice}/>
   </Label>
   <Label label='Specializálódás'>
-    {#if $ptCodes.specs}
-      <select style="height:150px" multiple bind:value={ptSearchParams.specializations}>
-        {#each $ptCodes.specs as spec}
-            <option value={spec}>{spec.name}</option>
-        {/each}
+    {#await specsArray then specs}
+      <select style="height:100px" multiple bind:value={ptSearchParams.specializations}>
+          {#each specs.specializations as spec}
+              <option value={spec}>{spec.name}</option>
+          {/each}
       </select>
-    {/if}
+    {/await}
   </Label>
   <Label label='Beszélt nyelvek'>
-    {#if $ptCodes.langCodes}
-      <select multiple bind:value={ptSearchParams.languageCodes}>
-        {#each $ptCodes.langCodes as lang}
-            <option value={lang.code}>{lang.name}</option>
-        {/each}
+    {#await langsArray then langs}
+      <select style="height: 70px" multiple bind:value={ptSearchParams.languageCodes}>
+          {#each langs.languages as lang}
+              <option value={lang.code}>{lang.name}</option>
+          {/each}
       </select>
-    {/if}
+    {/await}
   </Label>
   <button style="float:right; margin-right:15px; margin-bottom:15px;" on:click={searchedPressed}>Keresés</button>
 </div>

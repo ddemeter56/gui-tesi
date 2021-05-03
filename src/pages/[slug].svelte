@@ -1,6 +1,7 @@
 <script>
   import { getData } from '../utils/backendComm.js';
   import GymPage from '../components/GymPage/GymPage.svelte';
+  import FallBack from './_fallback.svelte';
 
   export let slug;
 
@@ -15,7 +16,7 @@
     Loading
   {:then value}
     {#if value.statusCode == '400'}
-      {value.error} - {value.message}
+      <FallBack />
     {:else if value.hasOwnProperty('facilities')}
       <GymPage data={value} />
     {:else if value.hasOwnProperty('specialities')}

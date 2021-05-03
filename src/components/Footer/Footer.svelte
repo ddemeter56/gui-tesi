@@ -3,16 +3,16 @@
 </script>
 
 <style>
-  .footer-container{
-    width: 100%;
-    height: 150px;
-    background-color: rgb(230, 230, 230);
-    display: flex;
+  footer {
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(100, 100, 100);
+    color: white;
   }
 </style>
 
-<div class="footer-container">
-  <h1>Page is Under development</h1>
-  <h2>Fucskár Geri</h2>
+<footer>
+  <h1>Developers</h1>
+  <h2>Fucskár Gergő</h2>
   <h2>Dobos Demeter</h2>
-</div>
+</footer>

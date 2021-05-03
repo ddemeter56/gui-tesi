@@ -6,9 +6,6 @@
 
 <style>
   @media only screen and (max-width: 768px) {
-    .small-paper-container{
-      margin-top:40px;
-    }
     
     .large-paper-container{
       width: 95%;
@@ -58,11 +55,11 @@
     text-align: center;
   }
   .small-paper-title{
-    padding-top: 10px;
-    height:20%;
+    height:auto;
     text-align: center;
-    font-size:25px;
     text-transform: uppercase;
+    font-variant: all-small-caps;
+    font-size: 2rem;
   }
   .small-paper-text{
     padding: 10px;
@@ -70,6 +67,7 @@
     background-color: white;
     color: maroon;
     text-align: justify;
+    font-size: 1.05rem;
   }
 
   .large-paper-container{
