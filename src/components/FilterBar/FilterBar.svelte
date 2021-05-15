@@ -46,6 +46,8 @@
   display:flex;
   justify-content: space-between;
   border: 1px solid #5b5959;
+  
+  box-sizing: border-box;
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
   color:white;
 }

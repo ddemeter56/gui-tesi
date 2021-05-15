@@ -82,6 +82,7 @@
     }
     td {
         border: 1px solid #aaa;
+        box-sizing: border-box;
     }
     tr:first-child{
         background-color: maroon;

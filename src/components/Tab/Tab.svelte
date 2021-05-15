@@ -15,16 +15,19 @@ div {
   background: none;
   border: none;
   border-radius: 0;
+  box-sizing: border-box;
   color: rgb(228, 228, 228);
   float:left;
   padding: 5px;
   cursor: pointer;
   user-select: none;
+  font-size: 1.05rem;
+  font-weight: 400;
 }
 .selectedTab {    
-    border-bottom: 4px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #333, maroon, #333);
+  border-bottom: 4px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #333, maroon, #333);
   color: white;
 }
 

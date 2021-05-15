@@ -1,6 +1,7 @@
 <script>
   import { getData } from '../utils/backendComm.js';
   import GymPage from '../components/GymPage/GymPage.svelte';
+  import PtPage from '../components/PtPage/PtPage.svelte';
   import FallBack from './_fallback.svelte';
 
   export let slug;
@@ -20,7 +21,7 @@
     {:else if value.hasOwnProperty('facilities')}
       <GymPage data={value} />
     {:else if value.hasOwnProperty('specialities')}
-      PT
+      <PtPage data={value} />
     {/if}
   {:catch error}
     Error {error}

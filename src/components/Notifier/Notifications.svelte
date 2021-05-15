@@ -112,6 +112,7 @@
 		left: 1vw;
 		right: 1vw;
 		border-radius: 100px / 10px;
+		
 	}
 
 	:global(.toasts) > .toast:after {

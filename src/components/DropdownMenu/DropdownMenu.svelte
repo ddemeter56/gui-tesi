@@ -63,6 +63,8 @@
 
   .dropdown .dropbtn {
     border: none;
+    
+    box-sizing: border-box;
     outline: none;
     user-select: none;
     font-family: inherit;
@@ -90,6 +92,8 @@
 
   .dropdown-table {
     border: 0px; 
+    
+    box-sizing: border-box;
     border-spacing: 0px;
     padding: 2px; 
     width: 100%;

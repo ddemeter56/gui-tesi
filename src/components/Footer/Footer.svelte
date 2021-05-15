@@ -13,6 +13,5 @@
 
 <footer>
   <h1>Developers</h1>
-  <h2>Fucskár Gergő</h2>
-  <h2>Dobos Demeter</h2>
+  <h2>Fucskár Gergő, Dobos Demeter</h2>
 </footer>

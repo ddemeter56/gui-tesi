@@ -9,7 +9,7 @@
 
 
 {#await gymData}
-  Loading bro
+  Loading
 {:then data}
   <GymPage {data} />
 {/await}

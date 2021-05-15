@@ -13,6 +13,7 @@
 		margin-left:2px; 
 		font-size:15px;
 		border-radius: 10px;
+		box-sizing: border-box;
 		transition: 0.5ms;
   }
 	.cardTag:hover{

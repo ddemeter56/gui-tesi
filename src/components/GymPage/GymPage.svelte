@@ -1,11 +1,12 @@
 <script>
+  
+  import { onMount } from 'svelte';
+  import { Map, Marker, controls } from '@beyonk/svelte-mapbox'
+  import { convertLocationToGeoCode } from '../../utils/mapboxGeoCode.js';
   import { Tab, TabList, TabPanel, Tabs } from '../Tab/tabs.js';
   import ExpandableContainer from '../ExpandableContainer/ExpandableContainer.svelte';
   import Carousel from '@beyonk/svelte-carousel';
-  import { Map, Marker, controls } from '@beyonk/svelte-mapbox'
-  import { convertLocationToGeoCode } from '../../utils/mapboxGeoCode.js';
   import GymPrice from './GymPrice.svelte';
-  import { onMount } from 'svelte';
   import GymOpening from './GymOpening.svelte';
   import Footer from '../Footer/Footer.svelte';
 

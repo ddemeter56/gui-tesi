@@ -22,7 +22,7 @@
 
   function fillOpenTimes(dayFrom, dayTo){
     if( dayFrom || dayTo ) {
-      return `${dayFrom} - ${dayTo}`;
+      return `${dayFrom} - ${dayTo}`
     } else {
       return 'Closed';
     }
@@ -75,6 +75,7 @@
 
 <style>
   .gym-opening-container{
+    padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
     display: flex;
@@ -84,8 +85,10 @@
     display:inline-block;
     color: #333;
     font-size: 1.2rem;
+    font-weight: 500;
   }
   .gym-opening-hours{
+    font-weight: 500;
     display:inline-block;
     color: maroon;  
   }
@@ -96,15 +99,14 @@
 {#each openings as opening}
   {#if opening.code === selectedItem}
       {#each headers as header}
-        <div class="gym-opening-container"></div>
-          <div class="gym-opening-day">
-            {header.label}  
-          </div>
-          -
-          <div class="gym-opening-hours">
-            {fillOpeningHours(header)}
-          </div>
-        <div />
+      <div class="gym-opening-container">
+        <div class="gym-opening-day">
+          {header.label}  
+        </div>
+        <div class="gym-opening-hours">
+          {fillOpeningHours(header)}
+        </div>
+      </div>
       {/each}
   {/if}
 {/each}

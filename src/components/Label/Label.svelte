@@ -14,7 +14,9 @@
     transition: border 0.1s;
     cursor: pointer;
     color: rgb(224, 224, 224);
+    border: 2px transparent solid;
     border-radius: 5px;
+	  box-sizing: border-box;
   }
   .required{
     display: flex;
@@ -30,6 +32,7 @@
   }
   .label:focus-within{
     border: 2px rgb(156, 156, 156) solid;
+    box-sizing: border-box;
     color: #fff;
   }
 </style>

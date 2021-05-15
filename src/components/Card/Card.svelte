@@ -58,6 +58,7 @@
         color:black;
         border-radius: 5px;
         padding-left: 8px;
+	    box-sizing: border-box;
     }
     .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

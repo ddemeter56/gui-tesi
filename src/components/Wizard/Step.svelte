@@ -29,6 +29,7 @@
 	.slotStyle{
 		background-color:#333;
 		border-radius:5px;
+		box-sizing: border-box;
 	}
 	.stepContainer{
 		display:flex;
@@ -47,12 +48,14 @@
 		border-radius: 5px;
 		cursor:not-allowed;
 		padding-top:15px;
+		box-sizing: border-box;
 		transition: border-left 150ms;
 	}
 	.activeStep{
 		background:white;
 		cursor:auto;
 		transition-timing-function: linear;
+		box-sizing: border-box;
 		border-left: 5px solid maroon;
 	}
 	.done{
@@ -91,6 +94,7 @@
 		background-color:rgb(199, 199, 199);
 		cursor:not-allowed;
 		padding-top:15px;
+		box-sizing: border-box;
 		transition: border-left 150ms;
 	}
 	.content{
@@ -101,6 +105,7 @@
 		background:white;
 		cursor:auto;
 		transition-timing-function: linear;
+		box-sizing: border-box;
 		border-left: 5px solid maroon;
 	}
 	.done{
@@ -115,6 +120,8 @@
 		padding:15px;
 	}
 	.titleAndIcon{
+		font-size: 1.2rem;
+		font-weight: bold;
 		display:flex;
 		justify-content:space-around;
 	}
@@ -136,7 +143,9 @@
 	<div class="titles" class:activeStep={$activeSlot === slot} on:click={switchStep} class:done={slot.done} class:current={slot.current}>
 		<div class="titleAndIcon">
 			{title}
-			<img url={imageUrl} alt="img" />
+			<!--
+				<img url={imageUrl} alt="img" />
+			--> 
 		</div>
 		<div class="description">
 			{#if $activeSlot === slot}

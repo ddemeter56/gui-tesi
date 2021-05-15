@@ -26,7 +26,7 @@
     font-size:1.2rem;
   }
   .expandableContent{
-    border-top: 1px solid #333;
+    border-top: 1px solid maroon;
   }
 </style>
 
@@ -42,7 +42,6 @@
   {#if expanded}
     <div class="expandableContent scrollable">
       <slot>
-
       </slot>
     </div>
   {/if}
